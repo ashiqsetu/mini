@@ -5,7 +5,10 @@
 @media (min-width: 1920px) {
 
 .main-menu-expand {
-	width: 25%;
+	width: 0;
+}
+.main-menu-expand.slide_right {
+	width: 22%;
 }
 .slide-navigation .slick-prev {
   left: 50px;

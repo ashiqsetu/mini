@@ -8,7 +8,7 @@ function Footer() {
                 <div className="row">
                     <div className="col-lg-4 order-lg-1 col-md-12 order-md-2">
                         <div className="copy-right-info">
-                            <p>All rights reserved &copy; <a href="https://themeforest.net/user/oxygens/portfolio" target="_blank">oxygens</a>, 2018</p>
+                            <p>All rights reserved &copy; <a href="https://themeforest.net/user/oxygens/portfolio" target="_blank">oxygens</a>, 2024</p>
                         </div>
                     </div>
                     <div className="col-lg-5 order-lg-2 col-md-7 order-md-1">

@@ -43,7 +43,7 @@ function Contact() {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="contact-message">
-                                    <form id="mini-contact-form" action="http://habibinfo.com/habibinfo.com/template/mini-preview/mini/php/mail.php" method="POST" className="contact-form">
+                                    <form id="mini-contact-form" action="" method="POST" className="contact-form">
                                         <div className="form-head fix">
                                             <div className="single-message-content">
                                                 <input type="text" name="name" className="text-field" placeholder="Name" Required/>

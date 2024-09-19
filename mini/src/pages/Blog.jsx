@@ -27,7 +27,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -52,7 +52,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -77,7 +77,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -102,7 +102,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -127,7 +127,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -149,7 +149,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -174,7 +174,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -199,7 +199,7 @@ function Blog() {
                                                     <h3><a href="#">full width blog post</a></h3>
                                                     <ul className="meta-info">
                                                         <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                                        <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                                         <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                                     </ul>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>

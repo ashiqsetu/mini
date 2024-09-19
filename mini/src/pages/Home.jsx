@@ -1,6 +1,22 @@
 import React, { Fragment } from 'react'
+import { useState, useEffect } from 'react'
+import { portfolios } from '../components/portfolios-items';
 
 function Home() {
+
+    const [activePortfolios, setActivePortfolios] = useState([]);
+    const [newPortfolios, setNewPortfolios] = useState([]);
+
+    useEffect(() => {
+        setActivePortfolios(portfolios);
+        setNewPortfolios([... new Set(portfolios.map((portfolio) => portfolio.category))])
+    }, []);
+
+    const portfoliosFilter = (portfolioItem) => {
+        const filterPortfolios = portfolios.filter((portfolio) => portfolio.category === portfolioItem);
+        setActivePortfolios(filterPortfolios);
+    }
+
   return (
     <>     
         {/* Slider area start */}
@@ -28,9 +44,12 @@ function Home() {
                                             <li><a title="linkedin" href="#"><i className="fa fa-linkedin"></i></a></li>
                                         </ul>
                                         <div className="button-group">
-                                            <a href="about.html" className="button btn-white-top btn-white-bg">About Me</a>
-                                            <a href="contact.html" className="button btn-white-left btn-white-bg">Contact Me</a>
+                                            <a href="about.html" className="button">About Us</a>
+                                            <a href="contact.html" className="button btn-style-2">Contact Us</a>
                                         </div>
+                                    </div>
+                                    <div className="intro-img">
+                                        <img src="/assets/img/slider/intro.jpg" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -58,132 +77,27 @@ function Home() {
                         <div className="col-md-12">
                             <div className="portfolio-filter-wrap">
                                 <ul className="portfolio-filter">
-                                    <li className="active"><a href="#" data-filter="*"> all</a></li>
-                                    <li><a href="#" data-filter=".cat1">design</a></li>
-                                    <li><a href="#" data-filter=".cat2">app</a></li>
-                                    <li><a href="#" data-filter=".cat3">game</a></li>
-                                    <li><a href="#" data-filter=".cat4">robotics</a></li>
-                                    <li><a href="#" data-filter=".cat5">film</a></li>
+                                    <li className="active"><button onClick={()=> setActivePortfolios(portfolios)}>all</button></li>
+                                    {
+                                        newPortfolios.map((filterItem, index) =>
+                                            <li key={index}><button onClick={() => portfoliosFilter(filterItem)}>{filterItem}</button></li>
+                                        )
+                                    }
                                 </ul>
                             </div>
                             <div id="da-thumbs" className="da-thumbs portfolio-grid clearfix">
-                                <div className="portfolio-item cat1 cat2">
-                                    <img src="/assets/img/portfolio/1.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">design</a></li>
-                                                <li><a href="#">app</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/1.jpg"><i className="bi bi-safety-kit"></i></a>
+                                {
+                                    activePortfolios.map((portfolio) => 
+                                    <div className={`portfolio-item ${portfolio.category}`} key={portfolio.id}>
+                                        <img src={portfolio.img} alt={portfolio.title}/>
+                                        <div className="portfolio-content">
+                                            <div className="portfolio-content-inner">
+                                                <h4><a href="#">{portfolio.title}</a></h4>
+                                                <a className="vendorx-gallery" href={portfolio.img}><i className="bi bi-safety-kit"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="portfolio-item cat3 cat4">
-                                    <img src="/assets/img/portfolio/2.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">game</a></li>
-                                                <li><a href="#">robotics</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/2.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat5 cat1">
-                                    <img src="/assets/img/portfolio/3.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">film</a></li>
-                                                <li><a href="#">design</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/3.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat2 cat3">
-                                    <img src="/assets/img/portfolio/4.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">app</a></li>
-                                                <li><a href="#">game</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/4.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat4 cat5">
-                                    <img src="/assets/img/portfolio/5.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">robotics</a></li>
-                                                <li><a href="#">film</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/5.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat1 cat2">
-                                    <img src="/assets/img/portfolio/6.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">design</a></li>
-                                                <li><a href="#">app</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/6.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat3 cat4">
-                                    <img src="/assets/img/portfolio/7.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">game</a></li>
-                                                <li><a href="#">robotics</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/7.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat5 cat1">
-                                    <img src="/assets/img/portfolio/8.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">film</a></li>
-                                                <li><a href="#">design</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/8.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="portfolio-item cat2 cat3">
-                                    <img src="/assets/img/portfolio/9.jpg" alt=""/>
-                                    <div className="portfolio-content">
-                                        <div className="portfolio-content-inner">
-                                            <h4><a href="#">Portfolio title here.</a></h4>
-                                            <ul className="project-cat ">
-                                                <li><a href="#">app</a></li>
-                                                <li><a href="#">game</a></li>
-                                            </ul>
-                                            <a className="vendorx-gallery" href="/assets/img/portfolio/9.jpg"><i className="bi bi-safety-kit"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -213,7 +127,7 @@ function Home() {
                                         <h3><a href="#">full width blog post</a></h3>
                                         <ul className="meta-info">
                                             <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                            <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                            <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                             <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                         </ul>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -238,7 +152,7 @@ function Home() {
                                         <h3><a href="#">full width blog post</a></h3>
                                         <ul className="meta-info">
                                             <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                            <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                            <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                             <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                         </ul>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
@@ -263,7 +177,7 @@ function Home() {
                                         <h3><a href="#">full width blog post</a></h3>
                                         <ul className="meta-info">
                                             <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
-                                            <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
+                                            <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2024</a></li>
                                             <li><a href="#"><i className="fa fa-tag"></i>game</a></li>
                                         </ul>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ea, quis magnam deserunt eius incidunt repellat molestiae maiores, quidem cumque!</p>
