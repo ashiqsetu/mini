@@ -14,11 +14,11 @@ function Footer() {
                     <div className="col-lg-5 order-lg-2 col-md-7 order-md-1">
                         <div className="footer-single-widget">
                             <ul className="quick-link">
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">service</a></li>
-                                <li><a href="#">portfolio</a></li>
-                                <li><a href="#">blog</a></li>
-                                <li><a href="#">contact</a></li>
+                                <li><a href="/about">About Us</a></li>
+                                <li><a href="/services">services</a></li>
+                                <li><a href="/portfolios">portfolios</a></li>
+                                <li><a href="/blogs">blogs</a></li>
+                                <li><a href="/contact">contact</a></li>
                             </ul>
                         </div>
                     </div>

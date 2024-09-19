@@ -20,10 +20,10 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/about' element={<About/>} />
-          <Route path='/service' element={<Service/>} />
+          <Route path='/services' element={<Service/>} />
           <Route path='/portfolios' element={<Portfolios/>} />
           <Route path='/single-portfolio' element={<SinglePortfolio/>} />
-          <Route path='/blog' element={<Blog/>} />
+          <Route path='/blogs' element={<Blog/>} />
           <Route path='/single-post' element={<SinglePost/>} />
           <Route path='/contact' element={<Contact/>} />
           <Route path='*' element={<NotFound/>} />

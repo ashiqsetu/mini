@@ -77,7 +77,7 @@ function Header() {
                     </ul>
                 </li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/service">Service</a></li>
+                <li><a href="/services">Service</a></li>
                 <li className={`sub-item ${activeSubMenu === 2 ? 'open' : ''}`}>
                     <a href="#" onClick={() => toggleSubMenu(2)}>Portfolio</a>
                     <ul>
@@ -88,7 +88,7 @@ function Header() {
                 <li className={`sub-item ${activeSubMenu === 3 ? 'open' : ''}`}>
                     <a href="#" onClick={() => toggleSubMenu(3)}>Blog</a>
                     <ul>
-                        <li><a href='/blog'>Blog</a> </li>
+                        <li><a href='/blogs'>Blog</a> </li>
                         <li><a href='/single-post'>Single Post</a> </li>
                     </ul>
                 </li>
