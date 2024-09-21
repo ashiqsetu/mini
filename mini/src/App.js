@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Service from './pages/Service'
@@ -15,21 +15,21 @@ import Footer from './components/Footer'
 function App() {
   return (
     <Fragment>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/about' element={<About/>} />
-          <Route path='/services' element={<Service/>} />
-          <Route path='/portfolios' element={<Portfolios/>} />
-          <Route path='/single-portfolio' element={<SinglePortfolio/>} />
-          <Route path='/blogs' element={<Blog/>} />
-          <Route path='/single-post' element={<SinglePost/>} />
-          <Route path='/contact' element={<Contact/>} />
-          <Route path='*' element={<NotFound/>} />
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/services' element={<Service />} />
+          <Route path='/portfolios' element={<Portfolios />} />
+          <Route path='/single-portfolio' element={<SinglePortfolio />} />
+          <Route path='/blogs' element={<Blog />} />
+          <Route path='/single-post' element={<SinglePost />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </Fragment>
   )
 }

@@ -56,7 +56,7 @@
 .main-menu {
 	margin: 30px 0;
 }
-.main-menu-expand .social-memu {
+.main-menu-expand .social-menu {
 	margin-bottom: 20px;
 }
 .slider-content-wrapper {
@@ -99,7 +99,7 @@
 .single-block-option > p {
 	padding-left: 7px;
 }
-.about-content .social-memu {
+.about-content .social-menu {
 	margin-bottom: 25px;
 }
 .progress-bar-area {
@@ -138,13 +138,13 @@
 .project-cat {
 	line-height: 1.5;
 }
-.single-team-member .social-memu li a {
+.single-team-member .social-menu li a {
 	font-size: 14px;
 	height: 35px;
 	line-height: 32px;
 	width: 35px;
 }
-.single-team-member .social-memu li + li {
+.single-team-member .social-menu li + li {
 	margin-left: 5px;
 }
 .member-content {
@@ -299,7 +299,7 @@
 .about-block-icons {
 	margin: 25px 0;
 }
-.about-content .social-memu {
+.about-content .social-menu {
 	margin-bottom: 25px;
 }
 .progress-bar-area {
@@ -579,7 +579,7 @@
 .main-menu {
 	margin: 30px 0;
 }
-.main-menu-expand .social-memu {
+.main-menu-expand .social-menu {
 	margin-bottom: 20px;
 }
 .main-menu-expand .copy-right-info p {
@@ -695,11 +695,11 @@
 	line-height: 1.6;
 	margin: 20px 0;
 }
-.footer-single-widget .social-memu {
+.footer-single-widget .social-menu {
 	float: none;
 	text-align: center;
 }
-.social-memu li {
+.social-menu li {
 	float: none;
 	display: inline-block;
 }
@@ -717,10 +717,10 @@
 	margin-left: 0;
 	margin-top: 10px;
 }
-.about-content .social-memu li + li {
+.about-content .social-menu li + li {
 	margin-left: 5px;
 }
-.about-content .social-memu {
+.about-content .social-menu {
 	margin-bottom: 20px;
 }
 .col-lg-6:last-child .about-content {

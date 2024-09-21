@@ -2,7 +2,7 @@ export const portfolios = [
     {
         id: 1,
         category: 'design',
-        title: 'Portfolio title here.',
+        title: 'Portfolio title goes here.',
         img: '/assets/img/portfolio/1.jpg'
     },
     {
@@ -12,7 +12,7 @@ export const portfolios = [
         img: '/assets/img/portfolio/2.jpg'
     },
     {
-        id:3,
+        id: 3,
         category: 'game',
         title: 'Portfolio title here.',
         img: '/assets/img/portfolio/3.jpg'
