@@ -217,6 +217,11 @@ label {
   }
 }
 
+.show-all-content {
+  margin-top: 30px;
+  text-align: center;
+}
+
 
 /* ------------------------------
 2. Button style
@@ -736,14 +741,14 @@ label {
 
 .social-menu li a {
   display: block;
-  width: 40px;
-  height: 40px;
-  line-height: 39px;
-  border-radius: 2px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 4px;
   border: 1px solid #ccc;
   text-align: center;
   font-size: 16px;
-  color: #232323;
+  color: #555;
 }
 
 .social-menu li a:hover {
@@ -861,21 +866,31 @@ label {
 6. Breadcrumb area style
 -----------------------------*/
 
+.header-height {
+  height: 85px;
+}
+
 .breadcrumb-area {
   background: rgba(0, 0, 0, 0) url("/assets/img/bg/breadcrumb.jpg") repeat scroll center center / cover;
   background-size: cover;
-  padding: 120px 0 100px;
+  padding: 150px 0;
 }
 
-.breadcrumb-content {
+/* .breadcrumb-content {
   margin-top: 85px;
-}
+} */
 
 .breadcrumb-title {
   font-family: 'Open Sans', sans-serif;
   color: var(--primaryColor);
-  font-size: 24px;
-  margin-bottom: 5px;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.breadcrumb-cat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .breadcrumb-cat li {
@@ -896,8 +911,8 @@ label {
   color: #232323;
   content: "/";
   position: absolute;
-  right: -12px;
-  top: 2px;
+  right: -15px;
+  top: 1px;
 }
 
 .breadcrumb-cat li:last-child::before {
@@ -1374,6 +1389,23 @@ label {
 
 .page-link {
   color: var(--primaryColor);
+  cursor: pointer;
+}
+.page-link:hover {
+  color: var(--primaryColor);
+}
+.page-item.active .page-link {
+  background-color: var(--primaryColor);
+  border-color: var(--primaryColor);
+}
+.page-item.active .page-link:hover,
+.page-item.active .page-link:focus,
+.page-item.active .page-link:active {
+  color: #fff;
+  outline: none;
+}
+.page-item .page-link:focus {
+  outline: none;
 }
 
 /* Modal overlay */
@@ -1779,10 +1811,12 @@ label {
 
 .blog-post .post-thumbnail img {
   width: 100%;
+  border-radius: 4px 4px 0 0;
 }
 
 .post-content {
   padding: 20px;
+  border-radius: 0 0 4px 4px;
 }
 
 .post-content-inner h3 {
@@ -1805,18 +1839,13 @@ label {
 .meta-info {
   overflow: hidden;
   margin-bottom: 15px;
-}
-
-.meta-info li {
-  float: left;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .meta-info li i {
   padding-right: 8px;
-}
-
-.meta-info li+li {
-  margin-left: 15px;
 }
 
 .meta-info li a {
@@ -1841,6 +1870,10 @@ label {
 
 .post-content-wrapper {
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
 }
 
 .post-content-wrapper a {
@@ -1852,9 +1885,7 @@ label {
 }
 
 .like-count {
-  float: left;
   color: #232323;
-  margin-left: 2px;
 }
 
 .like-count i {
@@ -1875,7 +1906,6 @@ label {
 
 .read-more {
   color: #232323;
-  float: right;
   transition: all 0.4s ease 0s;
 }
 
@@ -2459,6 +2489,10 @@ label {
   background: #fff;
   padding: 30px 0;
   border-top: 1px solid #ddd;
+}
+
+.theme-footer-section .row {
+  align-items: center;
 }
 
 .copy-right-info p {

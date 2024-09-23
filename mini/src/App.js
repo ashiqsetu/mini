@@ -5,7 +5,7 @@ import About from './pages/About'
 import Service from './pages/Service'
 import Portfolios from './pages/Portfolios'
 import SinglePortfolio from './pages/SinglePortfolio'
-import Blog from './pages/Blog'
+import Blogs from './pages/Blogs'
 import SinglePost from './pages/SinglePost'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
@@ -26,7 +26,7 @@ function App() {
           <Route path='/services' element={<Service />} />
           <Route path='/portfolios' element={<Portfolios />} />
           <Route path='/single-portfolio' element={<SinglePortfolio />} />
-          <Route path='/blogs' element={<Blog />} />
+          <Route path='/blogs' element={<Blogs />} />
           <Route path='/single-post' element={<SinglePost />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
