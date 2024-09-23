@@ -24,6 +24,40 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
     const handleNext = () => setCurrentPage(prev => Math.min(totalPages, prev + 1));
     const handleLast = () => setCurrentPage(totalPages);
 
+    const getPagination = () => {
+        const paginationArray = [];
+
+        paginationArray.push(
+            <li key={1} className={`page-item ${currentPage === 1 ? 'active' : ''}`}>
+                <button className="page-link" onClick={() => setCurrentPage(1)}>1</button>
+            </li>
+        );
+
+        if (currentPage > 3) {
+            paginationArray.push(<li key="start-dots" className="page-item disabled"><span className="page-link">...</span></li>);
+        }
+
+        for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+            paginationArray.push(
+                <li key={i} className={`page-item ${currentPage === i ? 'active' : ''}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(i)}>{i}</button>
+                </li>
+            );
+        }
+
+        if (currentPage < totalPages - 2) {
+            paginationArray.push(<li key="end-dots" className="page-item disabled"><span className="page-link">...</span></li>);
+        }
+
+        paginationArray.push(
+            <li key={totalPages} className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
+                <button className="page-link" onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
+            </li>
+        );
+
+        return paginationArray;
+    };
+
     return (
         <>
             <div className={`theme-section ${bgBackground}`}>
@@ -69,6 +103,7 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
                             ))
                         }
                     </div>
+
                     {
                         pagination &&
                         <div className="row">
@@ -88,13 +123,7 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
                                                 </button>
                                             </li>
 
-                                            {[...Array(Math.ceil(postsToShow.length / postsPerPage))].map((_, i) => (
-
-                                                <li key={i} className={`page-item ${currentPage === i + 1 ? 'active' : ''}`}>
-                                                    <button className="page-link" onClick={() => setCurrentPage(i + 1)}>{i + 1}</button>
-                                                </li>
-
-                                            ))}
+                                            {getPagination()}
 
                                             <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
                                                 <button className="page-link" onClick={() => handleNext()} aria-label="Next">

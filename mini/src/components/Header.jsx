@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 
-function Header({targetRef}) {
+function Header({ targetRef }) {
 
     const [show, sidebarVisibility] = useState(false);
     const [activeSidebar, setActiveSidebar] = useState(false);
@@ -36,7 +36,7 @@ function Header({targetRef}) {
     const handleScroll = () => {
         const windowSize = window.innerWidth;
 
-        if(windowSize > 1 && window.scrollY > 1) {
+        if (windowSize > 1 && window.scrollY > 1) {
             setSticky(true);
         } else {
             setSticky(false);
@@ -91,7 +91,7 @@ function Header({targetRef}) {
             <section className={`main-menu-expand ${show ? 'slide_right' : ''} ${activeSidebar ? 'slide_done' : ''} ${hideSidebar ? 'slide_hide' : ''}`}>
                 <div className="expand-header">
                     <div className="menu-logo">
-                        <a className="navbar-brand" href="/">mini<span className="dot-color">.</span></a>
+                        <Link className="navbar-brand" href="/">mini<span className="dot-color">.</span></Link>
                     </div>
                     <div className="close-icon" onClick={() => hiddenSidebar()}>
                         <i className="bi bi-cross-gap"></i>
@@ -99,7 +99,7 @@ function Header({targetRef}) {
                 </div>
                 <ul className="main-menu">
                     <li className={`sub-item ${activeSubMenu === 1 ? 'open' : ''}`}>
-                        <a href='#' onClick={() => toggleSubMenu(1)}>Home</a>
+                        <button onClick={() => toggleSubMenu(1)}>Home</button>
                         <ul>
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to='index-2.html'>Home 2</Link></li>
@@ -110,20 +110,20 @@ function Header({targetRef}) {
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/services">Service</Link></li>
                     <li className={`sub-item ${activeSubMenu === 2 ? 'open' : ''}`}>
-                        <a href="#" onClick={() => toggleSubMenu(2)}>Portfolio</a>
+                        <button href="#" onClick={() => toggleSubMenu(2)}>Portfolio</button>
                         <ul>
                             <li><Link to='/portfolio'>Portfolio</Link> </li>
                             <li><Link to='/single-portfolio'>Single Project</Link> </li>
                         </ul>
                     </li>
                     <li className={`sub-item ${activeSubMenu === 3 ? 'open' : ''}`}>
-                        <a href="#" onClick={() => toggleSubMenu(3)}>Blog</a>
+                        <button href="#" onClick={() => toggleSubMenu(3)}>Blog</button>
                         <ul>
                             <li><Link to='/blogs'>Blog</Link> </li>
                             <li><Link to='/single-post'>Single Post</Link> </li>
                         </ul>
                     </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><Link to="/contact">Contact</Link></li>
                 </ul>
                 <ul className="social-menu">
                     <li><a href="#" target='_blank'><i className="fa fa-facebook"></i></a></li>

@@ -560,11 +560,13 @@ label {
   margin-top: 10px;
 }
 
-.main-menu>li:hover>a {
+.main-menu>li:hover>a,
+.main-menu>li:hover>button {
   color: var(--primaryColor);
 }
 
-.main-menu li a {
+.main-menu li a,
+.main-menu li button {
   color: #232323;
   display: block;
   font-weight: 500;
@@ -574,6 +576,13 @@ label {
   -ms-transition: all 700ms ease;
   -o-transition: all 700ms ease;
   -moz-transition: all 700ms ease;
+  cursor: pointer;
+  background: transparent;
+  border: medium none;
+  outline: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
 }
 
 .main-menu ul {
@@ -585,11 +594,17 @@ label {
   transition: all 0.5s ease;
 }
 
-.main-menu>ul>li>a:hover {
+.main-menu>ul>li>a:hover,
+.main-menu>ul>li>button:hover {
   color: #232323;
 }
 
-.main-menu>li.sub-item>a::after {
+.main-menu li button:focus {
+  outline: none;
+}
+
+.main-menu>li.sub-item>a::after,
+.main-menu>li.sub-item>button::after {
   background: #232323 none repeat scroll 0 0;
   content: "";
   display: block;
@@ -602,7 +617,8 @@ label {
   z-index: 5;
 }
 
-.main-menu>li.sub-item>a::before {
+.main-menu>li.sub-item>a::before,
+.main-menu>li.sub-item>button::before {
   background: #232323 none repeat scroll 0 0;
   content: "";
   display: block;
@@ -615,7 +631,9 @@ label {
 }
 
 .main-menu>li.sub-item.open>a:after,
-.main-menu>li.sub-item.open>a:before {
+.main-menu>li.sub-item.open>button:after,
+.main-menu>li.sub-item.open>a:before,
+.main-menu>li.sub-item.open>button:before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
@@ -630,7 +648,8 @@ label {
   transition: all 0.3s ease;
 }
 
-.main-menu ul li a {
+.main-menu ul li a,
+.main-menu ul li button {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.5s ease 0s;
@@ -638,6 +657,7 @@ label {
   color: #fff;
 }
 
+.main-menu ul li button:hover,
 .main-menu ul li a:hover {
   padding-left: 5px;
   color: #232323;
@@ -1398,14 +1418,15 @@ label {
   background-color: var(--primaryColor);
   border-color: var(--primaryColor);
 }
+.page-item .page-link:focus,
 .page-item.active .page-link:hover,
 .page-item.active .page-link:focus,
 .page-item.active .page-link:active {
   color: #fff;
   outline: none;
 }
-.page-item .page-link:focus {
-  outline: none;
+.page-item.disabled .page-link:focus {
+  color: #868e96;
 }
 
 /* Modal overlay */
