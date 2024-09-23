@@ -21,16 +21,16 @@ function Loader() {
             <div id="mini-loader">
                 <div id="loading-center">
                     <div id="loading-center-absolute">
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
-                        <div class="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
+                        <div className="object"></div>
                     </div>
                 </div>
             </div>

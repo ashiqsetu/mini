@@ -200,6 +200,23 @@ label {
   background: #f6f6f6;
 }
 
+.appear {
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0 cover 30%;  
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    scale: 0.7;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
 
 /* ------------------------------
 2. Button style
@@ -2123,11 +2140,13 @@ label {
   padding-top: 30px;
   margin-top: 30px;
   border-top: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .post-tag {
   display: inline-block;
-  float: left;
 }
 
 .post-tag>a {
@@ -2148,7 +2167,6 @@ label {
 
 .share-post {
   display: inline-block;
-  float: right;
 }
 
 .share-post li {
@@ -2495,8 +2513,8 @@ label {
   bottom: 30px;
   color: #ffffff;
   font-size: 20px;
-  height: 30px;
-  line-height: 25px;
+  height: 32px;
+  line-height: 32px;
   opacity: 0;
   position: fixed;
   right: 30px;
@@ -2504,24 +2522,36 @@ label {
   transform: translateY(20px);
   transition: all 0.3s ease 0s;
   visibility: hidden;
-  width: 30px;
-}
-
-.to-top-btn:focus {
-  color: #fff;
+  width: 32px;
+  border: medium none;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
 }
 
 .to-top-btn.to-top-show {
-  opacity: 1;
-  transform: translateY(0px);
-  visibility: visible;
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
   z-index: 9;
   transition: all 0.3s ease 0s;
 }
 
-.to-top-btn.to-top-show:hover {
+.to-top-btn.to-top-show.topTransition {
+  transform: translateY(0px);
+  visibility: visible;
+  opacity: 1;
+}
+.to-top-btn.to-top-show.removeTransition {
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.to-top-btn.to-top-show.topTransition:hover,
+.to-top-btn.to-top-show.topTransition:focus {
+  background: var(--primaryColor);
   color: #fff;
-  background: #232323;
+  outline: none;
 }
 
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import React, { Fragment } from 'react'
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Link, useLocation } from "react-router-dom";
 
-function Header() {
+function Header({targetRef}) {
 
     const [show, sidebarVisibility] = useState(false);
     const [activeSidebar, setActiveSidebar] = useState(false);
@@ -10,12 +10,18 @@ function Header() {
 
     const [activeSubMenu, setActiveSubMenu] = useState(null);
 
+    const [isSticky, setSticky] = useState(false);
+
+    const location = useLocation();
+
+
     const showSidebar = () => {
         sidebarVisibility(true);
         setTimeout(() => {
             setActiveSidebar(true);
         }, 700)
     }
+
     const hiddenSidebar = () => {
         setActiveSidebar(false);
         setTimeout(() => {
@@ -27,6 +33,28 @@ function Header() {
         }, 2000)
     }
 
+    const handleScroll = () => {
+        const windowSize = window.innerWidth;
+
+        if(windowSize > 1 && window.scrollY > 1) {
+            setSticky(true);
+        } else {
+            setSticky(false);
+        }
+    }
+
+    useEffect(() => {
+        sidebarVisibility(false);
+    }, [location]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    })
+
     const toggleSubMenu = (index) => {
         setActiveSubMenu(activeSubMenu === index ? null : index);
     }
@@ -34,7 +62,7 @@ function Header() {
     return (
         <>
             {/* Header area start  */}
-            <header className="sticky-header header-area header-bg">
+            <header ref={targetRef} className={`sticky-header header-area header-bg ${isSticky ? 'is_sticky' : ''}`}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">

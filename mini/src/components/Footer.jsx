@@ -1,7 +1,49 @@
-import React, { Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-function Footer() {
+function Footer({targetRef}) {
+
+    const [backToTop, setBackToTop] = useState(false);
+
+    const handleScroll = () => {
+        const windowSize = window.innerWidth;
+        let toTopBtn = document.querySelector('.to-top-btn');
+
+        if(windowSize > 1 && window.scrollY > 1) {
+            setBackToTop(true);
+            if(toTopBtn) {
+                setTimeout(() => {
+                    toTopBtn.classList.add('topTransition');
+                }, 300);
+            }
+            
+        } else {
+            if(toTopBtn) {
+                toTopBtn.classList.remove('topTransition');
+                toTopBtn.classList.add('removeTransition');
+            }
+            setTimeout(() => {
+                setBackToTop(false);
+            }, 200);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    });
+
+    const scrollHeader = () => {
+        const headerHeight = targetRef.current?.offsetHeight || 0;
+        window.scrollTo({
+            top: targetRef.current?.offsetTop - headerHeight,
+            behavior: 'smooth',
+        });
+    }
+
     return (
         <>
             <footer className="theme-footer-section">
@@ -36,6 +78,11 @@ function Footer() {
                     </div>
                 </div>
             </footer>
+            {
+                backToTop && (
+                    <button onClick={() => scrollHeader()} className="to-top-btn to-top-show"><i className="fa fa-angle-up"></i></button>
+                )
+            }
         </>
     )
 }

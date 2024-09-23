@@ -101,7 +101,7 @@ function Portfolio() {
                             <div className="portfolio-grid clearfix">
                                 {
                                     activePortfolios.map((portfolio, index) =>
-                                        <div className={`portfolio-item ${portfolio.category}`} key={portfolio.id}>
+                                        <div className={`portfolio-item ${portfolio.category} appear`} key={portfolio.id}>
                                             <div className='portfolio-wrap' ref={el => portfolioRefs.current[index] = el}>
                                                 <div className='portfolio-img' onClick={() => openGallery(index)}>
                                                     {/* <div className='portfolio-img'> */}

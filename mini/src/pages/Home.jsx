@@ -62,7 +62,7 @@ function Home() {
                         </div>
                         <div className="row">
                             <div className="col-lg-4 col-md-6">
-                                <article className="blog-post wow fadeIn" data-wow-delay=".2s">
+                                <article className="blog-post appear">
                                     <div className="post-thumbnail">
                                         <a className="thumbnail-images" href="#"><img src="/assets/img/blog/1.jpg" alt="" /></a>
                                     </div>
@@ -87,7 +87,7 @@ function Home() {
                                 </article>
                             </div>
                             <div className="col-lg-4 col-md-6">
-                                <article className="blog-post wow fadeIn" data-wow-delay=".4s">
+                                <article className="blog-post appear">
                                     <div className="post-thumbnail">
                                         <a className="thumbnail-images" href="#"><img src="/assets/img/blog/2.jpg" alt="" /></a>
                                     </div>
@@ -112,7 +112,7 @@ function Home() {
                                 </article>
                             </div>
                             <div className="col-lg-4 d-md-none d-lg-block">
-                                <article className="blog-post wow fadeIn" data-wow-delay=".6s">
+                                <article className="blog-post appear">
                                     <div className="post-thumbnail">
                                         <a className="thumbnail-images" href="#"><img src="/assets/img/blog/3.jpg" alt="" /></a>
                                     </div>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { useRef } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -13,10 +13,13 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 function App() {
+
+  const targetRef = useRef(null);
+
   return (
-    <Fragment>
+    <>
       <BrowserRouter>
-        <Header />
+        <Header targetRef={targetRef}/>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
@@ -28,9 +31,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer />
+        <Footer targetRef={targetRef}/>
       </BrowserRouter>
-    </Fragment>
+    </>
   )
 }
 
