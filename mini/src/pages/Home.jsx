@@ -10,7 +10,7 @@ function Home() {
             {/* Slider area start */}
             <section className="slider-area">
                 <div className="slider-area-wrapper">
-                    <div className="single-slide slide-1">
+                    <div className="single-slide">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-12">

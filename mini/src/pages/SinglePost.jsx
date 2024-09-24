@@ -1,7 +1,12 @@
 import React from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
+import { useParams, useLocation } from 'react-router-dom'
 
 function SinglePost() {
+
+    const { id } = useParams();
+    const { state } = useLocation();
+
     return (
         <>
 
@@ -68,16 +73,18 @@ function SinglePost() {
                                         <div className="single-post-thumbnail">
                                             <a href="img/blog/single-post/1.jpg"><img className="img-responsive" src="/assets/img/blog/single-post/1.jpg" alt="" /></a>
                                         </div>
+
                                         <div className="single-post-thumbnail">
                                             <a href="img/blog/single-post/2.jpg"><img className="img-responsive" src="/assets/img/blog/single-post/2.jpg" alt="" /></a>
                                         </div>
+
                                         <div className="single-post-thumbnail">
                                             <a href="img/blog/single-post/3.jpg"><img className="img-responsive" src="/assets/img/blog/single-post/3.jpg" alt="" /></a>
                                         </div>
                                     </div>
                                     <div className="single-post-content">
                                         <div className="post-content-inner">
-                                            <h3 className="post-title">Single Post Title</h3>
+                                            <h3 className="post-title">{state.title}</h3>
                                             <ul className="meta-info">
                                                 <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
                                                 <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>

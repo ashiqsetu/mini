@@ -27,7 +27,7 @@ function App() {
           <Route path='/portfolios' element={<Portfolios />} />
           <Route path='/single-portfolio' element={<SinglePortfolio />} />
           <Route path='/blogs' element={<Blogs />} />
-          <Route path='/single-post' element={<SinglePost />} />
+          <Route path='/post/:id' element={<SinglePost />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

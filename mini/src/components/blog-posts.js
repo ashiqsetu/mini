@@ -1,7 +1,7 @@
 export const blogPosts = [
     {
         id: 1,
-        title: 'full width blog post 1',
+        title: 'Stay Hungry, Stay Foolish.',
         img: '/assets/img/blog/1.jpg',
         category: 'game',
         author: 'admin',
@@ -11,7 +11,7 @@ export const blogPosts = [
     },
     {
         id: 2,
-        title: 'full width blog post 2',
+        title: 'The human spirit must prevail over technology.',
         img: '/assets/img/blog/2.jpg',
         category: 'game',
         author: 'admin',
@@ -21,7 +21,7 @@ export const blogPosts = [
     },
     {
         id: 3,
-        title: 'full width blog post 3',
+        title: 'Dream big and dare to fail.',
         img: '/assets/img/blog/3.jpg',
         category: 'game',
         author: 'admin',

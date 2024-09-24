@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { blogPosts } from '../components/blog-posts'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
 
@@ -10,6 +10,8 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
     const [postsPerPage] = useState(6);
 
     const totalPages = useMemo(() => Math.ceil(postsToShow.length / postsPerPage), [postsToShow, postsPerPage]);
+
+    const navigate = useNavigate();
 
     const currentPosts = useMemo(() => {
         const indexOfLastPost = currentPage * postsPerPage;
@@ -58,6 +60,14 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
         return paginationArray;
     };
 
+    const handlePostClick = (post) => {
+        navigate(`/post/${post.id}`, {
+            state: {
+                title: post.title
+            }
+        });
+    };
+
     return (
         <>
             <div className={`theme-section ${bgBackground}`}>
@@ -76,13 +86,21 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
                                 <div className="col-lg-4 col-md-6 post-grid-item" key={post.id}>
                                     <article className="blog-post appear">
                                         <div className="post-thumbnail">
-                                            <a className="thumbnail-images" href="#">
+                                            <a className="thumbnail-images" href={`/post/${post.id}`} onClick={(e) => {
+                                                e.preventDefault();
+                                                handlePostClick(post);
+                                            }}>
                                                 <img src={post.img} alt={post.title} />
                                             </a>
                                         </div>
                                         <div className="post-content">
                                             <div className="post-content-inner">
-                                                <h3><a href="#">{post.title}</a></h3>
+                                                <h3>
+                                                    <a href={`/post/${post.id}`} onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handlePostClick(post);
+                                                    }}>{post.title}</a>
+                                                </h3>
                                                 <ul className="meta-info">
                                                     <li><a href="#"><i className="fa fa-user"></i>{post.author}</a></li>
                                                     <li><a href="#"><i className="fa fa-calendar"></i>{post.author}</a></li>
@@ -91,7 +109,10 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
                                                 <p>{post.description}</p>
                                             </div>
                                             <div className="post-content-wrapper">
-                                                <a className="read-more" href="#">read more</a>
+                                                <a className="read-more" href={`/post/${post.id}`} onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handlePostClick(post);
+                                                }}>read more</a>
                                                 <a className="like-count" href="#">
                                                     <i className="fa fa-heart-o"></i>
                                                     <span className="heart-number">{post.like}</span>
@@ -103,7 +124,6 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
                             ))
                         }
                     </div>
-
                     {
                         pagination &&
                         <div className="row">
