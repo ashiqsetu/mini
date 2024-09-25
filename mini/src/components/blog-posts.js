@@ -11,7 +11,7 @@ export const blogPosts = [
     },
     {
         id: 2,
-        title: 'The human spirit must prevail over technology.',
+        title: 'If you don’t ask, You won’t get.',
         img: '/assets/img/blog/2.jpg',
         category: 'game',
         author: 'admin',

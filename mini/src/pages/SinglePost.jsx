@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
 import { useParams, useLocation } from 'react-router-dom'
+import Carousel from 'react-bootstrap/Carousel';
 
 function SinglePost() {
 
     const { id } = useParams();
     const { state } = useLocation();
+
+    const [index, setIndex] = useState(0);
+
+    const handleSelect = (selectedIndex) => {
+        setIndex(selectedIndex);
+    };
 
     return (
         <>
@@ -21,14 +28,6 @@ function SinglePost() {
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-3 col-lg-4 col-md-5">
-                                <aside className="single-widget">
-                                    <div className="search-widget">
-                                        <form action="#" className="search-form">
-                                            <input type="text" placeholder="search...." />
-                                            <button type="submit"><i className="fa fa-search"></i></button>
-                                        </form>
-                                    </div>
-                                </aside>
                                 <aside className="single-widget">
                                     <h4 className="widget-title">About author</h4>
                                     <div className="widget-content">
@@ -70,17 +69,28 @@ function SinglePost() {
                             <div className="col-xl-9 col-lg-8">
                                 <article className="single-blog-post">
                                     <div className="post-thumbnail">
-                                        <div className="single-post-thumbnail">
-                                            <a href="img/blog/single-post/1.jpg"><img className="img-responsive" src="/assets/img/blog/single-post/1.jpg" alt="" /></a>
-                                        </div>
-
-                                        <div className="single-post-thumbnail">
-                                            <a href="img/blog/single-post/2.jpg"><img className="img-responsive" src="/assets/img/blog/single-post/2.jpg" alt="" /></a>
-                                        </div>
-
-                                        <div className="single-post-thumbnail">
-                                            <a href="img/blog/single-post/3.jpg"><img className="img-responsive" src="/assets/img/blog/single-post/3.jpg" alt="" /></a>
-                                        </div>
+                                        <Carousel activeIndex={index} onSelect={handleSelect}>
+                                            <Carousel.Item className="single-post-thumbnail">
+                                                <img className="img-responsive" src="/assets/img/blog/single-post/1.jpg" alt="" />
+                                                <Carousel.Caption>
+                                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                </Carousel.Caption>
+                                            </Carousel.Item>
+                                            <Carousel.Item className="single-post-thumbnail">
+                                                <img className="img-responsive" src="/assets/img/blog/single-post/2.jpg" alt="" />
+                                                <Carousel.Caption>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                </Carousel.Caption>
+                                            </Carousel.Item>
+                                            <Carousel.Item className="single-post-thumbnail">
+                                                <img className="img-responsive" src="/assets/img/blog/single-post/3.jpg" alt="" />
+                                                <Carousel.Caption>
+                                                    <p>
+                                                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                                                    </p>
+                                                </Carousel.Caption>
+                                            </Carousel.Item>
+                                        </Carousel>
                                     </div>
                                     <div className="single-post-content">
                                         <div className="post-content-inner">
