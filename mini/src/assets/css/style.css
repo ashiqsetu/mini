@@ -152,6 +152,11 @@ label {
   font-weight: 400;
 }
 
+input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+  }
+
 ::-moz-selection {
   background: var(--primaryColor);
   color: #fff;
@@ -2330,7 +2335,7 @@ label {
 }
 
 .blog-comment-section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 #mini-comment-form .button {
@@ -2339,25 +2344,35 @@ label {
 
 .media-list>li {
   background: #ffffff;
-  padding: 30px 20px 30px 0;
+  padding: 20px 20px 15px 0;
   margin: 0;
   border-bottom: 1px solid #eee;
 }
+.media-list>li:last-child {
+  padding-bottom: 0;
+  border-bottom: medium none;
+}
 
+.media-list li .replies,
 .media-list li.media-replay {
   padding-left: 50px;
+}
+
+.media-list li .replies > li:first-child {
+  border-top: 1px solid #eee;
+  margin-top: 15px;
 }
 
 .media-left {
   float: left;
   overflow: hidden;
-  padding-right: 30px;
+  padding-right: 20px;
 }
 
 .media-left img {
   border-radius: 50%;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
 }
 
 .blog-comment-section .media-body {
@@ -2367,7 +2382,7 @@ label {
 
 .media-body h5 {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 1px;
   margin-bottom: 5px;
 }
@@ -2387,7 +2402,7 @@ label {
 }
 
 .media-body p i {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 .media-body p span {
@@ -2404,6 +2419,14 @@ label {
   color: #777;
   font-weight: 400;
   letter-spacing: 1px;
+  background: transparent;
+  padding: 0;
+  border: medium none;
+}
+.reply-link:focus {
+  border: medium none;
+  outline: none;
+  box-shadow: none;
 }
 
 .reply-link i {
@@ -2421,29 +2444,63 @@ label {
   margin-right: 15px;
 }
 
-.post-like li a {
-  display: block;
+.post-like li a,
+.post-like li button {
   color: #777;
   font-size: 16px;
+  padding: 0;
+  background: transparent;
+  border: medium none;
+  outline: none;
+  box-shadow: none;
+  display: inline-flex;
+  gap: 3px;
+  align-items: center;
+}
+.post-like li button:focus {
+  outline: none;
+  box-shadow: none;
 }
 
-.post-like li a:hover {
+.post-like li a:hover,
+.post-like li button:hover {
   color: var(--primaryColor);
 }
 
+.post-like li:last-child a:hover,
+.post-like li:last-child button:hover {
+  color: #F05050;
+}
+
+.post-like li a.liked,
+.post-like li button.liked,
+.post-like li a.liked:hover,
+.post-like li button.liked:hover {
+  color: var(--primaryColor);
+}
+
+.post-like li a.disliked,
+.post-like li button.disliked,
+.post-like li a.disliked:hover,
+.post-like li button.disliked:hover {
+  color: #F05050;
+}
+
 .blog-comment-form h4 {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 
 #mini-comment-form .form-control {
-  padding: 0 0 0 20px;
+  padding: 0 15px;
   height: 50px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #mini-comment-form .form-control:focus {
   border-color: var(--primaryColor);
+  outline: none;
+  box-shadow: none;
 }
 
 #mini-comment-form .form-control::placeholder {
@@ -2452,14 +2509,69 @@ label {
 
 #mini-comment-form textarea.form-control {
   min-height: 150px;
-  padding-top: 20px;
+  padding-top: 15px;
   margin-top: 25px;
 }
 
 .check-box {
-  margin-bottom: 10px;
+  margin-top: 10px;
   position: relative;
   left: 2px;
+}
+
+
+/* Custom checkbox  */
+
+.notifyCheckbox {
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  gap: 7px;
+}
+
+.notifyCheckbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.notifyCheckbox .checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+
+.notifyCheckbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.notifyCheckbox input:checked ~ .checkmark {
+  background-color: var(--primaryColor);
+}
+
+
+.notifyCheckbox .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.notifyCheckbox input:checked ~ .checkmark:after {
+  display: block;
 }
 
 

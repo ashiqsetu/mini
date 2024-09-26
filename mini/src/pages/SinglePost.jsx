@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useNavigate, json } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel';
 
 function SinglePost() {
 
     const { id } = useParams();
     const { state } = useLocation();
+    const navigate = useNavigate();
 
     const [index, setIndex] = useState(0);
 
@@ -17,25 +18,151 @@ function SinglePost() {
         message: '',
         notify: false
     });
+    const [likes, setLikes] = useState({});
+    const [dislikes, setDislikes] = useState({});
+    const [replyTo, setReplyTo] = useState(null);
+
+    const nameInputRef = useRef(null);
+
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewComment({ ...newComment, [name]: value });
+    }
+
+    const handleCheckboxChange = () => {
+        setNewComment((prev) => ({ ...prev, notify: !prev.notify }));
+    };
+
+    const formatTime = (date) => {
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        };
+
+        return new Date(date).toLocaleDateString('en-US', options);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const currentTime = formatTime(new Date());
+
+        const newEntry = {
+            id: comments.length + 1, ...newComment,
+            time: currentTime,
+            likes: 0,
+            dislikes: 0,
+            replies: [],
+            isReply: replyTo !== null,
+        };
+
+        if (replyTo) {
+            setComments(
+                comments.map((comment) =>
+                    comment.id === replyTo ? { ...comment, replies: [...comment.replies, newEntry] } : comment
+                )
+            );
+        } else {
+            setComments([...comments, newEntry]);
+        }
+
+        // For Mail Notification
+        // if (newComment.notify) {
+
+        // }
+
+        setNewComment({ name: '', email: '', message: '', notify: false });
+        setReplyTo(null);
+    };
+
+
+    const hasUserInteracted = (id, type) => {
+        const interactions = JSON.parse(localStorage.getItem('interactions')) || {};
+        return interactions[id]?.includes(type);
+    }
+
+    const recordInteraction = (id, type) => {
+        const interactions = JSON.parse(localStorage.getItem('interactions')) || {};
+
+        if (!interactions[id]) {
+            interactions[id] = [];
+        }
+
+        if (type === 'remove_like') {
+            interactions[id] = interactions[id].filter(i => i !== 'like');
+        } else if (type === 'remove_dislike') {
+            interactions[id] = interactions[id].filter(i => i !== 'dislike');
+        } else if (!interactions[id].includes(type)) {
+            interactions[id].push(type);
+        }
+
+        localStorage.setItem('interactions', JSON.stringify(interactions));
+    };
+
+    const handleLike = (e, id) => {
+        e.preventDefault();
+        if (hasUserInteracted(id, 'like')) {
+            return;
+        }
+        if (hasUserInteracted(id, 'dislike')) {
+            setDislikes({ ...dislikes, [id]: (dislikes[id] || 1) - 1 });
+            recordInteraction(id, 'remove_dislike');
+        }
+        setLikes({ ...likes, [id]: (likes[id] || 0) + 1 });
+        recordInteraction(id, 'like');
+    };
+
+    const handleDislike = (e, id) => {
+        e.preventDefault();
+        if (hasUserInteracted(id, 'dislike')) {
+            return;
+        }
+        if (hasUserInteracted(id, 'like')) {
+            setLikes({ ...likes, [id]: (likes[id] || 1) - 1 });
+            recordInteraction(id, 'remove_like');
+        }
+        setDislikes({ ...dislikes, [id]: (dislikes[id] || 0) + 1 });
+        recordInteraction(id, 'dislike');
+    };
+
+    useEffect(() => {
+        localStorage.removeItem('interactions');
+    }, []);
+
+
+
+    const handleReply = (id) => {
+        setReplyTo(id);
+        nameInputRef.current.focus();
+    };
+
+
+    useEffect(() => {
+        if (state) {
+            localStorage.setItem('lastPost', JSON.stringify(state));
+        } else {
+            const savedPost = JSON.parse(localStorage.getItem('lastPost'));
+            if (!savedPost) {
+                navigate('/blog');
+            }
+        }
+    }, [state, navigate])
+
+    const post = state || JSON.parse(localStorage.getItem('lastPost'));
+
+    if (!post) {
+        return navigate('/blog');
+    }
 
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
-
-    const handleCheckboxChange = () => {
-        setNewComment((prev) => ({ ...prev, notify: !prev.notify }));
-        console.log(newComment);
-    };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewComment({ ...newComment, [name]: value });
-        console.log(newComment);
-    }
 
     return (
         <>
@@ -92,7 +219,7 @@ function SinglePost() {
                             <div className="col-xl-9 col-lg-8">
                                 <article className="single-blog-post">
                                     <div className="post-thumbnail">
-                                        <Carousel activeIndex={index} onSelect={handleSelect}>
+                                        <Carousel activeIndex={index} onSelect={handleSelect} fade>
                                             <Carousel.Item className="single-post-thumbnail">
                                                 <img className="img-responsive" src="/assets/img/blog/single-post/1.jpg" alt="" />
                                                 <Carousel.Caption>
@@ -117,7 +244,7 @@ function SinglePost() {
                                     </div>
                                     <div className="single-post-content">
                                         <div className="post-content-inner">
-                                            <h3 className="post-title">{state.title}</h3>
+                                            <h3 className="post-title">{post.title}</h3>
                                             <ul className="meta-info">
                                                 <li><a href="#"><i className="fa fa-user"></i>admin</a></li>
                                                 <li><a href="#"><i className="fa fa-calendar"></i>jul 24, 2018</a></li>
@@ -175,7 +302,7 @@ function SinglePost() {
                                 </article>
                                 <div className="comment-section">
                                     <div className="blog-comment-section">
-                                        <h4 className="comment-section-title">comments <span>3</span></h4>
+                                        <h4 className="comment-section-title">comments <span>{comments.length}</span></h4>
                                         <ul className="media-list">
                                             <li className="media">
                                                 <div className="media-left">
@@ -215,25 +342,67 @@ function SinglePost() {
                                                     </a>
                                                 </div>
                                             </li>
-                                            <li className="media">
-                                                <div className="media-left">
-                                                    <a href="#"><img src="/assets/img/avatars/user.png" alt="" /></a>
-                                                </div>
-                                                <div className="media-body">
-                                                    <h5><a href="#">Adam smith</a></h5>
-                                                    <p>
-                                                        <i className="fa fa-calendar"></i><span>May 13, 2017 at 11:39 am</span>
-                                                    </p>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam quae dolorem aut, distinctio et nisi laudantium eveniet totam nobis vero.</p>
-                                                    <ul className="post-like">
-                                                        <li><a href="#"><i className="fa fa-thumbs-o-up"></i></a></li>
-                                                        <li><a href="#"><i className="fa fa-thumbs-o-down"></i></a></li>
-                                                    </ul>
-                                                    <a href="#" className="reply-link">reply
-                                                        <i className="fa fa-reply"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
+                                            {comments.map(comment => (
+                                                <li key={comment.id} className="media">
+                                                    <div className="media-left">
+                                                        <img src="/assets/img/avatars/user.png" alt="User avatar" />
+                                                    </div>
+                                                    <div className="media-body">
+                                                        <h5>{comment.name}</h5>
+                                                        <p><i className="fa fa-calendar"></i> <span>{comment.time}</span></p>
+                                                        <p>{comment.message}</p>
+                                                        <ul className="post-like">
+                                                            <li>
+                                                                <button onClick={(e) => handleLike(e, comment.id)} className={hasUserInteracted(comment.id, 'like') ? 'liked' : ''}>
+                                                                    <i className="fa fa-thumbs-o-up"></i>
+                                                                    <span>{likes[comment.id] || 0}</span>
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button onClick={(e) => handleDislike(e, comment.id)} className={hasUserInteracted(comment.id, 'dislike') ? 'disliked' : ''}>
+                                                                    <i className="fa fa-thumbs-o-down"></i>
+                                                                    <span>{dislikes[comment.id] || 0}</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                        <button className="reply-link" onClick={() => handleReply(comment.id)}>reply <i className="fa fa-reply"></i></button>
+                                                    </div>
+                                                    {/* comments replies */}
+                                                    {comment.replies && comment.replies.length > 0 && (
+                                                        <ul className="media-list replies">
+                                                            {comment.replies.map((reply) => (
+                                                                <li key={reply.id} className="media reply-comment">
+                                                                    <div className="media-left">
+                                                                        <img src="/assets/img/avatars/user.png" alt="User avatar" />
+                                                                    </div>
+                                                                    <div className="media-body">
+                                                                        <h5>{reply.name}</h5>
+                                                                        <p><i className="fa fa-calendar"></i> <span>{reply.time}</span></p>
+                                                                        <p>{reply.message}</p>
+                                                                        <ul className="post-like">
+                                                                            <li>
+                                                                                <button>
+                                                                                    <i className="fa fa-thumbs-o-up"></i>
+                                                                                    <span>0</span>
+                                                                                </button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button>
+                                                                                    <i className="fa fa-thumbs-o-down"></i>
+                                                                                    <span>0</span>
+                                                                                </button>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <button className="reply-link">reply <i className="fa fa-reply"></i></button>
+                                                                    </div>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+
+                                                </li>
+                                            ))}
+
                                         </ul>
                                     </div>
                                     <div className="blog-comment-form">
@@ -242,20 +411,23 @@ function SinglePost() {
                                             <form id="mini-comment-form" onSubmit={handleSubmit}>
                                                 <div className="form-group row">
                                                     <div className="col-sm-6">
-                                                        <input type="text" name='name' className="form-control" value={newComment.name} onChange={handleInputChange} placeholder="name" required />
+                                                        <input ref={nameInputRef} type="text" name='name' className="form-control" value={newComment.name} onChange={handleInputChange} placeholder="name*" required />
                                                     </div>
                                                     <div className="col-sm-6">
-                                                        <input type="email" name='email' className="form-control" value={newComment.email} onChange={handleInputChange} placeholder="email" required />
+                                                        <input type="email" name='email' className="form-control" value={newComment.email} onChange={handleInputChange} placeholder="email*" required />
                                                     </div>
                                                 </div>
                                                 <div className="form-group">
-                                                    <textarea className="form-control" name='message' value={newComment.message} onChange={handleInputChange} placeholder="comment"></textarea>
+                                                    <textarea className="form-control" name='message' value={newComment.message} onChange={handleInputChange} placeholder="comments*"></textarea>
                                                 </div>
                                                 <div className="check-box">
-                                                    <input type="checkbox" name="notify" onChange={handleCheckboxChange} checked id="check-box-l" />
-                                                    <label htmlFor="check-box-l">Keep me in touch in this conversation</label>
+                                                    <label className="notifyCheckbox">
+                                                        <input type="checkbox" name="notify" onChange={handleCheckboxChange} checked={newComment.notify} id="check-box-l" />
+                                                        <span className="checkmark"></span>
+                                                        Keep me in touch in this conversation
+                                                    </label>
                                                 </div>
-                                                <button type="submit" className="button btn-white-left btn-white-bg">post comment</button>
+                                                <button type="submit" className="button btn-white-left btn-white-bg">{replyTo ? 'Post Reply' : 'Post Comment'}</button>
                                             </form>
                                         </div>
                                     </div>
@@ -265,7 +437,7 @@ function SinglePost() {
                     </div>
                 </div>
                 {/* Blog section end */}
-            </section>
+            </section >
             {/* Page content area end */}
         </>
     )
