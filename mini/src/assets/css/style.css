@@ -257,6 +257,7 @@ label {
 
 .button:hover {
   color: var(--primaryColor);
+  background: #fff;
 }
 
 .button + .button {
@@ -2003,6 +2004,24 @@ label {
   border-radius: 4px;
 }
 
+.single-post-thumbnail .carousel-caption {
+  background: linear-gradient(45deg, #fff, rgb(214 177 97 / 35%));
+  padding: 15px;
+  border-radius: 4px;
+  bottom: 30px;
+}
+
+.single-blog-post .carousel-indicators {
+  margin-bottom: 0;
+  bottom: 5px;
+}
+
+.single-post-thumbnail p {
+  color: #232323;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
 .single-widget {
   background: #ffffff;
   margin-bottom: 30px;
@@ -2312,6 +2331,10 @@ label {
 
 .blog-comment-section {
   margin-bottom: 40px;
+}
+
+#mini-comment-form .button {
+  margin-top: 25px;
 }
 
 .media-list>li {

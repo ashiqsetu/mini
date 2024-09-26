@@ -10,9 +10,32 @@ function SinglePost() {
 
     const [index, setIndex] = useState(0);
 
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState({
+        name: '',
+        email: '',
+        message: '',
+        notify: false
+    });
+
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
+    const handleCheckboxChange = () => {
+        setNewComment((prev) => ({ ...prev, notify: !prev.notify }));
+        console.log(newComment);
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewComment({ ...newComment, [name]: value });
+        console.log(newComment);
+    }
 
     return (
         <>
@@ -156,7 +179,7 @@ function SinglePost() {
                                         <ul className="media-list">
                                             <li className="media">
                                                 <div className="media-left">
-                                                    <a href="#"><img src="/assets/img/avatars/1.jpg" alt="" /></a>
+                                                    <a href="#"><img src="/assets/img/avatars/user.png" alt="" /></a>
                                                 </div>
                                                 <div className="media-body">
                                                     <h5><a href="#">john doe</a></h5>
@@ -175,7 +198,7 @@ function SinglePost() {
                                             </li>
                                             <li className="media-replay">
                                                 <div className="media-left">
-                                                    <a href="#"><img src="/assets/img/avatars/2.jpg" alt="" /></a>
+                                                    <a href="#"><img src="/assets/img/avatars/user.png" alt="" /></a>
                                                 </div>
                                                 <div className="media-body">
                                                     <h5><a href="#">Liam Neeson</a></h5>
@@ -194,7 +217,7 @@ function SinglePost() {
                                             </li>
                                             <li className="media">
                                                 <div className="media-left">
-                                                    <a href="#"><img src="/assets/img/avatars/3.jpg" alt="" /></a>
+                                                    <a href="#"><img src="/assets/img/avatars/user.png" alt="" /></a>
                                                 </div>
                                                 <div className="media-body">
                                                     <h5><a href="#">Adam smith</a></h5>
@@ -216,21 +239,21 @@ function SinglePost() {
                                     <div className="blog-comment-form">
                                         <h4>leave your comments</h4>
                                         <div className="comment-form">
-                                            <form id="mini-comment-form">
+                                            <form id="mini-comment-form" onSubmit={handleSubmit}>
                                                 <div className="form-group row">
                                                     <div className="col-sm-6">
-                                                        <input type="text" className="form-control" placeholder="name" required />
+                                                        <input type="text" name='name' className="form-control" value={newComment.name} onChange={handleInputChange} placeholder="name" required />
                                                     </div>
                                                     <div className="col-sm-6">
-                                                        <input type="email" className="form-control" placeholder="email" required />
+                                                        <input type="email" name='email' className="form-control" value={newComment.email} onChange={handleInputChange} placeholder="email" required />
                                                     </div>
                                                 </div>
                                                 <div className="form-group">
-                                                    <textarea className="form-control" placeholder="comment"></textarea>
+                                                    <textarea className="form-control" name='message' value={newComment.message} onChange={handleInputChange} placeholder="comment"></textarea>
                                                 </div>
                                                 <div className="check-box">
-                                                    <input type="checkbox" name="vehicle" value="Car" checked id="check-box-l" />
-                                                    <label for="check-box-l">Keep me in touch in this conversation</label>
+                                                    <input type="checkbox" name="notify" onChange={handleCheckboxChange} checked id="check-box-l" />
+                                                    <label htmlFor="check-box-l">Keep me in touch in this conversation</label>
                                                 </div>
                                                 <button type="submit" className="button btn-white-left btn-white-bg">post comment</button>
                                             </form>
