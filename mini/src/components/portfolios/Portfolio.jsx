@@ -13,7 +13,7 @@ function Portfolio({ showAll }) {
 
     useEffect(() => {
         setActivePortfolios(portfolios);
-        setNewPortfolios([... new Set(portfolios.map((portfolio) => portfolio.category))]);
+        setNewPortfolios([...new Set(portfolios.map((portfolio) => portfolio.category))]);
 
         const handleMouseMove = (event) => {
             const mouseX = event.clientX;
@@ -92,7 +92,7 @@ function Portfolio({ showAll }) {
                                 }
                             </div>
                             {
-                                showAll && <div class="show-all-content"><Link class="button" to="/portfolios">Show All</Link></div>
+                                showAll && <div className="show-all-content"><Link className="button" to="/portfolios">Show All</Link></div>
                             }
                         </div>
                     </div>

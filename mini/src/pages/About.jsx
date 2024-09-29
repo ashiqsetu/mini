@@ -1,9 +1,39 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
+import CountUp from 'react-countup';
+import { Link } from 'react-router-dom'
+import PageTitle from '../components/common/PageTitle';
 
 function About() {
+
+    const [startCount, setStartCount] = useState(false);
+    const counterRef = useRef(null)
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                setStartCount(true);
+                observer.disconnect();
+            }
+        },
+        { threshold: 0.5 });
+
+        if(counterRef.current) {
+            observer.observe(counterRef.current);
+        }
+
+        return () => {
+            if(counterRef.current) {
+                observer.unobserve(counterRef.current);
+            }
+        }
+    }, []);
+
     return (
         <>
+            {/* Page title */}
+            <PageTitle title='Mini | About'/>
+
             {/* Breadcrumb area start */}
             <Breadcrumbs page="About" title="Mini's About" />
             {/* Breadcrumb area end */}
@@ -33,12 +63,12 @@ function About() {
                                         </div>
                                     </div>
                                     <ul className="social-menu">
-                                        <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
-                                        <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
-                                        <li><a className="instagram" href="#"><i className="fa fa-instagram"></i></a></li>
-                                        <li><a className="pinterest" href="#"><i className="fa fa-pinterest"></i></a></li>
+                                        <li><a className="facebook" href="javascript:void(0)"><i className="fa fa-facebook"></i></a></li>
+                                        <li><a className="twitter" href="javascript:void(0)"><i className="fa fa-twitter"></i></a></li>
+                                        <li><a className="instagram" href="javascript:void(0)"><i className="fa fa-instagram"></i></a></li>
+                                        <li><a className="pinterest" href="javascript:void(0)"><i className="fa fa-pinterest"></i></a></li>
                                     </ul>
-                                    <a href="#" className="button btn-white-top btn-white-bg">Contact Us</a>
+                                    <Link to="/contact" className="button btn-white-top btn-white-bg">Contact Us</Link>
                                 </div>
                             </div>
                             <div className="col-lg-6">
@@ -87,14 +117,16 @@ function About() {
                 {/* About section end */}
 
                 {/* Counter section start */}
-                <div className="theme-section-2 gray-bg">
+                <div ref={counterRef} className="theme-section-2 gray-bg">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-6 col-lg">
                                 <div className="single-counter">
                                     <div className="counter-inner">
                                         <i className="bi bi-drawer"></i>
-                                        <p className="counter" data-direction="up" data-interval="0" data-format="567">0</p>
+                                        <p className="counter">
+                                            {startCount && <CountUp start={0} end={100} duration={5} />}
+                                        </p>
                                         <h4>Complete Projects</h4>
                                     </div>
                                 </div>
@@ -103,7 +135,9 @@ function About() {
                                 <div className="single-counter">
                                     <div className="counter-inner">
                                         <i className="bi bi-emo-smile"></i>
-                                        <p className="counter" data-direction="up" data-interval="0" data-format="437">0</p>
+                                        <p className="counter">
+                                            {startCount && <CountUp start={0} end={100} duration={5} />}
+                                        </p>
                                         <h4>Happy Clients</h4>
                                     </div>
                                 </div>
@@ -112,7 +146,9 @@ function About() {
                                 <div className="single-counter">
                                     <div className="counter-inner">
                                         <i className="bi bi-madel"></i>
-                                        <p className="counter" data-direction="up" data-interval="0" data-format="357">0</p>
+                                        <p className="counter">
+                                            {startCount && <CountUp start={0} end={100} duration={5} />}
+                                        </p>
                                         <h4>honored</h4>
                                     </div>
                                 </div>
@@ -121,7 +157,9 @@ function About() {
                                 <div className="single-counter">
                                     <div className="counter-inner">
                                         <i className="bi bi-cup-coffee"></i>
-                                        <p className="counter" data-direction="up" data-interval="0" data-format="676">0</p>
+                                        <p className="counter">
+                                            {startCount && <CountUp start={0} end={100} duration={5} />}
+                                        </p>
                                         <h4>Working Hours</h4>
                                     </div>
                                 </div>
@@ -148,10 +186,10 @@ function About() {
                                     <div className="member-img">
                                         <img src="assets/img/team/1.jpg" alt="" />
                                         <ul className="social-menu">
-                                            <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
-                                            <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
-                                            <li><a className="instagram" href="#"><i className="fa fa-instagram"></i></a></li>
-                                            <li><a className="pinterest" href="#"><i className="fa fa-pinterest"></i></a></li>
+                                            <li><a className="facebook" href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                            <li><a className="twitter" href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                            <li><a className="instagram" href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                            <li><a className="pinterest" href="javascript:void(0)" target='_blank'><i className="fa fa-pinterest"></i></a></li>
                                         </ul>
                                     </div>
                                     <div className="member-content text-center">
@@ -165,10 +203,10 @@ function About() {
                                     <div className="member-img">
                                         <img src="assets/img/team/2.jpg" alt="" />
                                         <ul className="social-menu">
-                                            <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
-                                            <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
-                                            <li><a className="instagram" href="#"><i className="fa fa-instagram"></i></a></li>
-                                            <li><a className="pinterest" href="#"><i className="fa fa-pinterest"></i></a></li>
+                                            <li><a className="facebook" href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                            <li><a className="twitter" href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                            <li><a className="instagram" href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                            <li><a className="pinterest" href="javascript:void(0)" target='_blank'><i className="fa fa-pinterest"></i></a></li>
                                         </ul>
                                     </div>
                                     <div className="member-content text-center">
@@ -182,10 +220,10 @@ function About() {
                                     <div className="member-img">
                                         <img src="assets/img/team/3.jpg" alt="" />
                                         <ul className="social-menu">
-                                            <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
-                                            <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
-                                            <li><a className="instagram" href="#"><i className="fa fa-instagram"></i></a></li>
-                                            <li><a className="pinterest" href="#"><i className="fa fa-pinterest"></i></a></li>
+                                            <li><a className="facebook" href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                            <li><a className="twitter" href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                            <li><a className="instagram" href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                            <li><a className="pinterest" href="javascript:void(0)" target='_blank'><i className="fa fa-pinterest"></i></a></li>
                                         </ul>
                                     </div>
                                     <div className="member-content text-center">
@@ -199,10 +237,10 @@ function About() {
                                     <div className="member-img">
                                         <img src="assets/img/team/4.jpg" alt="" />
                                         <ul className="social-menu">
-                                            <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
-                                            <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
-                                            <li><a className="instagram" href="#"><i className="fa fa-instagram"></i></a></li>
-                                            <li><a className="pinterest" href="#"><i className="fa fa-pinterest"></i></a></li>
+                                            <li><a className="facebook" href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                            <li><a className="twitter" href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                            <li><a className="instagram" href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                            <li><a className="pinterest" href="javascript:void(0)" target='_blank'><i className="fa fa-pinterest"></i></a></li>
                                         </ul>
                                     </div>
                                     <div className="member-content text-center">

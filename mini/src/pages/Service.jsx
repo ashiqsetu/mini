@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
+import PageTitle from '../components/common/PageTitle';
 
 function Service() {
   return (
     <>
+        {/* Page title */}
+        <PageTitle title='Mini | Service'/>
+
         {/* Breadcrumb area start */}
         <Breadcrumbs page="Service" title="Mini's Services" />
         {/* Breadcrumb area end */}

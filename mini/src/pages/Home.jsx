@@ -21,10 +21,10 @@ function Home() {
                                                 we are <span>Mini.</span>
                                             </h1>
                                             <ul className="social-menu">
-                                                <li><a title="facebook" href="#" target='_blank'><i className="fa fa-facebook"></i></a></li>
-                                                <li><a title="twitter" href="#" target='_blank'><i className="fa fa-twitter"></i></a></li>
-                                                <li><a title="instagram" href="#" target='_blank'><i className="fa fa-instagram"></i></a></li>
-                                                <li><a title="linkedin" href="#" target='_blank'><i className="fa fa-linkedin"></i></a></li>
+                                                <li><a title="facebook" href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                                <li><a title="twitter" href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                                <li><a title="instagram" href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                                <li><a title="linkedin" href="javascript:void(0)" target='_blank'><i className="fa fa-linkedin"></i></a></li>
                                             </ul>
                                             <div className="button-group">
                                                 <Link to="/about" className="button">About Us</Link>

@@ -570,7 +570,7 @@ input:-webkit-autofill,
 .main-menu li button {
   color: #232323;
   display: block;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 1px;
   transition: all 700ms ease;
   -webkit-transition: all 700ms ease;
@@ -1096,7 +1096,7 @@ input:-webkit-autofill,
 -------------------------------- */
 
 .single-service {
-  background: #FFFFFF none repeat scroll 0 0;
+  background: rgba(214 177 97 / 5%) none repeat scroll 0 0;
   border: 1px solid transparent;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   padding: 40px;
@@ -1599,12 +1599,16 @@ input:-webkit-autofill,
 }
 
 .project-link {
+  border: medium none;
   border-bottom: 1px solid #e5e5e5;
   color: #334559;
   display: inline-block;
   font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  background: transparent;
+  padding: 0;
+  transition: all 0.3s ease;
 }
 
 .project-link:hover {
@@ -1921,6 +1925,7 @@ input:-webkit-autofill,
   flex-direction: row-reverse;
 }
 
+.post-content-wrapper button,
 .post-content-wrapper a {
   font-size: 14px;
   letter-spacing: 0.5px;
@@ -1928,6 +1933,15 @@ input:-webkit-autofill,
   text-transform: capitalize;
   display: inline-block;
   font-weight: 400;
+  background: transparent;
+  padding: 0;
+  border: medium none;
+  outline: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+.post-content-wrapper button:focus {
+  outline: none;
 }
 
 .like-post {
@@ -1949,6 +1963,9 @@ input:-webkit-autofill,
 .single-post-content .like-count {
   font-size: 14px;
   font-weight: 400;
+  padding: 0;
+  background: transparent;
+  border: medium none;
 }
 
 .like-count.liked,
@@ -2113,7 +2130,7 @@ input:-webkit-autofill,
   font-weight: 400;
 }
 
-.post-cat-list a {
+.post-cat-list button {
   color: #333333;
   display: block;
   font-size: 14px;
@@ -2121,20 +2138,22 @@ input:-webkit-autofill,
   height: 40px;
   letter-spacing: 1px;
   line-height: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
   text-transform: capitalize;
+  border: medium none;
   border-bottom: 1px solid #ececec;
+  transition: all 0.3s ease;
+  padding: 0 20px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.post-cat-list li a:hover {
+.post-cat-list li button:hover {
   color: var(--primaryColor);
   padding-left: 25px;
   padding-right: 25px;
-}
-
-.post-cat-list li a span {
-  float: right;
 }
 
 .tags {
@@ -2144,7 +2163,7 @@ input:-webkit-autofill,
   gap: 5px;
 }
 
-.tags>a {
+.tags>button {
   border: 1px solid #eee;
   color: #232323;
   font-weight: 400;
@@ -2156,9 +2175,10 @@ input:-webkit-autofill,
   padding: 5px 15px;
   text-transform: capitalize;
   border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-.tags>a:hover {
+.tags>button:hover {
   color: var(--primaryColor);
 }
 
@@ -2336,7 +2356,7 @@ input:-webkit-autofill,
   margin-top: 25px;
 }
 
-.post-tag>a {
+.post-tag>button {
   border: 1px solid #eee;
   color: #232323;
   font-weight: 400;
@@ -2346,9 +2366,10 @@ input:-webkit-autofill,
   padding: 5px 15px;
   text-transform: uppercase;
   border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
-.post-tag>a:hover {
+.post-tag>button:hover {
   color: var(--primaryColor);
 }
 
@@ -2674,7 +2695,7 @@ input:-webkit-autofill,
 
 #mini-map {
   width: 100%;
-  height: 420px;
+  height: 500px;
 }
 
 .contact-content {
@@ -2686,6 +2707,8 @@ input:-webkit-autofill,
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   padding: 30px;
   transition: all 0.3s ease 0s;
+  background: rgb(214 177 97 / 5%);
+  border-radius: 4px;
 }
 
 .single-address-content:hover {
@@ -2718,7 +2741,7 @@ input:-webkit-autofill,
 }
 
 .contact-message {
-  background: #fff;
+  background: linear-gradient(135deg, #fff 30%, rgb(214 177 97 / 35%));
   width: 80%;
   margin: 0 auto;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
@@ -2747,6 +2770,11 @@ input:-webkit-autofill,
   transition: all 0.3s ease 0s;
   width: 100%;
   outline: none;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: transparent;
 }
 
 .form-body textarea {
@@ -2884,6 +2912,40 @@ input:-webkit-autofill,
 }
 
 
+
+/* Not Found styles  */
+
+.notFoundSection {
+  position: absolute;
+  background: rgb(214 177 97);
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+}
+
+.notFoundContent {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.notFoundContent p {
+  color: #fff;
+}
+
+.notFoundContent a {
+  padding: 12px 25px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+  display: inline-block;
+}
 
 
 /* Custom scrollbar  */
