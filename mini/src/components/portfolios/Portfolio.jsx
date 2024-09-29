@@ -1,19 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { portfolios } from '../components/portfolios-items'
-import ImageGallery from 'react-image-gallery'
-import 'react-image-gallery/styles/css/image-gallery.css';
-import { Link } from 'react-router-dom'
+import { portfolios } from '../../data/portfolios-items';
+import SinglePortfolio from './SinglePortfolio';
+import { Link } from 'react-router-dom';
 
-function Portfolio() {
+function Portfolio({ showAll }) {
 
     const [activePortfolios, setActivePortfolios] = useState([]);
     const [newPortfolios, setNewPortfolios] = useState([]);
-
     const [activeFilter, setActiveFilter] = useState('all');
-
-    const [galleryImages, setGalleryImages] = useState([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isModalOpen, setModalOpen] = useState(false);
 
     const portfolioRefs = useRef([]);
 
@@ -53,22 +47,6 @@ function Portfolio() {
         setActiveFilter(portfolioItem);
     }
 
-    const openGallery = (index) => {
-        const images = activePortfolios.map((portfolio) => ({
-            original: portfolio.img,
-            thumbnail: portfolio.img,
-            description: portfolio.title,
-        }));
-
-        setGalleryImages(images);
-        setCurrentIndex(index);
-        setModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
     return (
         <>
             <section id="portfolio" className="theme-section portfolio-section gray-bg">
@@ -100,46 +78,26 @@ function Portfolio() {
                             </div>
                             <div className="portfolio-grid clearfix">
                                 {
-                                    activePortfolios.map((portfolio, index) =>
-                                        <div className={`portfolio-item ${portfolio.category} appear`} key={portfolio.id}>
-                                            <div className='portfolio-wrap' ref={el => portfolioRefs.current[index] = el}>
-                                                <div className='portfolio-img' onClick={() => openGallery(index)}>
-                                                    {/* <div className='portfolio-img'> */}
-                                                    <img src={portfolio.img} alt={portfolio.title} loading="lazy" />
-                                                </div>
-                                                <div className="portfolio-content">
-                                                    <h4><Link to="/portfolios">{portfolio.title}</Link></h4>
-                                                    <p>{portfolio.category}</p>
-                                                    <div className="portfolio-action-btns">
-                                                        <span onClick={() => openGallery(index)} className='single-action-btn'><i className="bi bi-plus"></i></span>
-                                                        <a href='#' target='_blank' className='single-action-btn'><i className="bi bi-link"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
+                                    activePortfolios.length > 0
+                                        ? activePortfolios.map((portfolio, index) => (
+                                            <SinglePortfolio
+                                                key={portfolio.id}
+                                                index={index}
+                                                portfolio={portfolio}
+                                                activePortfolios={activePortfolios}
+                                                portfolioRefs={portfolioRefs}
+                                            />
+                                        ))
+                                        : <p>No portfolios found</p>
                                 }
                             </div>
+                            {
+                                showAll && <div class="show-all-content"><Link class="button" to="/portfolios">Show All</Link></div>
+                            }
                         </div>
                     </div>
                 </div>
             </section>
-
-            {isModalOpen && (
-                <div className="modal-overlay" onClick={closeModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={closeModal}><i className='bi bi-cross'></i></button>
-                        <ImageGallery
-                            items={galleryImages}
-                            startIndex={currentIndex}
-                            showThumbnails={true}
-                            onSlide={(index) => setCurrentIndex(index)}
-                            showFullscreenButton={true}
-                            showPlayButton={true}
-                        />
-                    </div>
-                </div>
-            )}
         </>
     )
 }

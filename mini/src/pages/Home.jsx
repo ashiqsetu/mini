@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Portfolio from '../components/Portfolio'
-import Blog from '../components/Blog'
+import Portfolio from '../components/portfolios/Portfolio';
+import Blog from '../components/blogs/Blog'
 
 function Home() {
 
@@ -47,11 +47,11 @@ function Home() {
             <section className="content">
 
                 {/* Portfolio section start */}
-                <Portfolio />
+                <Portfolio showAll={true} />
                 {/* Portfolio section end */}
 
                 {/* Blog section start */}
-                <Blog bgBackground='white-bg' SectionTitle='Latest Posts' pagination={false} showAllBtn={true}/>
+                <Blog bgBackground='white-bg' SectionTitle='Latest Posts' pagination={false} showAllBtn={true} />
                 {/* Blog section end */}
 
             </section>

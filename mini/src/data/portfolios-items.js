@@ -2,19 +2,19 @@ export const portfolios = [
     {
         id: 1,
         category: 'design',
-        title: 'Portfolio title goes here.',
+        title: 'Single Project 1',
         img: '/assets/img/portfolio/1.jpg'
     },
     {
         id: 2,
         category: 'app',
-        title: 'Portfolio title here.',
+        title: 'Single Project 2',
         img: '/assets/img/portfolio/2.jpg'
     },
     {
         id: 3,
         category: 'game',
-        title: 'Portfolio title here.',
+        title: 'Single Project 3',
         img: '/assets/img/portfolio/3.jpg'
     },
     {

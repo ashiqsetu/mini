@@ -4,13 +4,13 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Service from './pages/Service'
 import Portfolios from './pages/Portfolios'
-import SinglePortfolio from './pages/SinglePortfolio'
+import SingleProject from './pages/SingleProject'
 import Blogs from './pages/Blogs'
 import SinglePost from './pages/SinglePost'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/common/Header'
+import Footer from './components/common/Footer'
 
 function App() {
 
@@ -19,19 +19,19 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header targetRef={targetRef}/>
+        <Header targetRef={targetRef} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path='/services' element={<Service />} />
           <Route path='/portfolios' element={<Portfolios />} />
-          <Route path='/single-portfolio' element={<SinglePortfolio />} />
+          <Route path='/project/:id' element={<SingleProject />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/post/:id' element={<SinglePost />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer targetRef={targetRef}/>
+        <Footer targetRef={targetRef} />
       </BrowserRouter>
     </>
   )

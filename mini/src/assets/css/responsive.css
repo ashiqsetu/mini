@@ -31,9 +31,6 @@
   Old Desktop
 ---------------------------------------------------*/
 @media (min-width: 992px) and (max-width: 1169px) {
-	.container {
-		width: 970px;
-	}
 	.expand-header {
 		padding: 0;
 	}
@@ -242,10 +239,6 @@
   Tablet Screen 
 ---------------------------------------------------*/
 @media (min-width: 768px) and (max-width: 991px) {
-	.container {
-		width: 750px
-	}
-
 	.navbar-brand {
 		font-size: 26px;
 	}
@@ -539,10 +532,6 @@
   Small Mobile
 ---------------------------------------------------*/
 @media (max-width: 767px) {
-	.container {
-		width: 300px;
-	}
-
 	.navbar-brand {
 		font-size: 24px;
 	}
@@ -670,14 +659,14 @@
 	}
 	.copy-right-info p {
 		line-height: 1.5;
+		text-align: center;
 	}
 	.quick-link {
 		line-height: 1.6;
 		margin: 20px 0;
 	}
 	.footer-single-widget .social-menu {
-		float: none;
-		text-align: center;
+		justify-content: center;
 	}
 	.social-menu li {
 		float: none;
@@ -865,9 +854,6 @@
 	}
 	.single-project-link {
 		margin-top: 15px;
-	}
-	.col-lg-4.post-grid-item .blog-post {
-		margin: 10px 0;
 	}
 	.blog-masonry {
 		margin: 0 -15px;
