@@ -68,7 +68,7 @@ function SinglePortfolio() {
                                             <i className="ti-layers"></i><span>Skills:</span>game + robotics
                                         </li>
                                         <li>
-                                            <i className="ti-link"></i><span>Demo: </span><a href="javascript:void(0)">Site Link</a>
+                                            <i className="ti-link"></i><span>Demo: </span><a href="#" onClick={(e) => e.preventDefault()}>Site Link</a>
                                         </li>
                                     </ul>
                                 </div>

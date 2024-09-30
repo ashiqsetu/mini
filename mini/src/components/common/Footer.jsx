@@ -68,10 +68,10 @@ function Footer({targetRef}) {
                         <div className="col-lg-3 order-lg-2 col-md-5 order-md-1">
                             <div className="footer-single-widget">
                                 <ul className="social-menu">
-                                    <li><a title="facebook" href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
-                                    <li><a title="twitter" href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
-                                    <li><a title="instagram" href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
-                                    <li><a title="linkedin" href="javascript:void(0)" target='_blank'><i className="fa fa-linkedin"></i></a></li>
+                                    <li><a title="facebook" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                    <li><a title="twitter" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                    <li><a title="instagram" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                    <li><a title="linkedin" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>

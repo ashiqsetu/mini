@@ -238,10 +238,10 @@ function PostDetailsContent({ state, fullWidth }) {
                                 <div className="share-post">
                                     <ul className="share-site-list">
                                         <li>share:</li>
-                                        <li><a href="javascript:void(0)"><i className="fa fa-facebook"></i></a></li>
-                                        <li><a href="javascript:void(0)"><i className="fa fa-twitter"></i></a></li>
-                                        <li><a href="javascript:void(0)"><i className="fa fa-linkedin"></i></a></li>
-                                        <li><a href="javascript:void(0)"><i className="fa fa-instagram"></i></a></li>
+                                        <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-facebook"></i></a></li>
+                                        <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-instagram"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

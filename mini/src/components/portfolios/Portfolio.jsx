@@ -76,7 +76,7 @@ function Portfolio({ showAll }) {
                                     }
                                 </ul>
                             </div>
-                            <div className="portfolio-grid clearfix">
+                            <div className="portfolio-grid">
                                 {
                                     activePortfolios.length > 0
                                         ? activePortfolios.map((portfolio, index) => (

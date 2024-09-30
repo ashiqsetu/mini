@@ -31,10 +31,10 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
                         <div className="author-content">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet suscipit voluptatum, quis labore amet laborum sequi nisi, odio ipsum molestias.</p>
                             <ul className="social-menu">
-                                <li><a href="javascript:void(0)"><i className="fa fa-facebook"></i></a></li>
-                                <li><a href="javascript:void(0)"><i className="fa fa-twitter"></i></a></li>
-                                <li><a href="javascript:void(0)"><i className="fa fa-instagram"></i></a></li>
-                                <li><a href="javascript:void(0)"><i className="fa fa-linkedin"></i></a></li>
+                                <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-facebook"></i></a></li>
+                                <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-twitter"></i></a></li>
+                                <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-instagram"></i></a></li>
+                                <li><a href="#" onClick={(e) => e.preventDefault()}><i className="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>

@@ -102,9 +102,9 @@ function Header({ targetRef }) {
                         <button onClick={() => toggleSubMenu(1)}>Home</button>
                         <ul>
                             <li><Link to='/'>Home</Link></li>
-                            <li><Link to='index-2.html'>Home 2</Link></li>
-                            <li><Link to='index-3.html'>Home 3</Link></li>
-                            <li><Link to='index-4.html'>Home 4</Link></li>
+                            <li><Link to='/index-2'>Home 2</Link></li>
+                            <li><Link to='/index-3'>Home 3</Link></li>
+                            <li><Link to='/index-4'>Home 4</Link></li>
                         </ul>
                     </li>
                     <li><Link to="/about">About</Link></li>
@@ -126,10 +126,10 @@ function Header({ targetRef }) {
                     <li><Link to="/contact">Contact</Link></li>
                 </ul>
                 <ul className="social-menu">
-                    <li><a href="javascript:void(0)" target='_blank'><i className="fa fa-facebook"></i></a></li>
-                    <li><a href="javascript:void(0)" target='_blank'><i className="fa fa-twitter"></i></a></li>
-                    <li><a href="javascript:void(0)" target='_blank'><i className="fa fa-instagram"></i></a></li>
-                    <li><a href="javascript:void(0)" target='_blank'><i className="fa fa-linkedin"></i></a></li>
+                    <li><a href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>
+                    <li><a href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-twitter"></i></a></li>
+                    <li><a href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-instagram"></i></a></li>
+                    <li><a href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-linkedin"></i></a></li>
                 </ul>
                 <div className="copy-right-info text-center">
                     <p>All rights reserved &copy; <a href="https://themeforest.net/user/oxygens/portfolio" target="_blank">oxygens</a>, 2018</p>
