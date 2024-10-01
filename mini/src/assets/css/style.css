@@ -963,6 +963,16 @@ input:-webkit-autofill,
 7. About area style
 -------------------------------- */
 
+.about-content-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  align-items: center;
+}
+
+.about-content {
+  margin-bottom: 25px;
+}
 
 .about-content .content {
   background: #fff;
@@ -978,6 +988,7 @@ input:-webkit-autofill,
 .about-content p {
   line-height: 26px;
   text-align: justify;
+  font-weight: 400;
 }
 
 .about-content p:last-child {
@@ -987,8 +998,12 @@ input:-webkit-autofill,
 .about-content .icon-box {
   background: #fff;
   background-size: cover;
-  padding: 0 0 25px 0;
+  margin-bottom: 25px;
   overflow: hidden;
+}
+
+.icon-box.typeOfBusiness {
+  margin-top: 25px;
 }
 
 .about-content .icon-box .icon {
@@ -1015,18 +1030,18 @@ input:-webkit-autofill,
   flex-direction: column;
   text-align: center;
   border-radius: 50%;
-  border: 2px solid #0A385C;
+  border: 2px solid var(--primaryColor);
   transition: all 0.3s ease-in-out;
 }
 
 .about-content .icon-box .icon i {
-  color: #0A385C;
+  color: var(--primaryColor);
   font-size: 24px;
   transition: all 0.3s ease-in-out;
 }
 
 .about-content .icon-box:hover .icon {
-  background: #0A385C;
+  background: var(--primaryColor);
 }
 
 .about-content .icon-box:hover .icon i {
@@ -1062,35 +1077,15 @@ input:-webkit-autofill,
 .about-us-images {
   display: flex;
   justify-content: center;
-  height: 375px;
+  height: 100%;
+  position: relative;
 }
 
 .about-us-images img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.aboutUsBusinessImg,
-.aboutUsBrandValueImg,
-.aboutUsBusinessGrowthImg {
-  display: none;
-}
-
-.FeaturesShowing .aboutUsMainImg {
-  display: none;
-}
-
-.typeOfBusiness .aboutUsBusinessImg {
-  display: block;
-}
-
-.brandValue .aboutUsBrandValueImg {
-  display: block;
-}
-
-.businessGrowth .aboutUsBusinessGrowthImg {
-  display: block;
+  position: absolute;
 }
 
 .about-us-images img.aboutUsBusinessImg,
@@ -1109,7 +1104,7 @@ input:-webkit-autofill,
 
 .mission-vision-content:before {
   content: '';
-  background-color: #0A385C;
+  background-color: #232323;
   border-radius: 4px;
   position: absolute;
   bottom: -10px;
@@ -1138,9 +1133,9 @@ input:-webkit-autofill,
 
 .mission-vision-wrapper::before,
 .mission-vision-wrapper::after {
-  background: #0A385C none repeat scroll 0 0;
+  background: #232323 none repeat scroll 0 0;
   border-radius: 3px;
-  box-shadow: 0 7px #0A385C, 0 14px #0A385C;
+  box-shadow: 0 7px #232323, 0 14px #232323;
   content: "";
   height: 2px;
   left: 50%;
@@ -1154,7 +1149,7 @@ input:-webkit-autofill,
 .mission-vision-wrapper::after {
   top: auto;
   bottom: 20%;
-  box-shadow: 0 -7px #0A385C, 0 -14px #0A385C;
+  box-shadow: 0 -7px #232323, 0 -14px #232323;
 }
 
 .single-objective-info {
@@ -1162,7 +1157,7 @@ input:-webkit-autofill,
   padding: 0 10px;
   flex: 1;
   background: #f6f6f6 none repeat scroll 0 0;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   position: relative;
 }
 
@@ -1177,10 +1172,9 @@ input:-webkit-autofill,
   right: 0;
   width: 0;
   height: 0;
-  background: linear-gradient(225deg, #0A385C 50%, #aaa 50%, #ccc 56%, #fff 80%);
+  background: linear-gradient(225deg, #2A2A2A 50%, #aaa 50%, #ccc 56%, #fff 80%);
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.5);
   transition: all 0.4s ease;
-  /* transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7); */
 }
 
 .single-objective-info:last-child:hover::before {
@@ -1204,6 +1198,7 @@ input:-webkit-autofill,
   display: inline-block;
   position: relative;
   margin: 0 10px;
+  color: #626262;
 }
 
 .objective-title span::before,
@@ -1235,8 +1230,9 @@ input:-webkit-autofill,
   text-align: justify;
   margin-top: 20px;
   margin-bottom: 0;
-  line-height: 1.7;
+  line-height: 1.6;
   font-size: 16px;
+  font-weight: 400;
 }
 
 .bigProgressBar {
@@ -1345,17 +1341,25 @@ input:-webkit-autofill,
 
 /* Service style 2 */
 
+.service-section {
+  background: rgba(214 177 97 / 15%);
+}
+
 .services-content {
   display: grid;
   grid-template-columns: 3fr 2fr 3fr;
   gap: 80px;
   margin-top: 25px;
+  align-items: center;
+}
+
+.single-service:nth-child(n + 2) {
+  margin-top: 30px;
 }
 
 .single-service .box {
   padding: 0;
   position: relative;
-  margin-bottom: 30px;
   background: transparent;
   transition: all 0.3s ease-in-out;
   z-index: 1;
@@ -1366,10 +1370,10 @@ input:-webkit-autofill,
   left: 0;
   top: 10px;
   font-size: 62px;
-  color: rgba(0, 0, 0, 0.1);
   z-index: -1;
   line-height: 1;
   letter-spacing: 1px;
+  color: rgba(214, 177, 97, 35%);
 }
 
 .right-services-options .box span {
@@ -1384,7 +1388,7 @@ input:-webkit-autofill,
 .services-message-content {
   position: relative;
   width: 340px;
-  height: 400px;
+  height: 420px;
   background: #ecf5ff;
   border-radius: 60px;
   display: flex;
@@ -1401,20 +1405,20 @@ input:-webkit-autofill,
   position: absolute;
   width: 600px;
   height: 600px;
-  animation: animate 10s linear infinite;
+  animation: serviceMessage 10s linear infinite;
   z-index: 1;
 }
 
 .services-message-content::before {
-  background: conic-gradient(transparent, transparent, transparent, #0A385C);
+  background: conic-gradient(transparent, transparent, transparent, var(--primaryColor));
 }
 
 .services-message-content::after {
-  background: conic-gradient(transparent, transparent, transparent, rgba(211, 34, 52, 1));
+  background: conic-gradient(transparent, transparent, transparent, var(--primaryColor));
   animation-delay: -5s;
 }
 
-@keyframes animate {
+@keyframes serviceMessage {
   0% {
     transform: rotate(0deg);
   }
@@ -1427,7 +1431,8 @@ input:-webkit-autofill,
 .services-meesage-inner-content {
   position: absolute;
   z-index: 2;
-  background: #ecf5ff;
+  background: rgba(214 177 97 / 15%);
+  background: #232332;
   inset: 5px;
   border-radius: 60px;
   display: grid;
@@ -1440,12 +1445,12 @@ input:-webkit-autofill,
   font-size: 26px;
   line-height: 1.4;
   font-weight: 500;
-  color: rgba(211, 34, 52, 1);
+  color: #fff;
 }
 
 .services-meesage-inner-content h2 span {
   display: block;
-  color: #0A385C;
+  color: var(--primaryColor);
 }
 
 .services-message-content-wrapper .icon {
@@ -1472,7 +1477,7 @@ input:-webkit-autofill,
 
 .services-message-content-wrapper .icon.iot {
   left: -10px;
-  bottom: 35px;
+  bottom: 0;
 }
 
 .services-message-content-wrapper .icon.mobileApp {
@@ -1487,50 +1492,46 @@ input:-webkit-autofill,
 
 .services-message-content-wrapper .icon.uiUx {
   right: -10px;
-  bottom: 35px;
+  bottom: 0;
 }
 
-.services-message-content-wrapper .icon i {
-  font-size: 38px;
-  line-height: 1;
-  transition: 0.5s;
-  color: rgb(10 56 92 / 80%);
-  text-shadow: 0.001px 0 0 rgb(10 56 92 / 50%), -0.001px 0 0 rgb(10 56 92 / 50%), 0 0.001px 0 rgb(10 56 92 / 50%), 0 -0.001px 0 rgb(10 56 92 / 50%);
+.icon img {
+  width: 32px;
 }
 
-.services-message-content-wrapper .icon img {
+.services-message-content-wrapper .icon .arrow {
   position: absolute;
   opacity: 0.2;
   width: 100%;
 }
 
-.icon.softwareDevelopment img {
+.icon.softwareDevelopment .arrow {
   left: -65px;
   transform: scaleX(-1) rotate(145deg) translateY(30px);
 }
 
-.icon.cloudService img {
-  left: -60px;
-  transform: scale(-1) rotate(3deg) translate(0px, -20px);
+.icon.cloudService .arrow {
+  left: -55px;
+  transform: scaleX(-1) rotate(0deg) translate(0px, 0px);
 }
 
-.icon.iot img {
+.icon.iot .arrow {
   left: -65px;
   bottom: 0;
   transform: scaleY(-1) rotate(-135deg) translate(0px, 0px);
 }
 
-.icon.mobileApp img {
+.icon.mobileApp .arrow {
   right: -65px;
   transform: rotate(145deg) translateY(30px);
 }
 
-.icon.webSite img {
-  right: -58px;
-  transform: scaleY(-1) rotate(6deg) translate(0px, -20px);
+.icon.webSite .arrow {
+  right: -55px;
+  /* transform: scaleY(-1) rotate(6deg) translate(0px, -20px); */
 }
 
-.icon.uiUx img {
+.icon.uiUx .arrow {
   right: -65px;
   bottom: 0;
   transform: rotate(45deg) translate(0px, 0);
@@ -1549,27 +1550,23 @@ input:-webkit-autofill,
 }
 
 .single-service .box:hover .title a {
-  color: #0A385C;
+  color: var(--primaryColor);
 }
 
 .single-service .description {
   font-size: 14px;
-  margin-left: 40px;
-  line-height: 24px;
+  line-height: 2;
   margin-bottom: 0;
+  font-weight: 400;
 }
 
-.single-service .description {
-  margin-left: 0;
-  line-height: 1.8;
-}
 
 .single-service .title {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 12px;
   margin-left: 0;
-  color: #0A385C;
+  color: #232323;
 }
 
 

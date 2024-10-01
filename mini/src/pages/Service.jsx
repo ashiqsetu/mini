@@ -28,7 +28,7 @@ function Service() {
                         </div>
                         <div className="row">
                             <div className="col-lg-4 col-md-6">
-                                <div className="single-feature wow fadeIn" data-wow-delay=".2s">
+                                <div className="single-feature appear">
                                     <div className="feature-header">
                                         <i className="bi bi-code"></i>
                                         <h3>Design</h3>
@@ -37,7 +37,7 @@ function Service() {
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
-                                <div className="single-feature wow fadeIn" data-wow-delay=".4s">
+                                <div className="single-feature appear">
                                     <div className="feature-header">
                                         <i className="bi bi-laptop"></i>
                                         <h3>Development</h3>
@@ -46,7 +46,7 @@ function Service() {
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
-                                <div className="single-feature wow fadeIn" data-wow-delay=".6s">
+                                <div className="single-feature appear">
                                     <div className="feature-header">
                                         <i className="bi bi-layer"></i>
                                         <h3>Branding</h3>
@@ -55,7 +55,7 @@ function Service() {
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
-                                <div className="single-feature wow fadeIn" data-wow-delay=".8s">
+                                <div className="single-feature appear">
                                     <div className="feature-header">
                                         <i className="bi bi-mobile"></i>
                                         <h3>Apps</h3>
@@ -64,7 +64,7 @@ function Service() {
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
-                                <div className="single-feature wow fadeIn" data-wow-delay="1s">
+                                <div className="single-feature appear">
                                     <div className="feature-header">
                                         <i className="bi bi-office-bag"></i>
                                         <h3>Marketing</h3>
@@ -73,7 +73,7 @@ function Service() {
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-6">
-                                <div className="single-feature wow fadeIn" data-wow-delay="1.2s">
+                                <div className="single-feature appear">
                                     <div className="feature-header">
                                         <i className="bi bi-support"></i>
                                         <h3>support</h3>
@@ -85,13 +85,18 @@ function Service() {
                     </div>
                 </div>
                 {/* Feature section end */}
+
                 {/* Service section start */}
-                <div className="theme-section gray-bg">
+                <div className="theme-section service-section">
                     <div className="container">
+                        <div className="area-heading">
+                            <h2 className="area-title">what we provide</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
+                        </div>
                         <div className="services-content">
                             <div className="left-services-options">
 
-                                <div className="single-service wow bounceInUp" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">Software Development</h4>
                                         <p className="description">Designing and building tailored software solutions to meet the specific needs of
@@ -99,11 +104,11 @@ function Service() {
                                         <span>01</span>
                                     </div>
                                     <div className="icon">
-                                        <i className="ion-ios-analytics-outline"></i>
+                                        <img src="/assets/img/service/software-development.png" alt="" />
                                     </div>
                                 </div>
 
-                                <div className="single-service wow bounceInUp" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">Mobile App Development</h4>
                                         <p className="description">Creating applications for mobile platforms such as iOS and Android. Services may
@@ -111,11 +116,11 @@ function Service() {
                                         <span>02</span>
                                     </div>
                                     <div className="icon">
-                                        <i className="ion-ios-bookmarks-outline"></i>
+                                        <img src="/assets/img/service/mobile-application.png" alt="" />
                                     </div>
                                 </div>
 
-                                <div className="single-service wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">Cloud Service</h4>
                                         <p className="description">Leveraging cloud computing platforms to provide scalable and flexible solutions.
@@ -123,11 +128,11 @@ function Service() {
                                         <span>03</span>
                                     </div>
                                     <div className="icon">
-                                        <i className="ion-ios-paper-outline"></i>
+                                        <img src="/assets/img/service/cloud-service.png" alt="" />
                                     </div>
                                 </div>
 
-                                <div className="single-service wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">Web site development</h4>
                                         <p className="description">Developing websites and web applications using various technologies. This can
@@ -136,11 +141,11 @@ function Service() {
                                         <span>04</span>
                                     </div>
                                     <div className="icon">
-                                        <i className="ion-ios-world-outline"></i>
+                                        <img src="/assets/img/service/web-development.png" alt="" />
                                     </div>
                                 </div>
 
-                                <div className="single-service wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">IOT</h4>
                                         <p className="description">Developing software solutions that connect and control IoT devices, enabling data
@@ -148,11 +153,11 @@ function Service() {
                                         <span>05</span>
                                     </div>
                                     <div className="icon">
-                                        <i className="ion-ios-speedometer-outline"></i>
+                                        <img src="/assets/img/service/iot.png" alt="" />
                                     </div>
                                 </div>
 
-                                <div className="single-service wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">UI/UX</h4>
                                         <p className="description">Creating user-friendly and visually appealing interfaces for software
@@ -160,7 +165,7 @@ function Service() {
                                         <span>06</span>
                                     </div>
                                     <div className="icon">
-                                        <i className="ion-ios-clock-outline"></i>
+                                        <img src="/assets/img/service/ui-design.png" alt="" />
                                     </div>
                                 </div>
 
@@ -173,33 +178,33 @@ function Service() {
                                     </div>
                                 </div>
                                 <div className="icon softwareDevelopment">
-                                    <i className="ion-ios-analytics-outline"></i>
-                                    <img src="img/services/top-arrow.svg" alt=""/>
+                                    <img src="/assets/img/service/software-development.png" alt="" />
+                                    <img className='arrow' src="/assets/img/service/top-arrow.svg" alt="" />
                                 </div>
                                 <div className="icon cloudService">
-                                    <i className="ion-ios-paper-outline"></i>
-                                    <img src="img/services/middle_arrow.svg" alt=""/>
+                                    <img src="/assets/img/service/cloud-service.png" alt="" />
+                                    <img className='arrow' src="/assets/img/service/middle_arrow.svg" alt="" />
                                 </div>
                                 <div className="icon iot">
-                                    <i className="ion-ios-speedometer-outline"></i>
-                                    <img src="img/services/bottom-arrow.svg" alt=""/>
+                                    <img src="/assets/img/service/iot.png" alt="" />
+                                    <img className='arrow' src="/assets/img/service/bottom-arrow.svg" alt="" />
                                 </div>
                                 <div className="icon mobileApp">
-                                    <i className="ion-ios-bookmarks-outline"></i>
-                                    <img src="img/services/top-arrow.svg" alt=""/>
+                                    <img src="/assets/img/service/mobile-application.png" alt="" />
+                                    <img className='arrow' src="/assets/img/service/top-arrow.svg" alt="" />
                                 </div>
                                 <div className="icon webSite">
-                                    <i className="ion-ios-world-outline"></i>
-                                    <img src="img/services/middle_arrow.svg" alt=""/>
+                                    <img src="/assets/img/service/web-development.png" alt="" />
+                                    <img className='arrow' src="/assets/img/service/middle_arrow.svg" alt="" />
                                 </div>
                                 <div className="icon uiUx">
-                                    <i className="ion-ios-clock-outline"></i>
-                                    <img src="img/services/bottom-arrow.svg" alt=""/>
+                                    <img src="/assets/img/service/ui-design.png" alt="" />
+                                    <img className='arrow' src="/assets/img/service/bottom-arrow.svg" alt="" />
                                 </div>
                             </div>
 
                             <div className="right-services-options">
-                                <div className="single-service wow bounceInUp" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">Mobile App Development</h4>
                                         <p className="description">Creating applications for mobile platforms such as iOS and Android. Services may
@@ -207,7 +212,7 @@ function Service() {
                                         <span>02</span>
                                     </div>
                                 </div>
-                                <div className="single-service wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">Web site development</h4>
                                         <p className="description">Developing websites and web applications using various technologies. This can
@@ -216,7 +221,7 @@ function Service() {
                                         <span>04</span>
                                     </div>
                                 </div>
-                                <div className="single-service wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+                                <div className="single-service">
                                     <div className="box">
                                         <h4 className="title">UI/UX</h4>
                                         <p className="description">Creating user-friendly and visually appealing interfaces for software

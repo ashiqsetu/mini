@@ -6,6 +6,11 @@ import PageTitle from '../components/common/PageTitle';
 
 function About() {
 
+    const [mainImg, setMainImg] = useState(true);
+    const [buisenessImg, setBuisenessImg] = useState(false);
+    const [brandImg, setBrandImg] = useState(false);
+    const [growthImg, setGrowthImg] = useState(false);
+
     const [startCount, setStartCount] = useState(false);
     const counterRef = useRef(null)
 
@@ -29,6 +34,28 @@ function About() {
         }
     }, []);
 
+
+    const handleBuisenessImgHover = () => {
+        setMainImg(false);
+        setBuisenessImg(true)
+        setBrandImg(false)
+        setGrowthImg(false)
+    }
+
+    const handleBrandImgHover = () => {
+        setMainImg(false);
+        setBuisenessImg(false)
+        setBrandImg(true)
+        setGrowthImg(false)
+    }
+    
+    const handleGrowthImgHover = () => {
+        setMainImg(false);
+        setBuisenessImg(false)
+        setBrandImg(false)
+        setGrowthImg(true)
+    }
+
     return (
         <>
             {/* Page title */}
@@ -43,59 +70,45 @@ function About() {
                 {/* About section start */}
                 <div className="theme-section white-bg">
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-12">
-                                <div className="area-heading">
-                                    <h2 className="area-title">About Us</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
+                        <div className="about-content-wrapper">
+                            <div className="about-content">
+                                <h2 className="area-title">About Us</h2>
+                                <p>Welcome to Mini, where innovation meets excellence in software solutions. Established with
+                                    a passion for pushing technological boundaries, we are a dynamic and forward-thinking company dedicated to
+                                    providing cutting-edge software services. We started in
+                                    2024 as Mini when the technology is booming. We have started out journy with highly
+                                    qualified & experienced software engineers. We are focusing on making easier daily activity for our
+                                    clients. We have build customized Solutions for Manufacturer based organizations.</p>
+
+                                <div className="icon-box typeOfBusiness" onMouseOver={handleBuisenessImgHover} onMouseOut={handleBuisenessImgHover}>
+                                    <div className="icon"><i className="fa fa-shopping-bag"></i></div>
+                                    <h4 className="title">Type of Business</h4>
+                                    <p className="description">We are providing different types of customized software for different types of
+                                        Businesses.</p>
                                 </div>
+
+                                <div className="icon-box brandValue" onMouseOver={handleBrandImgHover} onMouseOut={handleBrandImgHover}>
+                                    <div className="icon"><i className="fa fa-photo"></i></div>
+                                    <h4 className="title">Brand Value Create</h4>
+                                    <p className="description">By using quality software solutions from us improve your brand value.</p>
+                                </div>
+
+                                <div className="icon-box businessGrowth" onMouseOver={handleGrowthImgHover} onMouseOut={handleGrowthImgHover}>
+                                    <div className="icon"><i className="fa fa-bar-chart"></i></div>
+                                    <h4 className="title">Business Growth</h4>
+                                    <p className="description">Maintain sound financial practices, including effective budgeting and cost
+                                        management.</p>
+                                </div>
+
+                                <Link to="/contact" className="button btn-white-top btn-white-bg">Contact Us</Link>
+                            </div>
+                            <div className="about-us-images">
+                                { mainImg && <img className="aboutUsMainImg img-fluid" src="/assets/img/about/about.png" alt="" /> }
+                                { buisenessImg && <img className="aboutUsBusinessImg img-fluid" src="/assets/img/about/business.gif" alt="" /> }
+                                { brandImg && <img className="aboutUsBrandValueImg img-fluid" src="/assets/img/about/brand-value.gif" alt="" /> }
+                                { growthImg && <img className="aboutUsBusinessGrowthImg img-fluid" src="/assets/img/about/business-growth.gif" alt="" /> }
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col-lg-6">
-                                <div className="about-content">
-                                    <p>Welcome to Mini, where innovation meets excellence in software solutions. Established with
-                                        a passion for pushing technological boundaries, we are a dynamic and forward-thinking company dedicated to
-                                        providing cutting-edge software services. We started in
-                                        2024 as Mini when the technology is booming. We have started out journy with highly
-                                        qualified & experienced software engineers. We are focusing on making easier daily activity for our
-                                        clients. We have build customized Solutions for Manufacturer based organizations.</p>
-
-                                    <div className="icon-box typeOfBusiness">
-                                        <div className="icon"><i className="fa fa-shopping-bag"></i></div>
-                                        <h4 className="title">Type of Business</h4>
-                                        <p className="description">We are providing different types of customized software for different types of
-                                            Businesses.</p>
-                                    </div>
-
-                                    <div className="icon-box brandValue">
-                                        <div className="icon"><i className="fa fa-photo"></i></div>
-                                        <h4 className="title">Brand Value Create</h4>
-                                        <p className="description">By using quality software solutions from us improve your brand value.</p>
-                                    </div>
-
-                                    <div className="icon-box businessGrowth">
-                                        <div className="icon"><i className="fa fa-bar-chart"></i></div>
-                                        <h4 className="title">Business Growth</h4>
-                                        <p className="description">Maintain sound financial practices, including effective budgeting and cost
-                                            management.</p>
-                                    </div>
-
-                                    <Link to="/contact" className="button btn-white-top btn-white-bg">Contact Us</Link>
-                                </div>
-                            </div>
-
-                            <div className="col-lg-6">
-                                <div className="about-us-images">
-                                    <img className="aboutUsMainImg img-fluid" src="/assets/img/about/about.png" alt="" />
-                                    <img className="aboutUsBusinessImg img-fluid" src="/assets/img/about/business.gif" alt="" />
-                                    <img className="aboutUsBrandValueImg img-fluid" src="/assets/img/about/brand-value.gif" alt="" />
-                                    <img className="aboutUsBusinessGrowthImg img-fluid" src="/assets/img/about/business-growth.gif" alt="" />
-                                </div>
-                            </div>
-
-                        </div>
-
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="mission-vision-content">
@@ -124,25 +137,25 @@ function About() {
                                                     <g className="smallProgressBar">
                                                         <path
                                                             d="M382.58029,319.84669h29.95a112.86666,112.86666,0,0,1-12.28,12.07h-17.67a6.035,6.035,0,1,1,0-12.07Z"
-                                                            transform="translate(-299.60025 -142.42645)" fill="#0a385c" />
+                                                            transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     </g>
 
                                                     <g className="bigProgressBar">
                                                         <path
                                                             d="M382.58029,285.99671h50.55a111.07119,111.07119,0,0,1-5.57,12.08h-44.98a6.04,6.04,0,1,1,0-12.08Z"
-                                                            transform="translate(-299.60025 -142.42645)" fill="#0a385c" />
+                                                            transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     </g>
 
                                                     <path
                                                         d="M437.98025,217.82667a155.75305,155.75305,0,0,0-135.61,138.84c-.93-.18-1.85-.39-2.77-.61v-118.73a22.71741,22.71741,0,0,1,22.69-22.69h114.89C437.47024,215.68665,437.73025,216.75666,437.98025,217.82667Z"
-                                                        transform="translate(-299.60025 -142.42645)" fill="#0a385c" />
+                                                        transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     <circle cx="137.24921" cy="74.12161" r="18.88733" fill="#fff" />
                                                     <path
                                                         d="M436.84939,236.43531A19.88721,19.88721,0,1,1,456.7366,216.5481,19.90976,19.90976,0,0,1,436.84939,236.43531Zm0-37.77442A17.88721,17.88721,0,1,0,454.7366,216.5481,17.90715,17.90715,0,0,0,436.84939,198.66089Z"
-                                                        transform="translate(-299.60025 -142.42645)" fill="#3f3d56" />
+                                                        transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     <path
                                                         d="M434.27283,226.378a2.10034,2.10034,0,0,1-1.68059-.84056l-5.15275-6.87045a2.10091,2.10091,0,1,1,3.36153-2.521l3.37111,4.49447,8.65825-12.98721a2.101,2.101,0,0,1,3.49627,2.33085l-10.30551,15.45826a2.10186,2.10186,0,0,1-1.68983.93493Z"
-                                                        transform="translate(-299.60025 -142.42645)" fill="#0a385c" />
+                                                        transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     <circle cx="286.24921" cy="207.12161" r="18.88733" fill="#fff" />
                                                     <path
                                                         d="M585.84939,369.43531A19.88721,19.88721,0,1,1,605.7366,349.5481,19.90976,19.90976,0,0,1,585.84939,369.43531Zm0-37.77442A17.88721,17.88721,0,1,0,603.7366,349.5481,17.90715,17.90715,0,0,0,585.84939,331.66089Z"
@@ -170,10 +183,10 @@ function About() {
                                                         transform="translate(-299.60025 -142.42645)" fill="#fff" />
                                                     <path
                                                         d="M593.00133,467.68157a.99672.99672,0,0,1-.71484-.30078l-5.70606-5.833a.99954.99954,0,0,1,0-1.39844l5.70606-5.83252a1,1,0,1,1,1.42968,1.39844l-5.022,5.1333,5.022,5.13379a1,1,0,0,1-.71484,1.69922Z"
-                                                        transform="translate(-299.60025 -142.42645)" fill="#3f3d56" />
+                                                        transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     <path
                                                         d="M602.58971,467.68157a1,1,0,0,1-.71484-1.69922l5.02148-5.13379-5.02148-5.1333a1,1,0,0,1,1.42968-1.39844l5.70557,5.83252a.99954.99954,0,0,1,0,1.39844l-5.70557,5.833A.99674.99674,0,0,1,602.58971,467.68157Z"
-                                                        transform="translate(-299.60025 -142.42645)" fill="#3f3d56" />
+                                                        transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     <path
                                                         d="M621.81346,362.50586a10.67048,10.67048,0,0,1,15.38221-5.57661L731.52733,332.209l1.54789,19.43366-92.30312,20.5874a10.72829,10.72829,0,0,1-18.95864-9.72421Z"
                                                         transform="translate(-299.60025 -142.42645)" fill="#a0616a" />
@@ -218,7 +231,7 @@ function About() {
                                                         transform="translate(-299.60025 -142.42645)" fill="#3f3d56" />
                                                     <path
                                                         d="M635.74677,321.69743v86.41a8.85568,8.85568,0,0,1-8.84,8.84h-66.28l.61-.78c34.87-23.28,59.58-54.34,73.73-93.48Z"
-                                                        transform="translate(-299.60025 -142.42645)" fill="#0a385c" />
+                                                        transform="translate(-299.60025 -142.42645)" fill="#d6b161" />
                                                     <polygon
                                                         points="56.647 242.521 38.46 274.021 74.833 274.021 56.647 242.521 38.46 274.021 74.833 274.021 56.647 242.521"
                                                         fill="#f2f2f2" />
@@ -239,50 +252,50 @@ function About() {
                                                 <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" width="1094" height="760"
                                                     viewBox="0 0 1094 760">
                                                     <title>Vision</title>
-                                                    <rect x="155" y="304.52" width="130.73" height="39.52" rx="7.43" fill="#0a385c" opacity="0.1" />
-                                                    <rect x="291.81" y="344.05" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="155" y="304.52" width="130.73" height="39.52" rx="7.43" fill="#d6b161" opacity="0.1" />
+                                                    <rect x="291.81" y="344.05" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="428.63" y="383.57" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="428.63" y="383.57" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="155" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#0a385c" opacity="0.1" />
-                                                    <rect x="291.81" y="284.76" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="155" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#d6b161" opacity="0.1" />
+                                                    <rect x="291.81" y="284.76" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="428.63" y="324.29" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="428.63" y="324.29" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="580.64" y="304.52" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="580.64" y="304.52" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="717.45" y="344.05" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="717.45" y="344.05" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="854.27" y="383.57" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="854.27" y="383.57" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="580.64" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="580.64" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="717.45" y="284.76" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="717.45" y="284.76" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="854.27" y="324.29" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="854.27" y="324.29" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="155" y="166.19" width="130.73" height="39.52" rx="7.43" fill="#0a385c" opacity="0.1" />
-                                                    <rect x="291.81" y="205.71" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="155" y="166.19" width="130.73" height="39.52" rx="7.43" fill="#d6b161" opacity="0.1" />
+                                                    <rect x="291.81" y="205.71" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="428.63" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="428.63" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="155" y="106.9" width="130.73" height="39.52" rx="7.43" fill="#0a385c" opacity="0.1" />
-                                                    <rect x="291.81" y="146.43" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="155" y="106.9" width="130.73" height="39.52" rx="7.43" fill="#d6b161" opacity="0.1" />
+                                                    <rect x="291.81" y="146.43" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="428.63" y="185.95" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="428.63" y="185.95" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="580.64" y="166.19" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="580.64" y="166.19" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="717.45" y="205.71" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="717.45" y="205.71" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="854.27" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="854.27" y="245.24" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="580.64" y="106.9" width="130.73" height="39.52" rx="7.43" fill="#0a385c" opacity="0.1" />
-                                                    <rect x="717.45" y="146.43" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="580.64" y="106.9" width="130.73" height="39.52" rx="7.43" fill="#d6b161" opacity="0.1" />
+                                                    <rect x="717.45" y="146.43" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <rect x="854.27" y="185.95" width="130.73" height="39.52" rx="7.43" fill="#0a385c"
+                                                    <rect x="854.27" y="185.95" width="130.73" height="39.52" rx="7.43" fill="#d6b161"
                                                         opacity="0.1" />
-                                                    <ellipse cx="547" cy="660.5" rx="547" ry="99.5" fill="#0a385c" opacity="0.1" />
+                                                    <ellipse cx="547" cy="660.5" rx="547" ry="99.5" fill="#d6b161" opacity="0.1" />
                                                     <polygon points="240 321 194 603 402 581 393 557 230.5 570.5 268.5 320.5 240 321"
                                                         fill="#3f3d56" />
                                                     <polygon points="186 1 466 0 547 613 266 651 186 1" fill="#3f3d56" />
@@ -305,7 +318,7 @@ function About() {
                                                         transform="translate(-53 -70)" fill="#f2f2f2" />
                                                     <path
                                                         d="M406.72,244.59c1.86,2.66,5.8,3.29,7.52,6a15.73,15.73,0,0,1,1.31,3.57c1.05,3.35,3.17,6.26,4.46,9.53,1.86,4.7,1.91,9.9,1.93,14.95a49.47,49.47,0,0,1-.92,12c-.6,2.47-1.58,4.82-2.3,7.26a35.5,35.5,0,0,0-1.34,12.8,5.24,5.24,0,0,0,.72,2.65,5.75,5.75,0,0,0,2.56,1.74c2.93,1.29,6,2.61,9.2,2.31a3.37,3.37,0,0,0,1.83-.61,4.07,4.07,0,0,0,.9-1.19l2-3.38c1.81-3.09,3.7-6.55,3-10.08a20,20,0,0,0-2.27-5.17,60.78,60.78,0,0,1-3.26-8.07c-3.19-9.17-6.42-18.47-7.14-28.15a24.74,24.74,0,0,1,1.2-10.92,31.1,31.1,0,0,1,3.52-6.09,2.61,2.61,0,0,0-2.81-.95,16.72,16.72,0,0,0-2.91,1.21c-2.94,1.24-6.2.79-9.17-.06-1.16-.34-3-1.5-4.2-1.42C410.14,242.57,406.79,244.71,406.72,244.59Z"
-                                                        transform="translate(-53 -70)" fill="#0a385c" />
+                                                        transform="translate(-53 -70)" fill="#d6b161" />
                                                     <path
                                                         d="M430.13,244.48c-.6-.48-1.53-.92-2.06-.36a2.32,2.32,0,0,0-.38.81c-.52,1.4-2.05,2.09-3.44,2.63s-2.89.84-3.73-.19a2.26,2.26,0,0,1,.13-2.67,8.16,8.16,0,0,1,2.19-1.85,21.38,21.38,0,0,0,8.72-13.72,6.52,6.52,0,0,1,2.39,4.13c.33,1.59.37,3.23.7,4.82.49,2.28,1.58,4.41,1.83,6.72.13,1.23,0,2.47,0,3.7a22.71,22.71,0,0,0,.42,3.58C434.56,249.6,432.91,246.69,430.13,244.48Z"
                                                         transform="translate(-53 -70)" fill="#f2f2f2" />
@@ -351,7 +364,7 @@ function About() {
                                                         transform="translate(-53 -70)" fill="#192534" />
                                                     <path
                                                         d="M631.51,211.34c-18.15,20.41-22.77,49.14-26.64,76.19l-5.7,39.94c-1.48,10.36-3,20.72-4.29,31.11-.9,7.11-1.74,14.33-.76,21.43.77,5.6,2.64,11,4.2,16.39a154.56,154.56,0,0,1,6,43.49c1.21-3.56,5.4-5,9.08-5.8a146.82,146.82,0,0,1,91.86,9.81c5.05-14.15,4.1-29.63,5.51-44.59,2-21.33,8.89-42,10.93-63.29.75-7.93.84-15.9.92-23.87.06-5.85.12-11.76-1.1-17.49-1.36-6.34-4.23-12.25-7.2-18A469.1,469.1,0,0,0,687,230.24q-7.54-11.28-15.73-22.11-4.15-5.49-8.47-10.86c-2.79-3.47-4-6.48-8.43-4.4C646,196.79,637.6,204.49,631.51,211.34Z"
-                                                        transform="translate(-53 -70)" fill="#0a385c" />
+                                                        transform="translate(-53 -70)" fill="#d6b161" />
                                                     <path
                                                         d="M641.91,381.22a98,98,0,0,1-13.27-.42c-3.27-.32-6.61-.8-9.8,0a10.2,10.2,0,0,0-3.81,1.87,2.87,2.87,0,0,0,1.63,5l3.42.3c2.17.19,4.43.41,6.12,2a3.82,3.82,0,0,1,1.24,2.41c.21,2.33-1.81,3.6-3.62,4.57a28.69,28.69,0,0,0-7.06,4.7,9.78,9.78,0,0,0-2.93,6,1.16,1.16,0,0,0,1.7,1.07c4-2,6.61-7.93,11-6.94a17.82,17.82,0,0,0-9.66,7.43,4.48,4.48,0,0,0,6,6.33,19.78,19.78,0,0,0,1.88-1.25,46.21,46.21,0,0,0,7.93-8.24c-3.2,6.75-6.44,14.65-2.76,21.36a2.13,2.13,0,0,0,2,1.18c1.16-.12,1.5-1.21,1.69-2.17.6-3.09.75-6.35,2.27-9.1,3.52-6.38,12.2-7,18.81-10.11,7.93-3.68,13.36-11.6,15.55-20.06a15.42,15.42,0,0,0,.39-7.62c-1.47-5.69-8.49-7-13-4.25C652.1,378.79,648.89,381,641.91,381.22Z"
                                                         transform="translate(-53 -70)" fill="#fbbebe" />
@@ -360,14 +373,14 @@ function About() {
                                                         transform="translate(-53 -70)" opacity="0.1" />
                                                     <path
                                                         d="M638.53,266.55c7,10.81,19.16,16.9,29.57,24.49a24.87,24.87,0,0,1,6.51,6.26c2.63,4.06,3,9.21,2.46,14-.69,6.31-2.71,12.38-4.73,18.4l-4.37,13c-2.77,8.28-5.63,16.72-10.9,23.69-1.34,1.77-2.91,3.65-2.85,5.88a7.42,7.42,0,0,0,1.28,3.57,24.07,24.07,0,0,0,15.28,10.93,11.7,11.7,0,0,0,5.76,0c2.7-.79,4.72-3,6.61-5.07,9-9.94,18-20,24.5-31.65,6.35-11.37,10.15-24,13.65-36.52a76.08,76.08,0,0,0,3-14.12c.74-9-1.62-18-5.47-26.14s-9.17-15.49-14.64-22.64A157.65,157.65,0,0,0,687,231.06c-10.87-10.16-24.18-16.15-38.74-10.37-10.29,4.08-14.13,12.58-15.06,23.49A35.77,35.77,0,0,0,638.53,266.55Z"
-                                                        transform="translate(-53 -70)" fill="#0a385c" />
+                                                        transform="translate(-53 -70)" fill="#d6b161" />
                                                     <g className="flowerTob">
                                                         <path
                                                             d="M859.65,625.24a37,37,0,0,1-.8,7.76c-.1.48-.21,1-.32,1.41-2.84,11.39-10.85,19.72-20.41,20.25-.32,0-.64,0-1,0-10.11,0-18.66-8.72-21.48-20.73-.08-.32-.15-.64-.22-1a37,37,0,0,1-.8-7.76c0-16.27,10.07-29.45,22.5-29.45S859.65,609,859.65,625.24Z"
-                                                            transform="translate(-53 -70)" fill="#3f3d56" />
+                                                            transform="translate(-53 -70)" fill="#d6b161" />
                                                         <path
                                                             d="M907.65,570.38a45.54,45.54,0,0,0-4.9-20.61L876.29,558l23.23-13.66a45.73,45.73,0,0,0-34.36-19.58,45.65,45.65,0,0,0-3.57-4.72l-38,11.83,31.17-18.33a45.73,45.73,0,0,0-72,24.39l32.55,37.47L780,549.86a45.74,45.74,0,0,0,40.93,80.7,45.92,45.92,0,0,0,29.28.81,45.78,45.78,0,0,0,55.62-44.66c0-1,0-2-.1-3A45.63,45.63,0,0,0,907.65,570.38Z"
-                                                            transform="translate(-53 -70)" fill="#0a385c" />
+                                                            transform="translate(-53 -70)" fill="#d6b161" />
 
                                                         <path
                                                             d="M859.65,625.24a37,37,0,0,1-.8,7.76c-.1.48-.21,1-.32,1.41-.34,0-.67,0-1,0a45.76,45.76,0,0,1-7.36-1,44.92,44.92,0,0,1-6.56,1.5,45.87,45.87,0,0,1-5.14.48l-1.74,0a46.41,46.41,0,0,1-6.16-.41,45.17,45.17,0,0,1-9.67-2.4,45.56,45.56,0,0,1-5.22,1.4c-.08-.32-.15-.64-.22-1a37,37,0,0,1-.8-7.76c0-16.27,10.07-29.45,22.5-29.45S859.65,609,859.65,625.24Z"
