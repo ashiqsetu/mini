@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 
-function Header({ targetRef }) {
+function Header({ targetRef, mainMenu, navBarMenu , hasSlideFull}) {
 
     const [show, sidebarVisibility] = useState(false);
     const [activeSidebar, setActiveSidebar] = useState(false);
@@ -62,7 +62,7 @@ function Header({ targetRef }) {
     return (
         <>
             {/* Header area start  */}
-            <header ref={targetRef} className={`sticky-header header-area header-bg ${isSticky ? 'is_sticky' : ''}`}>
+            <header ref={targetRef} className={`sticky-header header-area ${hasSlideFull ? '' : 'header-bg'} ${isSticky ? 'is_sticky' : ''}`}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12">
@@ -73,12 +73,40 @@ function Header({ targetRef }) {
                                     </Link>
                                 </div>
                                 <div className="menu-bar">
-                                    <div className="expand-menu-bar" onClick={() => showSidebar()}>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
+                                    {/* Optional main-menu  */}
+                                    {
+                                        mainMenu && <ul className="main-menu">
+                                            <li>
+                                                <Link to='/'>Home</Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/about'>About</Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/service'>Service</Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/portfolios'>Portfolio</Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/blogs'>Blog</Link>
+                                            </li>
+                                            <li>
+                                                <Link to='/contact'>Contact</Link>
+                                            </li>
+                                        </ul>
+                                    }
+
+                                    {
+                                        navBarMenu && <div className="expand-menu-bar" onClick={() => showSidebar()}>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    }
+
+                                    
                                 </div>
                             </nav>
                         </div>
@@ -88,7 +116,7 @@ function Header({ targetRef }) {
             {/* Header area end  */}
 
             {/* Slide menu start */}
-            <section className={`main-menu-expand ${show ? 'slide_right' : ''} ${activeSidebar ? 'slide_done' : ''} ${hideSidebar ? 'slide_hide' : ''}`}>
+            <section className={`navbar-menu-expand ${show ? 'slide_right' : ''} ${activeSidebar ? 'slide_done' : ''} ${hideSidebar ? 'slide_hide' : ''}`}>
                 <div className="expand-header">
                     <div className="menu-logo">
                         <Link className="navbar-brand" href="/">mini<span className="dot-color">.</span></Link>
@@ -97,7 +125,7 @@ function Header({ targetRef }) {
                         <i className="bi bi-cross-gap"></i>
                     </div>
                 </div>
-                <ul className="main-menu">
+                <ul className="navbar-menu">
                     <li className={`sub-item ${activeSubMenu === 1 ? 'open' : ''}`}>
                         <button onClick={() => toggleSubMenu(1)}>Home</button>
                         <ul>

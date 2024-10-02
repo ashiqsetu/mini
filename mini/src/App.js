@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Home2 from './pages/Home2'
@@ -18,16 +18,29 @@ import Footer from './components/common/Footer'
 function App() {
 
   const targetRef = useRef(null);
+  const [hasSlideFull, setSlideFull] = useState(false);
 
   return (
     <>
       <BrowserRouter>
-        <Header targetRef={targetRef} />
+
+        {window.location.pathname === '/' && (
+          <Header targetRef={targetRef} mainMenu={false} navBarMenu={true} hasSlideFull={hasSlideFull} />
+        )}
+
+        {window.location.pathname === '/index-3' && (
+          <Header targetRef={targetRef} mainMenu={true} navBarMenu={false} hasSlideFull={hasSlideFull} />
+        )}
+
+        {(window.location.pathname !== '/' && window.location.pathname !== '/index-3') && (
+          <Header targetRef={targetRef} mainMenu={true} navBarMenu={true} hasSlideFull={hasSlideFull} />
+        )}
+
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/index-2' element={<Home2 />} />
-          <Route path='/index-3' element={<Home3 />} />
-          <Route path='/index-4' element={<Home4 />} />
+          <Route path='/' element={<Home setSlideFull={setSlideFull}/>} />
+          <Route path='/index-2' element={<Home2 setSlideFull={setSlideFull}/>} />
+          <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull}/>} />
+          <Route path='/index-4' element={<Home4 setSlideFull={setSlideFull}/>} />
           <Route path='/about' element={<About />} />
           <Route path='/services' element={<Service />} />
           <Route path='/portfolios' element={<Portfolios />} />
@@ -37,7 +50,15 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
-        <Footer targetRef={targetRef} />
+
+        {/* Adding content for different footer */}
+        {window.location.pathname === '/index-4' || window.location.pathname === '/index-3' ? (
+          <Footer targetRef={targetRef} footerTop={true} />
+        ) : (
+          <Footer targetRef={targetRef} footerTop={false} />
+        )
+        }
+
       </BrowserRouter>
     </>
   )

@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Portfolio from '../components/portfolios/Portfolio';
 import Blog from '../components/blogs/Blog'
 
 
-function Home3() {
+function Home3({setSlideFull}) {
+
+    const slideFull = useRef(null);
+
+    useEffect(() => {
+        if(slideFull.current && slideFull.current.classList.contains('slide-full')) {
+            setSlideFull(true);
+        }
+    }, [setSlideFull])
+
     return (
         <>
             {/* Slider area start */}
             <section className="slider-area">
-                <div className="single-slide slide-2 slide-full">
+                <div ref={slideFull} className="single-slide slide-2 slide-full">
                     <div className="container">
 
                         <div className="slider-content-wrapper">
@@ -40,7 +49,7 @@ function Home3() {
             <section className="content">
 
                 {/* Portfolio section start */}
-                <Portfolio showAll={true} />
+                <Portfolio showAllBtn={true} />
                 {/* Portfolio section end */}
 
                 {/* Blog section start */}

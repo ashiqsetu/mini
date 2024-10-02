@@ -3,11 +3,11 @@
 -----------------------------*/
 @media (min-width: 1920px) {
 
-	.main-menu-expand {
+	.navbar-menu-expand {
 		width: 0;
 	}
 
-	.main-menu-expand.slide_right {
+	.navbar-menu-expand.slide_right {
 		width: 22%;
 	}
 
@@ -88,11 +88,11 @@
 		padding: 0;
 	}
 
-	.main-menu {
+	.navbar-menu {
 		margin: 30px 0;
 	}
 
-	.main-menu-expand .social-menu {
+	.navbar-menu-expand .social-menu {
 		margin-bottom: 20px;
 	}
 
@@ -753,7 +753,7 @@
 		font-size: 24px;
 	}
 
-	.main-menu-expand {
+	.navbar-menu-expand {
 		right: -110%;
 		width: 290px;
 		padding: 30px 20px;
@@ -764,15 +764,15 @@
 		padding: 0;
 	}
 
-	.main-menu {
+	.navbar-menu {
 		margin: 30px 0;
 	}
 
-	.main-menu-expand .social-menu {
+	.navbar-menu-expand .social-menu {
 		margin-bottom: 20px;
 	}
 
-	.main-menu-expand .copy-right-info p {
+	.navbar-menu-expand .copy-right-info p {
 		line-height: 1.5;
 		font-size: 12px;
 	}

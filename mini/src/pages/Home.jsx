@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Portfolio from '../components/portfolios/Portfolio';
 import Blog from '../components/blogs/Blog'
+import Footer from '../components/common/Footer'; 
 
 function Home() {
 
@@ -38,10 +39,10 @@ function Home() {
             {/* Slider area end */}
 
             {/* Page content area start */}
-            <section className="content">
+            <section className={`content`}>
 
                 {/* Portfolio section start */}
-                <Portfolio showAll={true} />
+                <Portfolio showAllBtn={true} />
                 {/* Portfolio section end */}
 
                 {/* Blog section start */}

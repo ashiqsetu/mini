@@ -38,7 +38,7 @@ function Home2() {
             <section className="content">
 
                 {/* Portfolio section start */}
-                <Portfolio showAll={true} />
+                <Portfolio showAllBtn={true} />
                 {/* Portfolio section end */}
 
                 {/* Blog section start */}

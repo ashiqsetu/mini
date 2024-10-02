@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-function Footer({targetRef}) {
+function Footer({targetRef, footerTop }) {
 
     const [backToTop, setBackToTop] = useState(false);
 
@@ -36,6 +36,7 @@ function Footer({targetRef}) {
         }
     });
 
+
     const scrollHeader = () => {
         const headerHeight = targetRef.current?.offsetHeight || 0;
         window.scrollTo({
@@ -46,15 +47,30 @@ function Footer({targetRef}) {
 
     return (
         <>
-            <footer className="theme-footer-section">
+            <footer className={`theme-footer-section ${footerTop ? 'footerBg' : ''}`}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-lg-4 order-lg-1 col-md-12 order-md-2">
+                    {
+                        footerTop && <div className="footer-top">
+                            <div className="logo">
+                                    <Link to='/' className="navbar-brand">
+                                        mini<span className="dot-color">.</span>
+                                    </Link>
+                                </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate libero quo impedit soluta exercitationem aut dolore deserunt quasi, ratione officia ipsum officiis, nostrum molestiae eius dicta suscipit maxime laudantium. In!</p>
+                            <ul className="social-menu">
+                                <li><a title="facebook" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                <li><a title="twitter" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                <li><a title="instagram" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                <li><a title="linkedin" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    }
+                    <div className="footer-widgets-list">
+                        
                             <div className="copy-right-info">
                                 <p>All rights reserved &copy; <a href="https://themeforest.net/user/oxygens/portfolio" target="_blank">oxygens</a>, 2024</p>
                             </div>
-                        </div>
-                        <div className="col-lg-5 order-lg-2 col-md-7 order-md-1">
+                        
                             <div className="footer-single-widget">
                                 <ul className="quick-link">
                                     <li><Link to="/about">About Us</Link></li>
@@ -64,17 +80,19 @@ function Footer({targetRef}) {
                                     <li><Link to="/contact">contact</Link></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div className="col-lg-3 order-lg-2 col-md-5 order-md-1">
-                            <div className="footer-single-widget">
-                                <ul className="social-menu">
-                                    <li><a title="facebook" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>
-                                    <li><a title="twitter" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-twitter"></i></a></li>
-                                    <li><a title="instagram" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-instagram"></i></a></li>
-                                    <li><a title="linkedin" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-linkedin"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        
+                            {
+                                !footerTop && <div className="footer-single-widget">
+                                    <ul className="social-menu">
+                                        <li><a title="facebook" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>
+                                        <li><a title="twitter" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-twitter"></i></a></li>
+                                        <li><a title="instagram" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-instagram"></i></a></li>
+                                        <li><a title="linkedin" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            }
+                            
+                        
                     </div>
                 </div>
             </footer>
