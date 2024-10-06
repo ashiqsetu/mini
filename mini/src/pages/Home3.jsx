@@ -4,12 +4,12 @@ import Portfolio from '../components/portfolios/Portfolio';
 import Blog from '../components/blogs/Blog'
 
 
-function Home3({setSlideFull}) {
+function Home3({ setSlideFull }) {
 
     const slideFull = useRef(null);
 
     useEffect(() => {
-        if(slideFull.current && slideFull.current.classList.contains('slide-full')) {
+        if (slideFull.current && slideFull.current.classList.contains('slide-full')) {
             setSlideFull(true);
         }
     }, [setSlideFull])
@@ -27,12 +27,8 @@ function Home3({setSlideFull}) {
                                 <h1 className="cd-headline">
                                     we are <span>Mini.</span>
                                 </h1>
-                                <ul className="social-menu">
-                                    <li><a title="facebook" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>
-                                    <li><a title="twitter" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-twitter"></i></a></li>
-                                    <li><a title="instagram" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-instagram"></i></a></li>
-                                    <li><a title="linkedin" href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-linkedin"></i></a></li>
-                                </ul>
+                                <p>Empowering Your Vision with
+                                    Powerful Software Solution.</p>
                                 <div className="button-group">
                                     <Link to="/about" className="button">About Us</Link>
                                     <Link to="/contact" className="button btn-style-2">Contact Us</Link>

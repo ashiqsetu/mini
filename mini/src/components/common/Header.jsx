@@ -2,18 +2,18 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 
-function Header({ targetRef, mainMenu, navBarMenu , hasSlideFull}) {
+function Header({ targetRef, hasSlideFull }) {
 
     const [show, sidebarVisibility] = useState(false);
     const [activeSidebar, setActiveSidebar] = useState(false);
     const [hideSidebar, setHideSidebar] = useState(false);
-
     const [activeSubMenu, setActiveSubMenu] = useState(null);
-
     const [isSticky, setSticky] = useState(false);
 
-    const location = useLocation();
+    const [headerHeight, setHeaderHeight] = useState(0);
+    const [headerTransition, setHeaderTransition] = useState(false);
 
+    const location = useLocation();
 
     const showSidebar = () => {
         sidebarVisibility(true);
@@ -33,27 +33,77 @@ function Header({ targetRef, mainMenu, navBarMenu , hasSlideFull}) {
         }, 2000)
     }
 
-    const handleScroll = () => {
-        const windowSize = window.innerWidth;
-
-        if (windowSize > 1 && window.scrollY > 1) {
-            setSticky(true);
-        } else {
-            setSticky(false);
-        }
-    }
-
     useEffect(() => {
         sidebarVisibility(false);
+        setActiveSubMenu(null);
     }, [location]);
 
     useEffect(() => {
+        // let headerArea = document.querySelector('.header-area');
+        if (targetRef.current) {
+            let headerHeightSize = targetRef.current.offsetHeight || 0;
+            setHeaderHeight(headerHeightSize);
+        }
+    }, []);
+
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         const windowSize = window.innerWidth;
+
+    //         if (window.scrollY === 0) {
+    //             setHeaderTransition(false);
+    //             setSticky(false);
+    //         }
+    //         if (window.scrollY > headerHeight * 4) {
+    //             setHeaderTransition(true);
+    //         }
+    //         if (window.scrollY > (headerHeight * 5)) {
+    //             setHeaderTransition(false);
+    //             setSticky(true);
+    //         }
+
+    //     }
+    //     window.addEventListener('scroll', handleScroll);
+
+    //     return () => {
+    //         window.removeEventListener('scroll', handleScroll);
+    //     }
+    // }, [headerHeight])
+
+    useEffect(() => {
+        let ticking = false;
+
+        const handleScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const windowSize = window.innerWidth;
+
+                    if (window.scrollY === 0) {
+                        setHeaderTransition(false);
+                        setSticky(false);
+                    }
+                    if (window.scrollY > headerHeight * 4) {
+                        setHeaderTransition(true);
+                    }
+                    if (window.scrollY > (headerHeight * 5)) {
+                        setHeaderTransition(false);
+                        setSticky(true);
+                    }
+
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
+        };
+
         window.addEventListener('scroll', handleScroll);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-        }
-    })
+        };
+    }, [headerHeight]);
+
 
     const toggleSubMenu = (index) => {
         setActiveSubMenu(activeSubMenu === index ? null : index);
@@ -62,54 +112,50 @@ function Header({ targetRef, mainMenu, navBarMenu , hasSlideFull}) {
     return (
         <>
             {/* Header area start  */}
-            <header ref={targetRef} className={`sticky-header header-area ${hasSlideFull ? '' : 'header-bg'} ${isSticky ? 'is_sticky' : ''}`}>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <nav id="ss" className="navbar navbar-expand-md navbar-light">
-                                <div className="logo">
-                                    <Link to='/' className="navbar-brand">
-                                        mini<span className="dot-color">.</span>
-                                    </Link>
-                                </div>
-                                <div className="menu-bar">
-                                    {/* Optional main-menu  */}
-                                    {
-                                        mainMenu && <ul className="main-menu">
-                                            <li>
-                                                <Link to='/'>Home</Link>
-                                            </li>
-                                            <li>
-                                                <Link to='/about'>About</Link>
-                                            </li>
-                                            <li>
-                                                <Link to='/service'>Service</Link>
-                                            </li>
-                                            <li>
-                                                <Link to='/portfolios'>Portfolio</Link>
-                                            </li>
-                                            <li>
-                                                <Link to='/blogs'>Blog</Link>
-                                            </li>
-                                            <li>
-                                                <Link to='/contact'>Contact</Link>
-                                            </li>
+            <header ref={targetRef} className={`sticky-header header-area ${headerTransition ? 'headerTransition' : ''} ${hasSlideFull ? '' : 'header-bg'} ${isSticky ? 'is_sticky' : ''}`}>
+                <div className="header-wrapper">
+                    <div className="container">
+                        <nav className="navbar navbar-expand-md navbar-light">
+                            <div className="logo">
+                                <Link to='/' className="navbar-brand">
+                                    mini<span className="dot-color">.</span>
+                                </Link>
+                            </div>
+                            <div className="menu-bar">
+                                <ul className="main-menu">
+                                    <li>
+                                        <button>Home</button>
+                                        <ul>
+                                            <li><Link to="">Home Style 1</Link></li>
+                                            <li><Link to="">Home Style 2</Link></li>
+                                            <li><Link to="">Home Style 3</Link></li>
+                                            <li><Link to="">Home Style 4</Link></li>
                                         </ul>
-                                    }
-
-                                    {
-                                        navBarMenu && <div className="expand-menu-bar" onClick={() => showSidebar()}>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    }
-
-                                    
+                                    </li>
+                                    <li>
+                                        <Link to='/about'>About Us</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/service'>Services</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/portfolios'>Portfolios</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/blogs'>Blogs</Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/contact'>Contact Us</Link>
+                                    </li>
+                                </ul>
+                                <div className="expand-menu-bar" onClick={() => showSidebar()}>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
-                            </nav>
-                        </div>
+                            </div>
+                        </nav>
                     </div>
                 </div>
             </header>
@@ -135,23 +181,15 @@ function Header({ targetRef, mainMenu, navBarMenu , hasSlideFull}) {
                             <li><Link to='/index-4'>Home 4</Link></li>
                         </ul>
                     </li>
-                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/services">Service</Link></li>
-                    <li className={`sub-item ${activeSubMenu === 2 ? 'open' : ''}`}>
-                        <button onClick={() => toggleSubMenu(2)}>Portfolio</button>
-                        <ul>
-                            <li><Link to='/portfolio'>Portfolio</Link> </li>
-                            <li><Link to='/single-portfolio'>Single Project</Link> </li>
-                        </ul>
+                    <li>
+                        <Link to='/portfolios'>Portfolios</Link>
                     </li>
-                    <li className={`sub-item ${activeSubMenu === 3 ? 'open' : ''}`}>
-                        <button onClick={() => toggleSubMenu(3)}>Blog</button>
-                        <ul>
-                            <li><Link to='/blogs'>Blog</Link> </li>
-                            <li><Link to='/single-post'>Single Post</Link> </li>
-                        </ul>
+                    <li>
+                        <Link to='/blogs'>Blogs</Link>
                     </li>
-                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link to="/contact">Contact Us</Link></li>
                 </ul>
                 <ul className="social-menu">
                     <li><a href="#" onClick={(e) => e.preventDefault()} target='_blank'><i className="fa fa-facebook"></i></a></li>

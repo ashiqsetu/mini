@@ -20,37 +20,55 @@ export const portfolios = [
     {
         id: 4,
         category: 'design',
-        title: 'Portfolio title here.',
+        title: 'Single Project 4',
         img: '/assets/img/portfolio/4.jpg'
     },
     {
         id: 5,
         category: 'app',
-        title: 'Portfolio title here.',
+        title: 'Single Project 5',
         img: '/assets/img/portfolio/5.jpg'
     },
     {
         id: 6,
         category: 'game',
-        title: 'Portfolio title here.',
+        title: 'Single Project 6',
         img: '/assets/img/portfolio/6.jpg'
     },
     {
         id: 7,
         category: 'design',
-        title: 'Portfolio title here.',
+        title: 'Single Project 7',
         img: '/assets/img/portfolio/7.jpg'
     },
     {
         id: 8,
         category: 'app',
-        title: 'Portfolio title here.',
+        title: 'Single Project 8',
         img: '/assets/img/portfolio/8.jpg'
     },
     {
         id: 9,
         category: 'game',
-        title: 'Portfolio title here.',
+        title: 'Single Project 9',
+        img: '/assets/img/portfolio/9.jpg'
+    },
+    {
+        id: 10,
+        category: 'design',
+        title: 'Single Project 10',
+        img: '/assets/img/portfolio/7.jpg'
+    },
+    {
+        id: 11,
+        category: 'app',
+        title: 'Single Project 11',
+        img: '/assets/img/portfolio/8.jpg'
+    },
+    {
+        id: 12,
+        category: 'game',
+        title: 'Single Project 12',
         img: '/assets/img/portfolio/9.jpg'
     },
 ]

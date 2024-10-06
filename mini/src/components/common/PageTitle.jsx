@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-function PageTitle({title}) {
+function PageTitle({ title }) {
 
-    const location = useLocation();
+  const location = useLocation();
 
-    useEffect(() => {
-        document.title = title;
-    }, [location, title])
+  useEffect(() => {
+    document.title = title;
+  }, [location, title])
 
   return null;
 }

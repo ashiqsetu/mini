@@ -24,23 +24,13 @@ function App() {
     <>
       <BrowserRouter>
 
-        {window.location.pathname === '/' && (
-          <Header targetRef={targetRef} mainMenu={false} navBarMenu={true} hasSlideFull={hasSlideFull} />
-        )}
-
-        {window.location.pathname === '/index-3' && (
-          <Header targetRef={targetRef} mainMenu={true} navBarMenu={false} hasSlideFull={hasSlideFull} />
-        )}
-
-        {(window.location.pathname !== '/' && window.location.pathname !== '/index-3') && (
-          <Header targetRef={targetRef} mainMenu={true} navBarMenu={true} hasSlideFull={hasSlideFull} />
-        )}
+        <Header targetRef={targetRef} hasSlideFull={hasSlideFull} />
 
         <Routes>
-          <Route path='/' element={<Home setSlideFull={setSlideFull}/>} />
-          <Route path='/index-2' element={<Home2 setSlideFull={setSlideFull}/>} />
-          <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull}/>} />
-          <Route path='/index-4' element={<Home4 setSlideFull={setSlideFull}/>} />
+          <Route path='/' element={<Home setSlideFull={setSlideFull} />} />
+          <Route path='/index-2' element={<Home2 setSlideFull={setSlideFull} />} />
+          <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull} />} />
+          <Route path='/index-4' element={<Home4 setSlideFull={setSlideFull} />} />
           <Route path='/about' element={<About />} />
           <Route path='/services' element={<Service />} />
           <Route path='/portfolios' element={<Portfolios />} />
@@ -51,13 +41,8 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
 
-        {/* Adding content for different footer */}
-        {window.location.pathname === '/index-4' || window.location.pathname === '/index-3' ? (
-          <Footer targetRef={targetRef} footerTop={true} />
-        ) : (
-          <Footer targetRef={targetRef} footerTop={false} />
-        )
-        }
+        <Footer targetRef={targetRef} />
+
 
       </BrowserRouter>
     </>
