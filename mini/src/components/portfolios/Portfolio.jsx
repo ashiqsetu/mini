@@ -11,7 +11,9 @@ function Portfolio({ showAllBtn }) {
 
     const portfolioRefs = useRef([]);
 
-    const projectToShow = showAllBtn ? portfolios.slice(0, 9) : portfolios;
+    const projectToShow = portfolios.slice(0, 9);
+
+    console.log(projectToShow)
 
     useEffect(() => {
         setActivePortfolios(projectToShow);
@@ -49,6 +51,11 @@ function Portfolio({ showAllBtn }) {
         setActiveFilter(portfolioItem);
     }
 
+    // const showMoreItems = () => {
+    //     const newCount = visibleItemsCount + 3;
+    //     setVisibleItemsCount(newCount);
+    // };
+
     return (
         <>
             <section id="portfolio" className="theme-section portfolio-section gray-bg">
@@ -62,7 +69,7 @@ function Portfolio({ showAllBtn }) {
                             <ul className="portfolio-filter">
                                 <li className={activeFilter === 'all' ? 'active' : ''}>
                                     <button type='button' onClick={() => {
-                                        setActivePortfolios(portfolios);
+                                        setActivePortfolios(projectToShow);
                                         setActiveFilter('all');
                                     }}>all</button>
                                 </li>
@@ -90,6 +97,16 @@ function Portfolio({ showAllBtn }) {
                         </div>
                         {
                             showAllBtn && <div className="show-all-content"><Link className="button" to="/portfolios">Show All</Link></div>
+                        }
+                        {!showAllBtn &&
+                            <div className="show-all-content">
+                                <button className="button" >Show More</button>
+                            </div>
+                        }
+                        {!showAllBtn &&
+                            <div className="show-all-content">
+                                <p>No more items to show</p>
+                            </div>
                         }
                     </div>
                 </div>

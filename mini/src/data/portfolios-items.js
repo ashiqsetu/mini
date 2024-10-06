@@ -71,4 +71,10 @@ export const portfolios = [
         title: 'Single Project 12',
         img: '/assets/img/portfolio/9.jpg'
     },
+    {
+        id: 13,
+        category: 'app',
+        title: 'Single Project 13',
+        img: '/assets/img/portfolio/1.jpg'
+    },
 ]
