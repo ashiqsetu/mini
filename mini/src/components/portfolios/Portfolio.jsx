@@ -9,13 +9,16 @@ function Portfolio({ showAllBtn }) {
     const [newPortfolios, setNewPortfolios] = useState([]);
     const [activeFilter, setActiveFilter] = useState('all');
 
+    const [visibleItemsCount, setVisibleItemsCount] = useState(9);
+
     const portfolioRefs = useRef([]);
 
-    const projectToShow = portfolios.slice(0, 9);
-
-    console.log(projectToShow)
+    let projectToShow = portfolios.slice(0, visibleItemsCount);
 
     useEffect(() => {
+
+        projectToShow = portfolios.slice(0, visibleItemsCount);
+
         setActivePortfolios(projectToShow);
         setNewPortfolios([...new Set(projectToShow.map((portfolio) => portfolio.category))]);
 
@@ -43,18 +46,20 @@ function Portfolio({ showAllBtn }) {
         return () => {
             document.removeEventListener('mousemove', handleMouseMove);
         };
-    }, []);
+    }, [visibleItemsCount]);
 
     const portfoliosFilter = (portfolioItem) => {
+        if (!projectToShow) return;
         const filterPortfolios = projectToShow.filter((portfolio) => portfolio.category === portfolioItem);
         setActivePortfolios(filterPortfolios);
         setActiveFilter(portfolioItem);
     }
 
-    // const showMoreItems = () => {
-    //     const newCount = visibleItemsCount + 3;
-    //     setVisibleItemsCount(newCount);
-    // };
+    const showMoreItems = () => {
+        let newCount = visibleItemsCount + 3;
+        // setVisibleItemsCount(newCount <= portfolios.length + 2 ? newCount : projectToShow.length);
+        setVisibleItemsCount(newCount);
+    };
 
     return (
         <>
@@ -69,13 +74,18 @@ function Portfolio({ showAllBtn }) {
                             <ul className="portfolio-filter">
                                 <li className={activeFilter === 'all' ? 'active' : ''}>
                                     <button type='button' onClick={() => {
-                                        setActivePortfolios(projectToShow);
-                                        setActiveFilter('all');
-                                    }}>all</button>
+                                            if(projectToShow) {
+                                                setActivePortfolios(projectToShow);
+                                            }
+                                            setActiveFilter('all');
+                                        }}>all
+                                    </button>
                                 </li>
                                 {
                                     newPortfolios.map((filterItem, index) =>
-                                        <li className={activeFilter === filterItem ? 'active' : ''} key={index}><button type='button' onClick={() => portfoliosFilter(filterItem)}>{filterItem}</button></li>
+                                        <li className={activeFilter === filterItem ? 'active' : ''} key={index}>
+                                            <button type='button' onClick={() => portfoliosFilter(filterItem)}>{filterItem}</button>
+                                        </li>
                                     )
                                 }
                             </ul>
@@ -98,16 +108,16 @@ function Portfolio({ showAllBtn }) {
                         {
                             showAllBtn && <div className="show-all-content"><Link className="button" to="/portfolios">Show All</Link></div>
                         }
-                        {!showAllBtn &&
+                        {!showAllBtn && portfolios.length > visibleItemsCount && (
                             <div className="show-all-content">
-                                <button className="button" >Show More</button>
+                                <button className="button" onClick={showMoreItems}>Show More</button>
                             </div>
-                        }
-                        {!showAllBtn &&
+                        )}
+                        {!showAllBtn && portfolios.length <= visibleItemsCount && (
                             <div className="show-all-content">
                                 <p>No more items to show</p>
                             </div>
-                        }
+                        )}
                     </div>
                 </div>
             </section>

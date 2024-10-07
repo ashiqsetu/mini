@@ -1762,6 +1762,7 @@ input:-webkit-autofill,
 .portfolio-img {
   position: relative;
   overflow: hidden;
+  background: #fff;
 }
 
 .portfolio-img::before {
