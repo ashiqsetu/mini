@@ -1,24 +1,51 @@
 import React, { useState } from 'react'
 import Breadcrumbs from '../components/Breadcrumbs'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel';
 import PageTitle from '../components/common/PageTitle';
 
 function SinglePortfolio() {
 
-    // const { id } = useParams();
+    const { id } = useParams();
     const { state } = useLocation();
+    const { totalPortfolios } = state || {};
 
     const [index, setIndex] = useState(0);
+
+    const navigate = useNavigate();
 
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 
+    const handlePreviousProject = () => {
+        const nextId = Number(id) - 1;
+
+        if(nextId === 0) return;
+
+        navigate(`/project/${nextId}`, {
+            state: {
+                totalPortfolios: totalPortfolios
+            }
+        })
+    }
+
+    const handleNextProject = () => {
+        const nextId = Number(id) + 1;
+
+        if(nextId > totalPortfolios) return;
+
+        navigate(`/project/${nextId}`, {
+            state: {
+                totalPortfolios: totalPortfolios
+            }
+        })
+    }
+
     return (
         <>
             {/* Page title */}
-            <PageTitle title={`Mini | ${state.title}`}/>
+            <PageTitle title={`Mini | Single Project`}/>
 
             {/* Breadcrumb area start */}
             <Breadcrumbs page="Single Project" title="Mini's Single Project" />
@@ -75,7 +102,7 @@ function SinglePortfolio() {
                             </div>
                             <div className="col-lg-9 col-md-8">
                                 <div className="single-project-description">
-                                    <h2 className="single-project-title">{state.title}</h2>
+                                    <h2 className="single-project-title">Single Project Title</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis officiis, laborum distinctio. Cupiditate sunt nesciunt ipsa, sequi mollitia, officiis dicta odit omnis assumenda similique, qui doloribus! Iste aspernatur nihil placeat cumque laboriosam odio, accusantium quidem praesentium vel, iure illo ratione quibusdam nulla sint repellendus, dolore voluptatibus! Assumenda asperiores recusandae accusamus.</p>
                                     <ul className="post-object-list">
                                         <li>Stay Hungry, Stay Foolish.</li>
@@ -99,8 +126,8 @@ function SinglePortfolio() {
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis officiis, laborum distinctio. Cupiditate sunt nesciunt ipsa, sequi mollitia, officiis dicta odit omnis assumenda similique, qui doloribus! Iste aspernatur nihil placeat cumque laboriosam odio, accusantium quidem praesentium vel, iure illo ratione quibusdam nulla sint repellendus, dolore voluptatibus! Assumenda asperiores recusandae accusamus.</p>
                                 </div>
                                 <div className="single-project-link">
-                                    <button className="project-link prev-project"><i className="fa fa-angle-left"></i>previous project</button>
-                                    <button className="project-link next-project">next project<i className="fa fa-angle-right"></i></button>
+                                    <button className="project-link prev-project" onClick={handlePreviousProject}><i className="fa fa-angle-left"></i>previous project</button>
+                                    <button className="project-link next-project"  onClick={handleNextProject}>next project<i className="fa fa-angle-right"></i></button>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@ import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { Link, useNavigate } from 'react-router-dom'
 
-function SinglePortfolio({ portfolio, index, activePortfolios, portfolioRefs }) {
+function SinglePortfolio({ portfolio, index, activePortfolios, portfolioRefs, totalPortfolios }) {
 
     const [galleryImages, setGalleryImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,7 +30,7 @@ function SinglePortfolio({ portfolio, index, activePortfolios, portfolioRefs }) 
     const hanldlePortfolioClick = (portfolio) => {
         navigate(`/project/${portfolio.id}`, {
             state: {
-                title: portfolio.title
+                totalPortfolios: totalPortfolios
             }
         })
     }

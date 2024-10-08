@@ -100,6 +100,7 @@ function Portfolio({ showAllBtn }) {
                                             portfolio={portfolio}
                                             activePortfolios={activePortfolios}
                                             portfolioRefs={portfolioRefs}
+                                            totalPortfolios={portfolios.length}
                                         />
                                     ))
                                     : <p>No portfolios found</p>
