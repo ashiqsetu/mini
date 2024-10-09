@@ -8,14 +8,14 @@ function Home() {
 
     return (
         <>
-            {/* Slider area start */}
-            <section className="slider-area">
+            {/* Intro area start */}
+            <section className="intro-area">
                 <div className="single-slide">
                     <div className="container">
                         <div className="slider-content-wrapper">
                             <div className="slider-content">
                                 <p className="greetings">welcome</p>
-                                <h1 className="cd-headline">
+                                <h1>
                                     we are <span>Mini.</span>
                                 </h1>
                                 <p>Empowering Your Vision with
@@ -26,13 +26,13 @@ function Home() {
                                 </div>
                             </div>
                             <div className="intro-img">
-                                <img src="/assets/img/slider/intro.jpg" alt="" />
+                                <img src="/assets/img/intro/intro.jpg" alt="" />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            {/* Slider area end */}
+            {/* Intro area end */}
 
             {/* Page content area start */}
             <section className={`content`}>

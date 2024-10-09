@@ -2,18 +2,23 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Portfolio from '../components/portfolios/Portfolio';
 import Blog from '../components/blogs/Blog'
+import PageTitle from '../components/common/PageTitle';
+
 
 function Home2() {
     return (
         <>
-            {/* Slider area start */}
-            <section className="slider-area">
+
+            <PageTitle title='Mini | Home 2'/>
+
+            {/* Intro area start */}
+            <section className="intro-area">
                 <div className="single-slide slide-1">
                     <div className="container">
                         <div className="slider-content-wrapper">
                             <div className="slider-content">
                                 <p className="greetings">welcome</p>
-                                <h1 className="cd-headline">
+                                <h1>
                                     we are <span>Mini.</span>
                                 </h1>
                                 <p>Empowering Your Vision with
@@ -24,11 +29,10 @@ function Home2() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
-            {/* Slider area end */}
+            {/* Intro area end */}
 
             {/* Page content area start */}
             <section className="content">

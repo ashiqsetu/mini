@@ -233,6 +233,30 @@ input:-webkit-autofill,
 }
 
 
+.social-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-menu li a {
+  display: block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+}
+
+.social-menu li a:hover {
+  color: var(--primaryColor);
+  border: 1px solid var(--primaryColor);
+}
+
+
 /* ------------------------------
 2. Button style
 ---------------------------------*/
@@ -779,17 +803,21 @@ input:-webkit-autofill,
 5. Slider area style
 -------------------------------- */
 
-.slider-area {
+.intro-area {
   background: linear-gradient(45deg, transparent, rgb(214 177 97 / 35%));
 }
 
 .slide-1 {
-  background: rgba(0, 0, 0, 0) url("../../../public/assets/img/slider/1.jpg") repeat scroll center center / cover;
+  background: rgba(0, 0, 0, 0) url("../../../public/assets/img/intro/1.jpg") repeat scroll center center / cover;
 }
 
-/* .slide-2 {
-  background: rgba(0, 0, 0, 0) url("../../../public/assets/img/slider/2.jpg") repeat scroll center center / cover;
-} */
+.slide-2 {
+  background: rgba(0, 0, 0, 0) url("../../../public/assets/img/intro/2.jpg") repeat scroll center center / cover;
+}
+
+.slide-3 {
+  background: rgba(0, 0, 0, 0) url("../../../public/assets/img/intro/3.jpg") repeat scroll center center / cover;
+}
 
 .slider-content-wrapper {
   margin-top: 85px;
@@ -805,6 +833,11 @@ input:-webkit-autofill,
   margin-top: 0;
   max-height: 100vh;
 }
+
+.slider-content {
+  flex: 1;
+}
+
 .slider-content h1 {
   color: #232323;
   font-size: 50px;
@@ -827,29 +860,6 @@ input:-webkit-autofill,
   margin-bottom: 5px;
   text-transform: unset;
   line-height: 1;
-}
-
-.social-menu {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.social-menu li a {
-  display: block;
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  text-align: center;
-  font-size: 16px;
-  color: #555;
-}
-
-.social-menu li a:hover {
-  color: var(--primaryColor);
-  border: 1px solid var(--primaryColor);
 }
 
 .slide-navigation:hover .slick-prev,
@@ -913,7 +923,6 @@ input:-webkit-autofill,
   width: calc(100% + 30px);
   height: 100%;
   border: 2px solid #232323;
-  /* border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%; */
   will-change: border-radius, transform, opacity;
   animation: bolb 5s linear infinite;
   display: block;
@@ -930,7 +939,7 @@ input:-webkit-autofill,
   position: relative;
   top: 50%;
   height: inherit;
-  /* border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%; */
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
   animation: bolb 5s linear infinite;
   object-fit: cover;
 }
@@ -955,6 +964,13 @@ input:-webkit-autofill,
     border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
     transform: translate3d(0, -3px, 0) rotateZ(0.01deg) translateY(-50%);
   }
+}
+
+.hero-img {
+  flex: 1;
+}
+.hero-img img {
+  border-radius: 59% 41% 46% 54% / 30% 35% 65% 70%;
 }
 
 

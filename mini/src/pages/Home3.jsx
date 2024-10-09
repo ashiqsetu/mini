@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Portfolio from '../components/portfolios/Portfolio';
 import Blog from '../components/blogs/Blog'
+import PageTitle from '../components/common/PageTitle';
 
 
 function Home3({ setSlideFull }) {
@@ -16,15 +17,17 @@ function Home3({ setSlideFull }) {
 
     return (
         <>
-            {/* Slider area start */}
-            <section className="slider-area">
-                <div ref={slideFull} className="single-slide slide-2 slide-full">
+            <PageTitle title='Mini | Home 3'/>
+
+            {/* Intro area start */}
+            <section className="intro-area">
+                <div ref={slideFull} className="single-slide slide-3 slide-full color-slide">
                     <div className="container">
 
                         <div className="slider-content-wrapper">
                             <div className="slider-content">
                                 <p className="greetings">welcome</p>
-                                <h1 className="cd-headline">
+                                <h1>
                                     we are <span>Mini.</span>
                                 </h1>
                                 <p>Empowering Your Vision with
@@ -34,12 +37,15 @@ function Home3({ setSlideFull }) {
                                     <Link to="/contact" className="button btn-style-2">Contact Us</Link>
                                 </div>
                             </div>
+                            <div className="hero-img">
+                                <img src="/assets/img/intro/hero-1.jpeg" alt="" />
+                            </div>
                         </div>
 
                     </div>
                 </div>
             </section>
-            {/* Slider area end */}
+            {/* Intro area end */}
 
             {/* Page content area start */}
             <section className="content">

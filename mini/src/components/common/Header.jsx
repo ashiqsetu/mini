@@ -39,62 +39,36 @@ function Header({ targetRef, hasSlideFull }) {
     }, [location]);
 
     useEffect(() => {
-        // let headerArea = document.querySelector('.header-area');
         if (targetRef.current) {
             let headerHeightSize = targetRef.current.offsetHeight || 0;
             setHeaderHeight(headerHeightSize);
         }
     }, []);
 
-    // useEffect(() => {
-    //     const handleScroll = () => {
-    //         const windowSize = window.innerWidth;
-
-    //         if (window.scrollY === 0) {
-    //             setHeaderTransition(false);
-    //             setSticky(false);
-    //         }
-    //         if (window.scrollY > headerHeight * 4) {
-    //             setHeaderTransition(true);
-    //         }
-    //         if (window.scrollY > (headerHeight * 5)) {
-    //             setHeaderTransition(false);
-    //             setSticky(true);
-    //         }
-
-    //     }
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     }
-    // }, [headerHeight])
-
     useEffect(() => {
         let ticking = false;
 
         const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const windowSize = window.innerWidth;
+            // if (!ticking) {
+            //     window.requestAnimationFrame(() => {
 
-                    if (window.scrollY === 0) {
-                        setHeaderTransition(false);
-                        setSticky(false);
-                    }
-                    if (window.scrollY > headerHeight * 4) {
-                        setHeaderTransition(true);
-                    }
-                    if (window.scrollY > (headerHeight * 5)) {
-                        setHeaderTransition(false);
-                        setSticky(true);
-                    }
+            //         if (window.scrollY === 0) {
+            //             setHeaderTransition(false);
+            //             setSticky(false);
+            //         }
+            //         if (window.scrollY > headerHeight * 4) {
+            //             setHeaderTransition(true);
+            //         }
+            //         if (window.scrollY > headerHeight * 5) {
+            //             setSticky(true);
+            //             setHeaderTransition(false);
+            //         }                    
 
-                    ticking = false;
-                });
+            //         ticking = false;
+            //     });
 
-                ticking = true;
-            }
+            //     ticking = true;
+            // }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -126,10 +100,10 @@ function Header({ targetRef, hasSlideFull }) {
                                     <li>
                                         <button>Home</button>
                                         <ul>
-                                            <li><Link to="">Home Style 1</Link></li>
-                                            <li><Link to="">Home Style 2</Link></li>
-                                            <li><Link to="">Home Style 3</Link></li>
-                                            <li><Link to="">Home Style 4</Link></li>
+                                            <li><Link to="/">Home Style 1</Link></li>
+                                            <li><Link to="/index-2">Home Style 2</Link></li>
+                                            <li><Link to="/index-3">Home Style 3</Link></li>
+                                            <li><Link to="/index-4">Home Style 4</Link></li>
                                         </ul>
                                     </li>
                                     <li>

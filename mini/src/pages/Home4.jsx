@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import Portfolio from '../components/portfolios/Portfolio';
 import Blog from '../components/blogs/Blog'
 import Carousel from 'react-bootstrap/Carousel';
+import PageTitle from '../components/common/PageTitle';
+
 
 function Home4({ setSlideFull }) {
 
@@ -22,8 +24,11 @@ function Home4({ setSlideFull }) {
 
     return (
         <>
+
+            <PageTitle title='Mini | Home 4'/>
+
             {/* Slider area start */}
-            <section className="slider-area">
+            <section className="intro-area">
                 <Carousel activeIndex={index} onSelect={handleSelect} fade>
                     <Carousel.Item>
                         <div ref={slideFull} className="single-slide slide-1 slide-full">
@@ -31,7 +36,7 @@ function Home4({ setSlideFull }) {
                                 <div className="slider-content-wrapper">
                                     <div className="slider-content">
                                         <p className="greetings">welcome</p>
-                                        <h1 className="cd-headline">
+                                        <h1>
                                             we are <span>Mini.</span>
                                         </h1>
                                         <p>Empowering Your Vision with
