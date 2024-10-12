@@ -14,13 +14,13 @@ function SinglePost() {
     const sidebars = {
         left: true,
         right: false,
-        postDetails: true
+        postDetails: true // Need true for Post details page
     };
 
     return (
         <>
             {/* Page title */}
-            <PageTitle title={`Mini | ${state.title}`}/>
+            <PageTitle title={`Mini | Single Post`} />
 
             {/* Breadcrumb area start */}
             <Breadcrumbs page="Single Post" title="Mini's Single Post" />

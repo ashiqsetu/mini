@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { blogPosts } from '../../data/blog-posts'
 
 function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs }) {
+
+    const navigate = useNavigate();
 
     let order2 = false;
 
@@ -9,6 +12,17 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
         return;
     } else if (rightSidebarStatus) {
         order2 = true;
+    }
+
+    const recentPosts = blogPosts.slice(0, 3);
+
+    const handleNavigate = (post) => {
+        console.log('click')
+        navigate(`/post/${post.id}`, {
+            state: {
+                title: post.title
+            }
+        });
     }
 
     return (
@@ -62,27 +76,17 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
                 <aside className="single-widget">
                     <h4 className="widget-title">Recent Posts</h4>
                     <div className="recent-post-widget">
-                        <div className="single-post-widget">
-                            <Link to=""><img src="/assets/img/blog/widget/1.jpg" alt="" /></Link>
-                            <div className="post-widget-content">
-                                <h5><Link to="">simple post title</Link></h5>
-                                <p>Category: <a href='#'>Design</a></p>
-                            </div>
-                        </div>
-                        <div className="single-post-widget">
-                            <Link to=""><img src="/assets/img/blog/widget/1.jpg" alt="" /></Link>
-                            <div className="post-widget-content">
-                                <h5><Link to="">simple post title</Link></h5>
-                                <p>Category: <a href='#'>Design</a></p>
-                            </div>
-                        </div>
-                        <div className="single-post-widget">
-                            <Link to=""><img src="/assets/img/blog/widget/1.jpg" alt="" /></Link>
-                            <div className="post-widget-content">
-                                <h5><Link to="">simple post title</Link></h5>
-                                <p>Category: <a href='#'>Design</a></p>
-                            </div>
-                        </div>
+                        {
+                            recentPosts.map((post) => (
+                                <div className="single-post-widget" key={post.id}>
+                                    <Link to='#' onClick={() => handleNavigate(post)} ><img src={post.img} alt="" /></Link>
+                                    <div className="post-widget-content">
+                                        <h5><Link to='#' onClick={() => handleNavigate(post)}>{post.title}</Link></h5>
+                                        <p>Category: <a href='#'>{post.category}</a></p>
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </aside>
             </div>

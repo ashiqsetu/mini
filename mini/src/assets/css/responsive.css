@@ -11,23 +11,6 @@
 		width: 22%;
 	}
 
-	.slide-navigation .slick-prev {
-		left: 50px;
-	}
-
-	.slide-navigation .slick-next {
-		right: 50px;
-	}
-
-	.slide-navigation:hover .slick-prev {
-		left: 40px;
-	}
-
-	.slide-navigation:hover .slick-next {
-		right: 40px;
-	}
-
-
 }
 
 

@@ -1,18 +1,19 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { blogPosts } from '../../data/blog-posts'
 import { Link, useNavigate } from 'react-router-dom'
 import BlogSidebar from './BlogSidebar';
+import SingleBlog from './SingleBlog';
 
 function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
 
-    const postsToShow = pagination ? blogPosts : blogPosts.slice(0, 3);
+    const slicePosts = blogPosts.slice(0, 3);
+
+    const postsToShow = pagination ? blogPosts : slicePosts;
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
 
     const totalPages = useMemo(() => Math.ceil(postsToShow.length / postsPerPage), [postsToShow, postsPerPage]);
-
-    const navigate = useNavigate();
 
     const currentPosts = useMemo(() => {
         const indexOfLastPost = currentPage * postsPerPage;
@@ -61,19 +62,12 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
         return paginationArray;
     };
 
-    const handlePostClick = (post) => {
-        navigate(`/post/${post.id}`, {
-            state: {
-                title: post.title
-            }
-        });
-    };
 
     // Post Sidebar Options
     const sidebars = {
         left: false,
         right: false,
-        blogs: true
+        blogs: true // Need true for Blogs page for showing search widget
     };
 
     return (
@@ -94,42 +88,7 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
                             <div className={`blog-grid-item ${sidebars.left || sidebars.right ? 'two-column' : ''}`}>
                                 {
                                     currentPosts.map((post) => (
-                                        <article className="blog-post appear" key={post.id}>
-                                            <div className="post-thumbnail">
-                                                <a className="thumbnail-images" href={`/post/${post.id}`} onClick={(e) => {
-                                                    e.preventDefault();
-                                                    handlePostClick(post);
-                                                }}>
-                                                    <img src={post.img} alt={post.title} />
-                                                </a>
-                                            </div>
-                                            <div className="post-content">
-                                                <div className="post-content-inner">
-                                                    <h3>
-                                                        <a href={`/post/${post.id}`} onClick={(e) => {
-                                                            e.preventDefault();
-                                                            handlePostClick(post);
-                                                        }}>{post.title}</a>
-                                                    </h3>
-                                                    <ul className="meta-info">
-                                                        <li><i className="fa fa-user"></i>{post.author}</li>
-                                                        <li><i className="fa fa-calendar"></i>{post.date}</li>
-                                                        <li><i className="fa fa-tag"></i>{post.category}</li>
-                                                    </ul>
-                                                    <p>{post.description}</p>
-                                                </div>
-                                                <div className="post-content-wrapper">
-                                                    <a className="read-more" href={`/post/${post.id}`} onClick={(e) => {
-                                                        e.preventDefault();
-                                                        handlePostClick(post);
-                                                    }}>read more</a>
-                                                    <button className="like-count">
-                                                        <i className="fa fa-heart-o"></i>
-                                                        <span className="heart-number">{post.like}</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </article>
+                                        <SingleBlog post={post} key={post.id} />
                                     ))
                                 }
                             </div>

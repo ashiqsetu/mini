@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 
-function Header({ targetRef, hasSlideFull }) {
+function Header({ targetRef, hasSlideFull, hasColorBg }) {
 
     const [show, sidebarVisibility] = useState(false);
     const [activeSidebar, setActiveSidebar] = useState(false);
@@ -46,29 +46,18 @@ function Header({ targetRef, hasSlideFull }) {
     }, []);
 
     useEffect(() => {
-        let ticking = false;
-
         const handleScroll = () => {
-            // if (!ticking) {
-            //     window.requestAnimationFrame(() => {
-
-            //         if (window.scrollY === 0) {
-            //             setHeaderTransition(false);
-            //             setSticky(false);
-            //         }
-            //         if (window.scrollY > headerHeight * 4) {
-            //             setHeaderTransition(true);
-            //         }
-            //         if (window.scrollY > headerHeight * 5) {
-            //             setSticky(true);
-            //             setHeaderTransition(false);
-            //         }                    
-
-            //         ticking = false;
-            //     });
-
-            //     ticking = true;
-            // }
+            if (window.scrollY === 0) {
+                setHeaderTransition(false);
+                setSticky(false);
+            }
+            if (window.scrollY > headerHeight * 4) {
+                setHeaderTransition(true);
+            }
+            if (window.scrollY > headerHeight * 5) {
+                setSticky(true);
+                setHeaderTransition(false);
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -86,7 +75,7 @@ function Header({ targetRef, hasSlideFull }) {
     return (
         <>
             {/* Header area start  */}
-            <header ref={targetRef} className={`sticky-header header-area ${headerTransition ? 'headerTransition' : ''} ${hasSlideFull ? '' : 'header-bg'} ${isSticky ? 'is_sticky' : ''}`}>
+            <header ref={targetRef} className={`sticky-header header-area ${hasColorBg ? 'headerColor' : ''} ${headerTransition ? 'headerTransition' : ''} ${hasSlideFull ? '' : 'header-bg'} ${isSticky ? 'is_sticky' : ''}`}>
                 <div className="header-wrapper">
                     <div className="container">
                         <nav className="navbar navbar-expand-md navbar-light">

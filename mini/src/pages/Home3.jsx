@@ -5,7 +5,7 @@ import Blog from '../components/blogs/Blog'
 import PageTitle from '../components/common/PageTitle';
 
 
-function Home3({ setSlideFull }) {
+function Home3({ setSlideFull, setColorBg }) {
 
     const slideFull = useRef(null);
 
@@ -13,15 +13,23 @@ function Home3({ setSlideFull }) {
         if (slideFull.current && slideFull.current.classList.contains('slide-full')) {
             setSlideFull(true);
         }
-    }, [setSlideFull])
+        if (slideFull.current && slideFull.current.classList.contains('color-bg')) {
+            setColorBg(true);
+        }
+
+        return () => {
+            setSlideFull(false);
+            setColorBg(false);
+        };
+    }, [setSlideFull, setColorBg])
 
     return (
         <>
-            <PageTitle title='Mini | Home 3'/>
+            <PageTitle title='Mini | Home 3' />
 
             {/* Intro area start */}
             <section className="intro-area">
-                <div ref={slideFull} className="single-slide slide-3 slide-full color-slide">
+                <div ref={slideFull} className="single-slide color-bg slide-full">
                     <div className="container">
 
                         <div className="slider-content-wrapper">
@@ -37,8 +45,8 @@ function Home3({ setSlideFull }) {
                                     <Link to="/contact" className="button btn-style-2">Contact Us</Link>
                                 </div>
                             </div>
-                            <div className="hero-img">
-                                <img src="/assets/img/intro/hero-1.jpeg" alt="" />
+                            <div className="intro-img">
+                                <img src="/assets/img/intro/hero.jpeg" alt="" />
                             </div>
                         </div>
 

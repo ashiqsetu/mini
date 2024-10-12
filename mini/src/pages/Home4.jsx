@@ -25,12 +25,12 @@ function Home4({ setSlideFull }) {
     return (
         <>
 
-            <PageTitle title='Mini | Home 4'/>
+            <PageTitle title='Mini | Home 4' />
 
             {/* Slider area start */}
             <section className="intro-area">
-                <Carousel activeIndex={index} onSelect={handleSelect} fade>
-                    <Carousel.Item>
+                <Carousel activeIndex={index} onSelect={handleSelect} fade pause={false}>
+                    <Carousel.Item interval={5000}>
                         <div ref={slideFull} className="single-slide slide-1 slide-full">
                             <div className="container">
                                 <div className="slider-content-wrapper">
@@ -50,8 +50,28 @@ function Home4({ setSlideFull }) {
                             </div>
                         </div>
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item interval={5000}>
                         <div ref={slideFull} className="single-slide slide-2 slide-full">
+                            <div className="container">
+                                <div className="slider-content-wrapper">
+                                    <div className="slider-content">
+                                        <p className="greetings">welcome</p>
+                                        <h1 className="cd-headline">
+                                            we are <span>Mini.</span>
+                                        </h1>
+                                        <p>Empowering Your Vision with
+                                            Powerful Software Solution.</p>
+                                        <div className="button-group">
+                                            <Link to="/about" className="button">About Us</Link>
+                                            <Link to="/contact" className="button btn-style-2">Contact Us</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Carousel.Item>
+                    <Carousel.Item interval={5000}>
+                        <div ref={slideFull} className="single-slide slide-3 slide-full">
                             <div className="container">
                                 <div className="slider-content-wrapper">
                                     <div className="slider-content">

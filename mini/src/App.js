@@ -19,17 +19,18 @@ function App() {
 
   const targetRef = useRef(null);
   const [hasSlideFull, setSlideFull] = useState(false);
+  const [hasColorBg, setColorBg] = useState(false);
 
   return (
     <>
       <BrowserRouter>
 
-        <Header targetRef={targetRef} hasSlideFull={hasSlideFull} />
+        <Header targetRef={targetRef} hasSlideFull={hasSlideFull} hasColorBg={hasColorBg} />
 
         <Routes>
           <Route path='/' element={<Home setSlideFull={setSlideFull} />} />
           <Route path='/index-2' element={<Home2 setSlideFull={setSlideFull} />} />
-          <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull} />} />
+          <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull} setColorBg={setColorBg} />} />
           <Route path='/index-4' element={<Home4 setSlideFull={setSlideFull} />} />
           <Route path='/about' element={<About />} />
           <Route path='/services' element={<Service />} />
