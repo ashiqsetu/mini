@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel';
 
-function PostDetailsContent({ state, fullWidth }) {
+function PostDetailsContent({ post, state, fullWidth }) {
     const navigate = useNavigate();
 
     const [index, setIndex] = useState(0);
@@ -135,26 +135,28 @@ function PostDetailsContent({ state, fullWidth }) {
         nameInputRef.current.focus();
     };
 
-    useEffect(() => {
-        if (state) {
-            localStorage.setItem('lastPost', JSON.stringify(state));
-        } else {
-            const savedPost = JSON.parse(localStorage.getItem('lastPost'));
-            if (!savedPost) {
-                navigate('/blog');
-            }
-        }
-    }, [state, navigate])
+    // useEffect(() => {
+    //     if (state) {
+    //         localStorage.setItem('lastPost', JSON.stringify(state));
+    //     } else {
+    //         const savedPost = JSON.parse(localStorage.getItem('lastPost'));
+    //         if (!savedPost) {
+    //             navigate('/blog');
+    //         }
+    //     }
+    // }, [state, navigate])
 
-    const post = state || JSON.parse(localStorage.getItem('lastPost'));
+    // const post = state || JSON.parse(localStorage.getItem('lastPost'));
 
     if (!post) {
-        return navigate('/blog');
+        return navigate('/blogs');
     }
 
     const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
+
+
     return (
         <>
             <div className={fullWidth ? 'col-md-12' : 'col-xl-9 col-lg-8'}>
@@ -185,7 +187,7 @@ function PostDetailsContent({ state, fullWidth }) {
                     </div>
                     <div className="single-post-content">
                         <div className="post-content-inner">
-                            <h3 className="post-title">{post.title}</h3>
+                            <h3 className="post-title">{state.title}</h3>
                             <ul className="meta-info">
                                 <li><i className="fa fa-user"></i>admin</li>
                                 <li><i className="fa fa-calendar"></i>jul 24, 2024</li>

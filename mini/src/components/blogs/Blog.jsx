@@ -3,12 +3,13 @@ import { blogPosts } from '../../data/blog-posts'
 import { Link, useNavigate } from 'react-router-dom'
 import BlogSidebar from './BlogSidebar';
 import SingleBlog from './SingleBlog';
+import { usePosts } from '../../context/PostsContext';
 
 function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
 
-    const slicePosts = blogPosts.slice(0, 3);
+    const { recentPosts, setRecentPosts } = usePosts();
 
-    const postsToShow = pagination ? blogPosts : slicePosts;
+    const postsToShow = pagination ? blogPosts : blogPosts.slice(0, 3);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
@@ -23,6 +24,15 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
     }, [currentPage, postsPerPage, postsToShow]);
 
 
+    useEffect(() => {
+        if (recentPosts.length === 0) {
+            const initialRecentPosts = blogPosts.slice(0, 3);
+            setRecentPosts(initialRecentPosts);
+        }
+    }, [recentPosts, setRecentPosts]);
+
+
+    // Pagination handlers
     const handleFirst = () => setCurrentPage(1);
     const handlePrevious = () => setCurrentPage(prev => Math.max(1, prev - 1));
     const handleNext = () => setCurrentPage(prev => Math.min(totalPages, prev + 1));

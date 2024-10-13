@@ -10,6 +10,7 @@ import Portfolios from './pages/Portfolios'
 import SingleProject from './pages/SingleProject'
 import Blogs from './pages/Blogs'
 import SinglePost from './pages/SinglePost'
+import { PostsProvider } from './context/PostsContext';
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 import Header from './components/common/Header'
@@ -23,29 +24,32 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <PostsProvider>
 
-        <Header targetRef={targetRef} hasSlideFull={hasSlideFull} hasColorBg={hasColorBg} />
+        <BrowserRouter>
 
-        <Routes>
-          <Route path='/' element={<Home setSlideFull={setSlideFull} />} />
-          <Route path='/index-2' element={<Home2 setSlideFull={setSlideFull} />} />
-          <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull} setColorBg={setColorBg} />} />
-          <Route path='/index-4' element={<Home4 setSlideFull={setSlideFull} />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/services' element={<Service />} />
-          <Route path='/portfolios' element={<Portfolios />} />
-          <Route path='/project/:id' element={<SingleProject />} />
-          <Route path='/blogs' element={<Blogs />} />
-          <Route path='/post/:id' element={<SinglePost />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+          <Header targetRef={targetRef} hasSlideFull={hasSlideFull} hasColorBg={hasColorBg} />
 
-        <Footer targetRef={targetRef} />
+          <Routes>
+            <Route path='/' element={<Home setSlideFull={setSlideFull} />} />
+            <Route path='/index-2' element={<Home2 setSlideFull={setSlideFull} />} />
+            <Route path='/index-3' element={<Home3 setSlideFull={setSlideFull} setColorBg={setColorBg} />} />
+            <Route path='/index-4' element={<Home4 setSlideFull={setSlideFull} />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/services' element={<Service />} />
+            <Route path='/portfolios' element={<Portfolios />} />
+            <Route path='/project/:id' element={<SingleProject />} />
+            <Route path='/blogs' element={<Blogs />} />
+            <Route path='/post/:id' element={<SinglePost />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
 
+          <Footer targetRef={targetRef} />
 
-      </BrowserRouter>
+        </BrowserRouter>
+
+      </PostsProvider>
     </>
   )
 }

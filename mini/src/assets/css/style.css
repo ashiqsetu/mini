@@ -2402,6 +2402,7 @@ input:-webkit-autofill,
   height: 270px;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 }
 
 .post-content {
@@ -2415,12 +2416,16 @@ input:-webkit-autofill,
   font-family: 'Open Sans', sans-serif;
 }
 
-.post-content-inner h3 a {
+.post-content-inner h3 button {
   color: #232323;
   line-height: 1.4;
+  padding: 0;
+  background: transparent;
+  border: medium none;
+  transition: all 0.3s ease;
 }
 
-.post-content-inner h3:hover a {
+.post-content-inner h3:hover button {
   color: var(--primaryColor);
 }
 
@@ -2742,13 +2747,19 @@ input:-webkit-autofill,
   gap: 10px;
   align-items: center;
 }
-
+.single-post-widget button {
+  background: transparent;
+  border: medium;
+  padding: 0;
+  text-align: left;
+}
 .single-post-widget img {
   width: 80px;
   height: 80px;
   border-radius: 4px;
   object-fit: cover;
 }
+
 
 .single-post-widget:nth-child(n + 2) {
   margin-top: 15px;

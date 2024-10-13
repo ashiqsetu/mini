@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 function SingleBlog({ post }) {
 
@@ -17,20 +17,18 @@ function SingleBlog({ post }) {
         <>
             <article className="blog-post appear" key={post.id}>
                 <div className="post-thumbnail">
-                    <a className="thumbnail-images" href={`/post/${post.id}`} onClick={(e) => {
-                        e.preventDefault();
+                    <div className="thumbnail-images" onClick={(e) => {
                         handlePostClick(post);
                     }}>
                         <img src={post.img} alt={post.title} />
-                    </a>
+                    </div>
                 </div>
                 <div className="post-content">
                     <div className="post-content-inner">
                         <h3>
-                            <a href={`/post/${post.id}`} onClick={(e) => {
-                                e.preventDefault();
+                            <button onClick={(e) => {
                                 handlePostClick(post);
-                            }}>{post.title}</a>
+                            }}>{post.title}</button>
                         </h3>
                         <ul className="meta-info">
                             <li><i className="fa fa-user"></i>{post.author}</li>
@@ -40,10 +38,9 @@ function SingleBlog({ post }) {
                         <p>{post.description}</p>
                     </div>
                     <div className="post-content-wrapper">
-                        <a className="read-more" href={`/post/${post.id}`} onClick={(e) => {
-                            e.preventDefault();
+                        <button className="read-more" onClick={(e) => {
                             handlePostClick(post);
-                        }}>read more</a>
+                        }}>read more</button>
                         <button className="like-count">
                             <i className="fa fa-heart-o"></i>
                             <span className="heart-number">{post.like}</span>

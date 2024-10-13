@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { blogPosts } from '../../data/blog-posts'
+import { usePosts } from '../../context/PostsContext';
 
 function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs }) {
 
+    const { recentPosts } = usePosts();
     const navigate = useNavigate();
 
     let order2 = false;
@@ -14,10 +15,7 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
         order2 = true;
     }
 
-    const recentPosts = blogPosts.slice(0, 3);
-
     const handleNavigate = (post) => {
-        console.log('click')
         navigate(`/post/${post.id}`, {
             state: {
                 title: post.title
@@ -79,9 +77,11 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
                         {
                             recentPosts.map((post) => (
                                 <div className="single-post-widget" key={post.id}>
-                                    <Link to='#' onClick={() => handleNavigate(post)} ><img src={post.img} alt="" /></Link>
+                                    <button onClick={() => handleNavigate(post)}>
+                                        <img src={post.img} alt="" />
+                                    </button>
                                     <div className="post-widget-content">
-                                        <h5><Link to='#' onClick={() => handleNavigate(post)}>{post.title}</Link></h5>
+                                        <h5><button onClick={() => handleNavigate(post)}>{post.title}</button></h5>
                                         <p>Category: <a href='#'>{post.category}</a></p>
                                     </div>
                                 </div>
