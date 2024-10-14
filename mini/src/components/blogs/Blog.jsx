@@ -84,13 +84,9 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
         <>
             <div className={`theme-section ${bgBackground}`}>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="area-heading">
-                                <h2 className="area-title">{SectionTitle}</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
-                            </div>
-                        </div>
+                    <div className="area-heading">
+                        <h2 className="area-title">{SectionTitle}</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
                     </div>
                     <div className="row">
                         <BlogSidebar leftSidebarStatus={sidebars.left} rightSidebarStatus={sidebars.right} blogs={sidebars.blogs} />
