@@ -2719,7 +2719,7 @@ input:-webkit-autofill,
   gap: 5px;
 }
 
-.tags>button {
+.single-tag {
   border: 1px solid #eee;
   color: #232323;
   font-weight: 400;
@@ -2734,7 +2734,7 @@ input:-webkit-autofill,
   transition: all 0.3s ease;
 }
 
-.tags>button:hover {
+.single-tag:hover {
   color: var(--primaryColor);
 }
 
@@ -2898,23 +2898,6 @@ input:-webkit-autofill,
   display: flex;
   gap: 10px;
   margin-top: 25px;
-}
-
-.post-tag>button {
-  border: 1px solid #eee;
-  color: #232323;
-  font-weight: 400;
-  display: inline-block;
-  font-size: 12px;
-  letter-spacing: 1px;
-  padding: 5px 15px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.post-tag>button:hover {
-  color: var(--primaryColor);
 }
 
 .share-post {

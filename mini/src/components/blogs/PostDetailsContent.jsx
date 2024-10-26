@@ -225,9 +225,9 @@ function PostDetailsContent({ post, state, fullWidth }) {
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt perferendis modi architecto praesentium ad illum corporis. Fugiat expedita, alias qui corporis animi iusto pariatur deleniti non veniam aperiam quidem id. Exercitationem fuga, harum voluptates porro minima vitae accusamus quam unde?</p>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi perspiciatis vero deleniti quaerat quia. Nam, impedit, minima! Voluptatibus commodi ullam praesentium placeat, sapiente cumque. Sint at neque, eveniet, consequatur dignissimos provident dolor natus perferendis ratione unde temporibus. Quia, repudiandae, voluptate.</p>
                             <div className="post-tag">
-                                <button>design</button>
-                                <button>game</button>
-                                <button>robotics</button>
+                                <span className="single-tag">design</span>
+                                <span className="single-tag">game</span>
+                                <span className="single-tag">robotics</span>
                             </div>
                             <div className="post-footer">
                                 <div className="like-post">

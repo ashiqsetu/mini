@@ -5,14 +5,23 @@ import BlogSidebar from './BlogSidebar';
 import SingleBlog from './SingleBlog';
 import { usePosts } from '../../context/PostsContext';
 
-function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
+function Blog({ pagination, showAllBtn, selectedCategory }) {
 
     const { recentPosts, setRecentPosts } = usePosts();
 
-    const postsToShow = pagination ? blogPosts : blogPosts.slice(0, 3);
-
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(6);
+
+    const postsToShow = useMemo(() => {
+        if (selectedCategory) {
+            return blogPosts.filter(blog => blog.category === selectedCategory);
+        }
+        return pagination ? blogPosts : blogPosts.slice(0, 3);
+    }, [selectedCategory, pagination]);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [selectedCategory]);
 
     const totalPages = useMemo(() => Math.ceil(postsToShow.length / postsPerPage), [postsToShow, postsPerPage]);
 
@@ -23,14 +32,12 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
         return postsToShow.slice(indexOfFirstPost, indexOfLastPost);
     }, [currentPage, postsPerPage, postsToShow]);
 
-
     useEffect(() => {
         if (recentPosts.length === 0) {
             const initialRecentPosts = blogPosts.slice(0, 3);
             setRecentPosts(initialRecentPosts);
         }
     }, [recentPosts, setRecentPosts]);
-
 
     // Pagination handlers
     const handleFirst = () => setCurrentPage(1);
@@ -63,86 +70,76 @@ function Blog({ bgBackground, SectionTitle, pagination, showAllBtn }) {
             paginationArray.push(<li key="end-dots" className="page-item disabled"><span className="page-link">...</span></li>);
         }
 
-        paginationArray.push(
-            <li key={totalPages} className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
-                <button className="page-link" onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
-            </li>
-        );
+        if (totalPages > 1) {
+            paginationArray.push(
+                <li key={totalPages} className={`page-item ${currentPage === totalPages ? 'active' : ''}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(totalPages)}>{totalPages}</button>
+                </li>
+            );
+        }
 
         return paginationArray;
     };
 
-
     // Post Sidebar Options
     const sidebars = {
-        left: false,
+        left: true,
         right: false,
         blogs: true // Need true for Blogs page for showing search widget
     };
 
     return (
         <>
-            <div className={`theme-section ${bgBackground}`}>
-                <div className="container">
-                    <div className="area-heading">
-                        <h2 className="area-title">{SectionTitle}</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
-                    </div>
-                    <div className="row">
-                        <BlogSidebar leftSidebarStatus={sidebars.left} rightSidebarStatus={sidebars.right} blogs={sidebars.blogs} />
-                        <div className={sidebars.left || sidebars.right ? 'col-xl-9 col-lg-8' : 'col-md-12'}>
-                            <div className={`blog-grid-item ${sidebars.left || sidebars.right ? 'two-column' : ''}`}>
-                                {
-                                    currentPosts.map((post) => (
-                                        <SingleBlog post={post} key={post.id} />
-                                    ))
-                                }
-                            </div>
-                            {
-                                pagination &&
-                                <div className="col-md-12">
-                                    <div className="pagination-area blog-pagination">
-                                        <nav aria-label="Page navigation example">
-                                            <ul className="pagination justify-content-center">
-                                                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                                    <button className="page-link" onClick={() => handleFirst()} aria-label="Previous">
-                                                        <span aria-hidden="true" className='fa fa-angle-double-left'></span>
-                                                    </button>
-                                                </li>
+            <div className={sidebars.left || sidebars.right ? 'col-xl-9 col-lg-8' : 'col-md-12'}>
+                <div className={`blog-grid-item ${sidebars.left || sidebars.right ? 'two-column' : ''}`}>
+                    {
+                        currentPosts.map((post) => (
+                            <SingleBlog post={post} key={post.id} />
+                        ))
+                    }
+                </div>
+                {
+                    pagination &&
+                    <div className="col-md-12">
+                        <div className="pagination-area blog-pagination">
+                            <nav aria-label="Page navigation example">
+                                <ul className="pagination justify-content-center">
+                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                        <button className="page-link" onClick={() => handleFirst()} aria-label="Previous">
+                                            <span aria-hidden="true" className='fa fa-angle-double-left'></span>
+                                        </button>
+                                    </li>
 
-                                                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                                    <button className="page-link" onClick={() => handlePrevious()} aria-label="Previous">
-                                                        <span aria-hidden="true" className='fa fa-angle-left'></span>
-                                                    </button>
-                                                </li>
+                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                        <button className="page-link" onClick={() => handlePrevious()} aria-label="Previous">
+                                            <span aria-hidden="true" className='fa fa-angle-left'></span>
+                                        </button>
+                                    </li>
 
-                                                {getPagination()}
+                                    {getPagination()}
 
-                                                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                                    <button className="page-link" onClick={() => handleNext()} aria-label="Next">
-                                                        <span aria-hidden="true" className='fa fa-angle-right'></span>
-                                                    </button>
-                                                </li>
+                                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                        <button className="page-link" onClick={() => handleNext()} aria-label="Next">
+                                            <span aria-hidden="true" className='fa fa-angle-right'></span>
+                                        </button>
+                                    </li>
 
-                                                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                                    <button className="page-link" onClick={() => handleLast()} aria-label="Next">
-                                                        <span aria-hidden="true" className='fa fa-angle-double-right'></span>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            }
-                            {
-                                showAllBtn &&
-                                <div className='show-all-content'>
-                                    <Link to='/blogs' className='button'>Show All</Link>
-                                </div>
-                            }
+                                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                        <button className="page-link" onClick={() => handleLast()} aria-label="Next">
+                                            <span aria-hidden="true" className='fa fa-angle-double-right'></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
-                </div>
+                }
+                {
+                    showAllBtn &&
+                    <div className='show-all-content'>
+                        <Link to='/blogs' className='button'>Show All</Link>
+                    </div>
+                }
             </div>
         </>
     )

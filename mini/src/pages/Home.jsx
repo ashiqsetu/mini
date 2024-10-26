@@ -42,7 +42,7 @@ function Home() {
                 {/* Portfolio section end */}
 
                 {/* Blog section start */}
-                <Blog bgBackground='white-bg' SectionTitle='Latest Posts' pagination={false} showAllBtn={true} />
+                <Blog pagination={false} showAllBtn={true} />
                 {/* Blog section end */}
 
             </section>

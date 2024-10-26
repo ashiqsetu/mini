@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { usePosts } from '../../context/PostsContext';
+import { useCategory } from '../../context/PostsContext';
 
 function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs }) {
 
     const { recentPosts } = usePosts();
+    const { categoryCounts } = useCategory();
     const navigate = useNavigate();
 
     let order2 = false;
@@ -21,6 +23,10 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
                 title: post.title
             }
         });
+    }
+
+    const handleCategoryClick = (category) => {
+        navigate(`/blogs?category=${category}`);
     }
 
     return (
@@ -54,21 +60,24 @@ function BlogSidebar({ leftSidebarStatus, rightSidebarStatus, postDetails, blogs
                 <aside className="single-widget">
                     <h4 className="widget-title">Categories</h4>
                     <ul className="post-cat-list">
-                        <li><button>design <span>[9]</span></button></li>
-                        <li><button>animation <span>[5]</span></button></li>
-                        <li><button>game <span>[7]</span></button></li>
-                        <li><button>robotics <span>[6]</span></button></li>
+                        {Object.entries(categoryCounts).map(([category, count], index) => (
+                            <li key={`${category}-${index}`}>
+                                <button onClick={() => handleCategoryClick(category)}>
+                                    {category} <span>[{count}]</span>
+                                </button>
+                            </li>
+                        ))}
                     </ul>
                 </aside>
                 <aside className="single-widget">
                     <h4 className="widget-title">Tags</h4>
                     <div className="tags">
-                        <button>design</button>
-                        <button>template</button>
-                        <button>theme-forest</button>
-                        <button>game</button>
-                        <button>art</button>
-                        <button>robotics</button>
+                        <span className='single-tag'>design</span>
+                        <span className='single-tag'>template</span>
+                        <span className='single-tag'>theme-forest</span>
+                        <span className='single-tag'>game</span>
+                        <span className='single-tag'>art</span>
+                        <span className='single-tag'>robotics</span>
                     </div>
                 </aside>
                 <aside className="single-widget">
