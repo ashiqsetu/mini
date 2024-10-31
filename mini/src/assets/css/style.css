@@ -1,9 +1,9 @@
 /* -----------------------------
-Template Name: Mini Creative Portfolio Template
-Template URI: https://themeforest.net/user/hydrozen
+Template Name: Mini Creative Portfolio React Template
+Template URI: 
 Author: oxygens
-Author URI: https://themeforest.net/user/hydrozen
-Version: 1.1
+Author URI: 
+Version: 1.0
 ------------------------------- */
 
 /* -----------------------------------
@@ -441,10 +441,6 @@ input:-webkit-autofill,
   transition: all .5s ease-in-out 0s;
 }
 
-/* .is_sticky.sticky-header a.navbar-brand {
-  font-size: 26px;
-} */
-
 .dot-color {
   color: var(--primaryColor);
 }
@@ -471,9 +467,7 @@ input:-webkit-autofill,
   padding: 30px 0px;
   transition: all .5s ease 0s;
 }
-/* .is_sticky.sticky-header .main-menu > li {
-  padding: 20px 0;
-} */
+
 .main-menu li > button,
 .main-menu li > a {
   color: #232323;
@@ -486,6 +480,14 @@ input:-webkit-autofill,
 }
 .main-menu li:hover > button,
 .main-menu li:hover > a {
+  color: var(--primaryColor);
+}
+.headerColor .main-menu li:hover > button,
+.headerColor .main-menu li:hover > a {
+  color: #fff;
+}
+.headerColor.is_sticky .main-menu li:hover > button,
+.headerColor.is_sticky .main-menu li:hover > a {
   color: var(--primaryColor);
 }
 
@@ -515,7 +517,6 @@ input:-webkit-autofill,
 .main-menu li ul li:last-child a {
   border-bottom: medium none;
 }
-
 
 .expand-menu-bar {
   cursor: pointer;
@@ -553,6 +554,15 @@ input:-webkit-autofill,
 
 .expand-menu-bar:hover span {
   background: var(--primaryColor) none repeat scroll 0 0;
+}
+.headerColor .expand-menu-bar:hover span {
+  background: #fff;
+}
+.headerColor.is_sticky .expand-menu-bar span {
+  background: #232332;
+}
+.headerColor.is_sticky .expand-menu-bar:hover span {
+  background: var(--primaryColor);
 }
 
 
@@ -2463,6 +2473,7 @@ input:-webkit-autofill,
 
 .blog-post p {
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

@@ -23,19 +23,7 @@ function Blogs() {
             {/* Page content area start */}
             <section className="content">
                 {/* Blog section start */}
-                {/* <Blog bgBackground='gray-bg' SectionTitle='All Posts' pagination={true} showAllBtn={false} selectedCategory={selectedCategory} /> */}
-                <div className={`theme-section gray-bg`}>
-                    <div className="container">
-                        <div className="area-heading">
-                            <h2 className="area-title">{SectionTitle}</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
-                        </div>
-                        <div className="row">
-                            <BlogSidebar leftSidebarStatus={sidebars.left} rightSidebarStatus={sidebars.right} blogs={sidebars.blogs} />
-                            <Blog pagination={true} selectedCategory={selectedCategory} />
-                        </div>
-                    </div>
-                </div>
+                <Blog bgBackground='gray-bg' SectionTitle='All Posts' pagination={true} showAllBtn={false} selectedCategory={selectedCategory} />
                 {/* Blog section end */}
             </section>
             {/* Page content area end */}

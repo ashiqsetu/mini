@@ -5,7 +5,7 @@ import BlogSidebar from './BlogSidebar';
 import SingleBlog from './SingleBlog';
 import { usePosts } from '../../context/PostsContext';
 
-function Blog({ pagination, showAllBtn, selectedCategory }) {
+function Blog({ bgBackground, SectionTitle, pagination, showAllBtn, selectedCategory }) {
 
     const { recentPosts, setRecentPosts } = usePosts();
 
@@ -90,56 +90,70 @@ function Blog({ pagination, showAllBtn, selectedCategory }) {
 
     return (
         <>
-            <div className={sidebars.left || sidebars.right ? 'col-xl-9 col-lg-8' : 'col-md-12'}>
-                <div className={`blog-grid-item ${sidebars.left || sidebars.right ? 'two-column' : ''}`}>
-                    {
-                        currentPosts.map((post) => (
-                            <SingleBlog post={post} key={post.id} />
-                        ))
-                    }
-                </div>
-                {
-                    pagination &&
-                    <div className="col-md-12">
-                        <div className="pagination-area blog-pagination">
-                            <nav aria-label="Page navigation example">
-                                <ul className="pagination justify-content-center">
-                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                        <button className="page-link" onClick={() => handleFirst()} aria-label="Previous">
-                                            <span aria-hidden="true" className='fa fa-angle-double-left'></span>
-                                        </button>
-                                    </li>
+            <div className={`theme-section ${bgBackground}`}>
+                <div className="container">
+                    <div className="area-heading">
+                        <h2 className="area-title">{SectionTitle}</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus ipsam nobis expedita enim provident ad reprehenderit modi, perspiciatis!</p>
+                    </div>
+                    <div className="row">
+                        {
+                            !showAllBtn && 
+                            <BlogSidebar leftSidebarStatus={sidebars.left} rightSidebarStatus={sidebars.right} blogs={sidebars.blogs} />
+                        }
+                        <div className={(sidebars.left || sidebars.right) && !showAllBtn ? 'col-xl-9 col-lg-8' : 'col-md-12'}>
+                            <div className={`blog-grid-item ${(sidebars.left || sidebars.right) && pagination ? 'two-column' : ''}`}>
+                                {
+                                    currentPosts.map((post) => (
+                                        <SingleBlog post={post} key={post.id} />
+                                    ))
+                                }
+                            </div>
+                            {
+                                pagination &&
+                                <div className="col-md-12">
+                                    <div className="pagination-area blog-pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul className="pagination justify-content-center">
+                                                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                                    <button className="page-link" onClick={() => handleFirst()} aria-label="Previous">
+                                                        <span aria-hidden="true" className='fa fa-angle-double-left'></span>
+                                                    </button>
+                                                </li>
 
-                                    <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                                        <button className="page-link" onClick={() => handlePrevious()} aria-label="Previous">
-                                            <span aria-hidden="true" className='fa fa-angle-left'></span>
-                                        </button>
-                                    </li>
+                                                <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                                                    <button className="page-link" onClick={() => handlePrevious()} aria-label="Previous">
+                                                        <span aria-hidden="true" className='fa fa-angle-left'></span>
+                                                    </button>
+                                                </li>
 
-                                    {getPagination()}
+                                                {getPagination()}
 
-                                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                        <button className="page-link" onClick={() => handleNext()} aria-label="Next">
-                                            <span aria-hidden="true" className='fa fa-angle-right'></span>
-                                        </button>
-                                    </li>
+                                                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                                    <button className="page-link" onClick={() => handleNext()} aria-label="Next">
+                                                        <span aria-hidden="true" className='fa fa-angle-right'></span>
+                                                    </button>
+                                                </li>
 
-                                    <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                                        <button className="page-link" onClick={() => handleLast()} aria-label="Next">
-                                            <span aria-hidden="true" className='fa fa-angle-double-right'></span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </nav>
+                                                <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                                                    <button className="page-link" onClick={() => handleLast()} aria-label="Next">
+                                                        <span aria-hidden="true" className='fa fa-angle-double-right'></span>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            }
+                            {
+                                showAllBtn &&
+                                <div className='show-all-content'>
+                                    <Link to='/blogs' className='button'>Show All</Link>
+                                </div>
+                            }
                         </div>
                     </div>
-                }
-                {
-                    showAllBtn &&
-                    <div className='show-all-content'>
-                        <Link to='/blogs' className='button'>Show All</Link>
-                    </div>
-                }
+                </div>
             </div>
         </>
     )
